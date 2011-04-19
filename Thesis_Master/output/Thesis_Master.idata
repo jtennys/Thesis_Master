@@ -1,0 +1,7 @@
+flash 1FCD SRAM   85:
+ 00 10 bytes
+flash 1FD1 SRAM   98:
+ 00 6 bytes
+flash 1FD5 SRAM   A0:
+ <size at next line>   0  0  0
+  [size:] 3 bytes

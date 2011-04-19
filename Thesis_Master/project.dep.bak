@@ -1,0 +1,14 @@
+# DO NOT DELETE
+./obj/boot.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8ssc.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\lib\GLOBAL~1.INC\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./obj/main.o :  ./lib/COMP_S~1.H ./lib/PSoCAPI.h ./lib/RECEIVE.h\
+   ./lib/RX_TIM~1.H ./lib/TRANSMIT.h ./lib/TX_REP~1.H ./lib/TX_TIM~1.H\
+   ./lib/PSOCDY~1.H\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.h\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/_const.h\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/limits.h\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/stdlib.h\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/string.h

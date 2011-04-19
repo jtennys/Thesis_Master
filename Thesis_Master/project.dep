@@ -1,0 +1,64 @@
+# DO NOT DELETE
+./obj/boot.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8ssc.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\lib\GLOBAL~1.INC\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./obj/main.o :  ./lib/COMP_S~1.H ./lib/PSoCAPI.h ./lib/RECEIVE.h\
+   ./lib/RX_TIM~1.H ./lib/TRANSMIT.h ./lib/TX_REP~1.H ./lib/TX_TIM~1.H\
+   ./lib/PSOCDY~1.H\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.h\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/_const.h\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/limits.h\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/stdlib.h\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/string.h
+./lib/obj/comp_serial.o :  ./lib/COMP_S~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/comp_serialint.o :  ./lib/COMP_S~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/comp_serialplus.o : 
+./lib/obj/psocconfig.o :  ./lib/GLOBAL~1.INC ./lib/PSOCDY~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/psocconfigtbl.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+./lib/obj/psocdynamic.o :  ./lib/PSOCDY~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/psocdynamicint.o :  ./lib/PSOCDY~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+./lib/obj/receive.o :  ./lib/RECEIVE.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/receiveint.o :  ./lib/RECEIVE.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/receiveplus.o : 
+./lib/obj/rx_timeout.o :  ./lib/RX_TIM~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/rx_timeoutint.o :  ./lib/RX_TIM~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/transmit.o :  ./lib/TRANSMIT.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/transmitint.o :  ./lib/TRANSMIT.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/transmitplus.o : 
+./lib/obj/tx_repeater.o :  ./lib/TX_REP~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/tx_repeaterint.o :  ./lib/TX_REP~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/tx_repeaterplus.o : 
+./lib/obj/tx_timeout.o :  ./lib/TX_TIM~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
+./lib/obj/tx_timeoutint.o :  ./lib/TX_TIM~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc

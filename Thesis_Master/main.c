@@ -52,6 +52,7 @@
 #define		BUS_CLEAR_TIME				(100)	// Min time after a byte to assume bus is clear at boot.
 #define		BOOT_TIMEOUT				(300)	// If nothing is heard by this time, we start the init anyway.
 #define		MAX_TIMEOUTS				(50)	// Number of timeouts allowed before hello mode exit.
+#define		MAX_MODULE_FAIL				(20)	// Number of module fails before the parent resets.
 
 // This is the maximum number of allowable modules per branch out from the master
 #define		MAX_MODULES					(250)
@@ -98,24 +99,40 @@ char COMMAND_DESTINATION;	// Stores who the current command is for.
 char COMMAND_TYPE;			// Stores the type of command that was just read.
 char PARAM[10];				// Stores a parameters that accompanies the command (if any).
 int STATE;					// Stores the current configuration state of the system.
+int MODULE_FAIL;			// Stores the number of times in a row that modules fail to respond.
 
 void main()
-{	
+{
+	// Initialize the number of modules.
+	NUM_MODULES = 0;
+	
+	// Initialize module failures to 0.
+	MODULE_FAIL = 0;
+	
 	// Activate GPIO ISR.
 	M8C_EnableIntMask(INT_MSK0,INT_MSK0_GPIO);
 	
 	// Turn on global interrupts for the transmission timeout timer.
 	M8C_EnableGInt;
 	
-	// Initialize all of the slave modules.
-	initializeSlaves();
+	// Block and wait for the bus to be clear.
+	busListen();
 	
 	while(1)
-	{	
-		// If there's a command from the computer, read it.
-		if(COMP_SERIAL_bCmdCheck())
+	{
+		if(!NUM_MODULES)
+		{
+			initializeSlaves();
+		}
+		else if(COMP_SERIAL_bCmdCheck())		// If there's a computer command, read it.
 		{
 			decodeTransmission();
+			
+			// If we have failed too much to read module data, reset NUM_MODULES.
+			if(MODULE_FAIL >= MAX_MODULE_FAIL)
+			{
+				NUM_MODULES = 0;
+			}
 		}
 	}
 }
@@ -430,6 +447,9 @@ void decodeTransmission(void)
 										{
 											if(RECEIVE_cGetChar() == 0)
 											{
+												// Reset module fails.
+												MODULE_FAIL = 0;
+												
 												angle[0] = RECEIVE_cGetChar();
 												angle[1] = RECEIVE_cGetChar();
 												
@@ -463,16 +483,23 @@ void decodeTransmission(void)
 								{
 									if(RECEIVE_cGetChar() == ID)
 									{
+										// Check the length of the packet.
 										if(RECEIVE_cGetChar() == 3)
 										{
+											// Check to see that there were no errors.
 											if(RECEIVE_cGetChar() == 0)
 											{
+												// Reset module fails.
+												MODULE_FAIL = 0;
+												
 												tempByte = RECEIVE_cGetChar();
 												
 												configToggle(PC_MODE);
 												
 												// Convert tempByte to an ascii value and send.
-												COMP_SERIAL_PutChar(tempByte + 48);
+												total = tempByte + 48;
+												itoa(param,total,10);
+												COMP_SERIAL_PutString(param);
 												COMP_SERIAL_PutChar('\n');
 
 												TIMEOUT = RX_TIMEOUT_DURATION;
@@ -502,14 +529,23 @@ void decodeTransmission(void)
 						if(pingModule(ID))
 						{	
 							configToggle(PC_MODE);
-												
-							COMP_SERIAL_PutChar(PARAM[1]);
+							
+							total = PARAM[1];
+							itoa(param,total,10);
+							COMP_SERIAL_PutString(param);
 							COMP_SERIAL_PutChar('\n');
 						}
 					}
 				}
 			}
 		}
+//		else
+//		{
+//			COMP_SERIAL_CmdReset();
+//			// Echo back what was sent in.
+//			COMP_SERIAL_PutString(param);
+//			COMP_SERIAL_PutChar('\n');
+//		}
 	}
 	
 	if(STATE != PC_MODE)
@@ -520,6 +556,9 @@ void decodeTransmission(void)
 	{
 		TIMEOUT = 0;
 	}
+	
+	// Get closer to failing out.
+	MODULE_FAIL++;
 }
 
 // This function receives a destination, command length, instruction type, address, and value.
@@ -586,7 +625,7 @@ void configToggle(int mode)
 {
 	// Disconnect from the global bus and leave the pin high.
 	PRT0DR |= 0b11111111;
-	PRT0GS &= 0b00000000;
+	PRT0GS &= 0b01000000;
 
 	// Unload the configuration of the current state.
 	// If there is no state, blindly wipe all configurations.
@@ -603,6 +642,7 @@ void configToggle(int mode)
 	{
 		LoadConfig_pc_listener();
 
+		COMP_SERIAL_CmdReset();							// Initialize the buffer.
 		COMP_SERIAL_IntCntl(COMP_SERIAL_ENABLE_RX_INT); // Enable RX interrupts  
 		COMP_SERIAL_Start(UART_PARITY_NONE);			// Starts the UART.
 		
@@ -648,7 +688,7 @@ void configToggle(int mode)
 	}
 	
 	// Reconnect to the global bus.
-	PRT0GS |= 0b11111111;
+	PRT0GS |= 0b10111111;
 }
 
 // This function blindly unloads all user configurations. This will be called once,
@@ -706,13 +746,12 @@ void busListen(void)
 
 void initializeSlaves(void)
 {
-	int num_timeouts = 0;
+	int num_timeouts = 0;	// The number of consecutive timeouts.
+	int ping_tries = 5;		// The number of times to try a ping on an unregistered module.
+	int i = 0;				// An iterator for looping.
 	
 	// Set num modules to zero.
 	NUM_MODULES = 0;
-	
-	// Block and wait for the bus to be clear.
-	busListen();
 	
 	sayHello();
 	
@@ -735,21 +774,18 @@ void initializeSlaves(void)
 						// If the module did not respond that the ID was assigned,
 						// make an effort to ping it in case that transmission was lost
 						// before ultimately deciding that the module didn't configure.
-						if(!pingModule(NUM_MODULES))
-						{
-							if(!pingModule(NUM_MODULES))
+						for(i = 0; i < ping_tries; i++)
+						{	
+							if(pingModule(NUM_MODULES))
 							{
-								if(!pingModule(NUM_MODULES))
-								{
-									if(!pingModule(NUM_MODULES))
-									{
-										if(!pingModule(NUM_MODULES))
-										{
-											NUM_MODULES--;
-										}
-									}
-								}
+								i = ping_tries*2;
 							}
+						}
+						
+						// If we landed right at ping_tries, we failed.
+						if(i == ping_tries)
+						{
+							NUM_MODULES--;
 						}
 					}
 				}
@@ -757,16 +793,26 @@ void initializeSlaves(void)
 		}
 		else if(TIMEOUT >= RX_TIMEOUT_DURATION)
 		{	
-			// Only count timeouts if we've found at least one module.
-			if(NUM_MODULES)
-			{
-				num_timeouts++;
-			}
+			num_timeouts++;
 			
 			// If we are not maxed out on modules, look for more.
 			if(NUM_MODULES < MAX_MODULES)
 			{
 				sayHello();
+			}
+		}
+	}
+	
+	// If we didn't find any new modules, check to see if some already exist.
+	if(!NUM_MODULES)
+	{
+		// Try to ping the next module up from our current number ping_tries times.
+		for(i = 0; i < ping_tries; i++)
+		{	
+			if(pingModule(NUM_MODULES+1))
+			{
+				NUM_MODULES++;
+				i = 0;
 			}
 		}
 	}

@@ -31,9 +31,9 @@
  0040           PLL_MODE_MASK:			equ	40h		;PLL mode mask
  0000           PLL_MODE_JUST:			equ	0h		;PLL mode value justified
  0000           
- 0000           SLEEP_TIMER:			equ	0h		;Sleep Timer value
+ 0003           SLEEP_TIMER:			equ	3h		;Sleep Timer value
  0018           SLEEP_TIMER_MASK:		equ	18h		;Sleep Timer mask
- 0000           SLEEP_TIMER_JUST:		equ	0h		;Sleep Timer value justified
+ 0018           SLEEP_TIMER_JUST:		equ	18h		;Sleep Timer value justified
  0000           
  0000           SLEEP_TIMER2:			equ	0h		;Sleep Extend value
  0010           SLEEP_TIMER_MASK2:		equ	10h		;Sleep Extend mask
@@ -1870,7 +1870,7 @@
                 ELSE ; !( SELECT_32K & WAIT_FOR_32K )
                     ; Either no ECO, or waiting for stable clock is to be done in main
  0093 7110          or    F, FLAG_XIO_MASK
- 0095 62E002        mov   reg[OSC_CR0], (SELECT_32K_JUST | PLL_MODE_JUST | SLEEP_TIMER_JUST | OSC_CR0_CPU_12MHz)
+ 0095 62E01A        mov   reg[OSC_CR0], (SELECT_32K_JUST | PLL_MODE_JUST | SLEEP_TIMER_JUST | OSC_CR0_CPU_12MHz)
  0098 70EF          and   F, ~FLAG_XIO_MASK
  009A 62E338        mov   reg[RES_WDT], 38h
  009D           
@@ -2224,7 +2224,7 @@
  0139               ; Everything has started OK. Now select requested CPU & sleep frequency.
  0139               ;
  0139 7110          or    F, FLAG_XIO_MASK
- 013B 62E003        mov  reg[OSC_CR0],(SELECT_32K_JUST | PLL_MODE_JUST | SLEEP_TIMER_JUST | CPU_CLOCK_JUST)
+ 013B 62E01B        mov  reg[OSC_CR0],(SELECT_32K_JUST | PLL_MODE_JUST | SLEEP_TIMER_JUST | CPU_CLOCK_JUST)
  013E 43E200            or  reg[OSC_CR2], (SLEEP_TIMER_JUST2)
  0141 70EF          and   F, ~FLAG_XIO_MASK
  0143           

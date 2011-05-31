@@ -24,7 +24,7 @@ RECEIVE_INT_REG:          equ 0e1h
 
 RECEIVE_RXBUF_ENABLE:                       equ   1
 
-RECEIVE_RX_IGNORE_BELOW:                     equ  0h
+RECEIVE_RX_IGNORE_BELOW:                     equ  1h
 RECEIVE_RX_BUFFER_SIZE:                      equ  40h
 RECEIVE_CMD_TERM:                            equ  0h
 RECEIVE_DELIMITER:                           equ  0h

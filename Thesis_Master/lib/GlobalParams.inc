@@ -29,9 +29,9 @@ PLL_MODE:				equ	0h		;PLL mode value
 PLL_MODE_MASK:			equ	40h		;PLL mode mask
 PLL_MODE_JUST:			equ	0h		;PLL mode value justified
 
-SLEEP_TIMER:			equ	0h		;Sleep Timer value
+SLEEP_TIMER:			equ	3h		;Sleep Timer value
 SLEEP_TIMER_MASK:		equ	18h		;Sleep Timer mask
-SLEEP_TIMER_JUST:		equ	0h		;Sleep Timer value justified
+SLEEP_TIMER_JUST:		equ	18h		;Sleep Timer value justified
 
 SLEEP_TIMER2:			equ	0h		;Sleep Extend value
 SLEEP_TIMER_MASK2:		equ	10h		;Sleep Extend mask

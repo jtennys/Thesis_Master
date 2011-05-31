@@ -1224,9 +1224,9 @@
  0040           PLL_MODE_MASK:			equ	40h		;PLL mode mask
  0000           PLL_MODE_JUST:			equ	0h		;PLL mode value justified
  0000           
- 0000           SLEEP_TIMER:			equ	0h		;Sleep Timer value
+ 0003           SLEEP_TIMER:			equ	3h		;Sleep Timer value
  0018           SLEEP_TIMER_MASK:		equ	18h		;Sleep Timer mask
- 0000           SLEEP_TIMER_JUST:		equ	0h		;Sleep Timer value justified
+ 0018           SLEEP_TIMER_JUST:		equ	18h		;Sleep Timer value justified
  0000           
  0000           SLEEP_TIMER2:			equ	0h		;Sleep Extend value
  0010           SLEEP_TIMER_MASK2:		equ	10h		;Sleep Extend mask

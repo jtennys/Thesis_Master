@@ -2226,7 +2226,7 @@
  0000           
  0001           RECEIVE_RXBUF_ENABLE:                       equ   1
  0000           
- 0000           RECEIVE_RX_IGNORE_BELOW:                     equ  0h
+ 0001           RECEIVE_RX_IGNORE_BELOW:                     equ  1h
  0040           RECEIVE_RX_BUFFER_SIZE:                      equ  40h
  0000           RECEIVE_CMD_TERM:                            equ  0h
  0000           RECEIVE_DELIMITER:                           equ  0h
@@ -2389,7 +2389,7 @@
  000A 2108         and  A,RECEIVE_RX_REG_FULL                              ; Did really really get an IRQ
  000C B004         jnz  .UARTRX_ReadRx                                     ; Data ready, go get it
  000E 18           pop  A                                                  ; Restore stack
- 000F 805E         jmp  .RESTORE_IDX_PP
+ 000F 8062         jmp  .RESTORE_IDX_PP
  0011           
  0011           .UARTRX_ReadRx:
  0011           
@@ -2404,13 +2404,13 @@
  0018 492A00       tst  REG[RECEIVE_RX_BUFFER_REG], 0x00                   ; Read the data buffer to clear it.
  001B           
  001B 2120         and  A,RECEIVE_RX_FRAMING_ERROR                         ; Check for framing error special case
- 001D A050         jz   .RESTORE_IDX_PP                                    ; Not framing error, all done
+ 001D A054         jz   .RESTORE_IDX_PP                                    ; Not framing error, all done
  001F           
  001F                                                                      ; Disable and re-enable RX to reset after
  001F                                                                      ; framing error.
  001F 412BFE       and   REG[RECEIVE_CONTROL_REG], ~RECEIVE_RX_ENABLE      ; Disable RX
  0022 432B01       or    REG[RECEIVE_CONTROL_REG],  RECEIVE_RX_ENABLE      ; Enable RX
- 0025 8048         jmp  .RESTORE_IDX_PP                                    ; Done with framing error, leave.
+ 0025 804C         jmp  .RESTORE_IDX_PP                                    ; Done with framing error, leave.
  0027           
  0027           
  0027           .UARTRX_NO_ERROR:
@@ -2418,7 +2418,7 @@
  0029           
  0029                                                                      ; IF buffer not full
  0029 470001       tst  [RECEIVE_fStatus],RECEIVE_RX_BUF_CMDTERM           ; Check for buffer full
- 002C B041         jnz  .RESTORE_IDX_PP                                    ; All done
+ 002C B045         jnz  .RESTORE_IDX_PP                                    ; All done
  002E           
  002E 3900         cmp  A,RECEIVE_CMD_TERM                                 ; Check for End of command
  0030 B014         jnz  .UARTRX_CHK_CTLCHAR
@@ -2436,69 +2436,69 @@
  003F 703F            and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
  0041 7100            or    F,  FLAG_PGMODE_MASK & FLAG_PGMODE_00b
                    ENDIF
- 0043 802A         jmp  .RESTORE_IDX_PP
+ 0043 802E         jmp  .RESTORE_IDX_PP
  0045           
  0045           .UARTRX_CHK_CTLCHAR:                                       ; Ignore charaters below this value
  0045                                                                      ; If ignore char is set to 0x00, do not
  0045                                                                      ; ignore any characters.
                 IF(RECEIVE_RX_IGNORE_BELOW)
-                   cmp  A,RECEIVE_RX_IGNORE_BELOW
-                   jc   .RESTORE_IDX_PP
+ 0045 3901         cmp  A,RECEIVE_RX_IGNORE_BELOW
+ 0047 C02A         jc   .RESTORE_IDX_PP
                 ENDIF
                 
- 0045           .UARTRX_CHK_OVFL:                                          ; Check for MAX String here
- 0045 3C013F       cmp  [RECEIVE_bRxCnt],(RECEIVE_RX_BUFFER_SIZE - 1)
- 0048 C014         jc   .UARTRX_ISR_GETDATA
- 004A 2E0010       or   [RECEIVE_fStatus],RECEIVE_RX_BUF_OVERRUN           ; Set error flags (parity,framing,overrun) bits
- 004D           
+ 0049           .UARTRX_CHK_OVFL:                                          ; Check for MAX String here
+ 0049 3C013F       cmp  [RECEIVE_bRxCnt],(RECEIVE_RX_BUFFER_SIZE - 1)
+ 004C C014         jc   .UARTRX_ISR_GETDATA
+ 004E 2E0010       or   [RECEIVE_fStatus],RECEIVE_RX_BUF_OVERRUN           ; Set error flags (parity,framing,overrun) bits
+ 0051           
                    IF ( SYSTEM_LARGE_MEMORY_MODEL )
- 004D 62D300          mov reg[IDX_PP], >RECEIVE_aRxBuffer
+ 0051 62D300          mov reg[IDX_PP], >RECEIVE_aRxBuffer
                    ENDIF
                    IF ( SYSTEM_LARGE_MEMORY_MODEL )
- 0050 703F            and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
- 0052 7180            or    F,  FLAG_PGMODE_MASK & FLAG_PGMODE_10b
+ 0054 703F            and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
+ 0056 7180            or    F,  FLAG_PGMODE_MASK & FLAG_PGMODE_10b
                    ENDIF
- 0054 560000       mov  [X + RECEIVE_aRxBuffer],00h                        ; Zero out last data
+ 0058 560000       mov  [X + RECEIVE_aRxBuffer],00h                        ; Zero out last data
                    IF ( SYSTEM_LARGE_MEMORY_MODEL )
- 0057 703F            and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
- 0059 7100            or    F,  FLAG_PGMODE_MASK & FLAG_PGMODE_00b
+ 005B 703F            and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
+ 005D 7100            or    F,  FLAG_PGMODE_MASK & FLAG_PGMODE_00b
                    ENDIF
- 005B 8012         jmp  .RESTORE_IDX_PP
- 005D           
- 005D                                                                      ; IF input data == "CR", then end of command
- 005D           .UARTRX_ISR_GETDATA:
- 005D 75           inc  X                                                  ; Inc the pointer
- 005E 5A01         mov  [RECEIVE_bRxCnt],X                                 ; Restore the pointer
- 0060 79           dec  X                                                  ; Mov X to its original value
+ 005F 8012         jmp  .RESTORE_IDX_PP
  0061           
+ 0061                                                                      ; IF input data == "CR", then end of command
+ 0061           .UARTRX_ISR_GETDATA:
+ 0061 75           inc  X                                                  ; Inc the pointer
+ 0062 5A01         mov  [RECEIVE_bRxCnt],X                                 ; Restore the pointer
+ 0064 79           dec  X                                                  ; Mov X to its original value
+ 0065           
                    IF ( SYSTEM_LARGE_MEMORY_MODEL )
- 0061 62D300          mov reg[IDX_PP], >RECEIVE_aRxBuffer
+ 0065 62D300          mov reg[IDX_PP], >RECEIVE_aRxBuffer
                    ENDIF
                    IF ( SYSTEM_LARGE_MEMORY_MODEL )
- 0064 703F            and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
- 0066 7180            or    F,  FLAG_PGMODE_MASK & FLAG_PGMODE_10b
+ 0068 703F            and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
+ 006A 7180            or    F,  FLAG_PGMODE_MASK & FLAG_PGMODE_10b
                    ENDIF
- 0068 5400         mov  [X+RECEIVE_aRxBuffer],A                            ; store data in array
+ 006C 5400         mov  [X+RECEIVE_aRxBuffer],A                            ; store data in array
                    IF ( SYSTEM_LARGE_MEMORY_MODEL )
- 006A 703F            and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
- 006C 7100            or    F,  FLAG_PGMODE_MASK & FLAG_PGMODE_00b
+ 006E 703F            and   F, ~FLAG_PGMODE_MASK        ; NOTE: transition thru 00b state
+ 0070 7100            or    F,  FLAG_PGMODE_MASK & FLAG_PGMODE_00b
                    ENDIF
                 
                 
- 006E           .RESTORE_IDX_PP:
+ 0072           .RESTORE_IDX_PP:
                    IF SYSTEM_LARGE_MEMORY_MODEL
- 006E 18           pop   A
- 006F 60D3         mov   reg[ IDX_PP ], A
+ 0072 18           pop   A
+ 0073 60D3         mov   reg[ IDX_PP ], A
                    ENDIF
                 
- 0071           .END_UARTRX_ISR:
- 0071 20           pop  X
- 0072 18           pop  A
- 0073           
+ 0075           .END_UARTRX_ISR:
+ 0075 20           pop  X
+ 0076 18           pop  A
+ 0077           
                 ENDIF
                 
- 0073           RECEIVE_RX_ISR_END:
- 0073 7E           reti
- 0074           
- 0074           
- 0074           ; end of file RECEIVEINT.asm
+ 0077           RECEIVE_RX_ISR_END:
+ 0077 7E           reti
+ 0078           
+ 0078           
+ 0078           ; end of file RECEIVEINT.asm

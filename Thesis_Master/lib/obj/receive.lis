@@ -2239,7 +2239,7 @@
  0000           
  0001           RECEIVE_RXBUF_ENABLE:                       equ   1
  0000           
- 0000           RECEIVE_RX_IGNORE_BELOW:                     equ  0h
+ 0001           RECEIVE_RX_IGNORE_BELOW:                     equ  1h
  0040           RECEIVE_RX_BUFFER_SIZE:                      equ  40h
  0000           RECEIVE_CMD_TERM:                            equ  0h
  0000           RECEIVE_DELIMITER:                           equ  0h

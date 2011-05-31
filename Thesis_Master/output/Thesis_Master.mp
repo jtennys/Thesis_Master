@@ -1,5 +1,5 @@
-  ROM 48% full. 7741 bytes used (does not include absolute areas).
-  RAM 21% full. 163 bytes used (does not include stack usage).
+  ROM 49% full. 7963 bytes used (does not include absolute areas).
+  RAM 21% full. 165 bytes used (does not include stack usage).
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -64,7 +64,7 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     UserModules   078A   062B =   1579. bytes (rel,con,rom)
+                     UserModules   078A   062F =   1583. bytes (rel,con,rom)
 
        Addr  Global Symbol
       -----  --------------------------------
@@ -191,141 +191,141 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        09F4  _wRX_TIMEOUT_CaptureCounter
        09F4  wRX_TIMEOUT_ReadTimer
        09FC  _RECEIVE_ISR
-       0A70  RECEIVE_EnableInt
-       0A70  _RECEIVE_EnableInt
-       0A74  _RECEIVE_DisableInt
-       0A74  RECEIVE_DisableInt
-       0A78  _RECEIVE_Start
-       0A78  RECEIVE_Start
-       0A7D  _RECEIVE_Stop
-       0A7D  RECEIVE_Stop
-       0A81  bRECEIVE_ReadRxData
-       0A81  _bRECEIVE_ReadRxData
-       0A81  _RECEIVE_bReadRxData
-       0A81  RECEIVE_bReadRxData
-       0A84  _RECEIVE_bReadRxStatus
-       0A84  RECEIVE_bReadRxStatus
-       0A84  _bRECEIVE_ReadRxStatus
-       0A84  bRECEIVE_ReadRxStatus
-       0A87  _RECEIVE_cGetChar
-       0A87  RECEIVE_cGetChar
-       0A8F  RECEIVE_cReadChar
-       0A8F  _RECEIVE_cReadChar
-       0AA6  _RECEIVE_iReadChar
-       0AA6  RECEIVE_iReadChar
-       0ABC  RECEIVE_CmdReset
-       0ABC  _RECEIVE_CmdReset
-       0AD2  RECEIVE_bCmdCheck
-       0AD2  _RECEIVE_bCmdCheck
-       0ADA  _RECEIVE_bErrCheck
-       0ADA  RECEIVE_bErrCheck
-       0AE5  _RECEIVE_bCmdLength
-       0AE5  RECEIVE_bCmdLength
-       0AEB  _RECEIVE_szGetParam
-       0AEB  RECEIVE_szGetParam
-       0B4A  _RECEIVE_szGetRestOfParams
-       0B4A  RECEIVE_szGetRestOfParams
-       0B55  _COMP_SERIAL_TX_ISR
-       0B56  _COMP_SERIAL_RX_ISR
-       0BCA  COMP_SERIAL_EnableInt
-       0BCA  _COMP_SERIAL_EnableInt
-       0BD1  COMP_SERIAL_DisableInt
-       0BD1  _COMP_SERIAL_DisableInt
-       0BD8  _COMP_SERIAL_SetTxIntMode
-       0BD8  COMP_SERIAL_SetTxIntMode
-       0BEA  COMP_SERIAL_Start
-       0BEA  _COMP_SERIAL_Start
-       0BF3  _COMP_SERIAL_Stop
-       0BF3  COMP_SERIAL_Stop
-       0BFA  _COMP_SERIAL_SendData
-       0BFA  COMP_SERIAL_SendData
-       0BFD  _bCOMP_SERIAL_ReadTxStatus
-       0BFD  bCOMP_SERIAL_ReadTxStatus
-       0BFD  COMP_SERIAL_bReadTxStatus
-       0BFD  _COMP_SERIAL_bReadTxStatus
-       0C00  bCOMP_SERIAL_ReadRxData
-       0C00  COMP_SERIAL_bReadRxData
-       0C00  _COMP_SERIAL_bReadRxData
-       0C00  _bCOMP_SERIAL_ReadRxData
-       0C03  COMP_SERIAL_bReadRxStatus
-       0C03  bCOMP_SERIAL_ReadRxStatus
-       0C03  _COMP_SERIAL_bReadRxStatus
-       0C03  _bCOMP_SERIAL_ReadRxStatus
-       0C06  COMP_SERIAL_TxIntMode
-       0C06  _COMP_SERIAL_TxIntMode
-       0C19  COMP_SERIAL_IntCntl
-       0C19  _COMP_SERIAL_IntCntl
-       0C44  COMP_SERIAL_PutSHexByte
-       0C44  _COMP_SERIAL_PutSHexByte
-       0C57  _COMP_SERIAL_PutSHexInt
-       0C57  COMP_SERIAL_PutSHexInt
-       0C5E  _COMP_SERIAL_PutChar
-       0C5E  COMP_SERIAL_PutChar
-       0C66  _COMP_SERIAL_cGetChar
-       0C66  COMP_SERIAL_cGetChar
-       0C6E  COMP_SERIAL_cReadChar
-       0C6E  _COMP_SERIAL_cReadChar
-       0C85  COMP_SERIAL_iReadChar
-       0C85  _COMP_SERIAL_iReadChar
-       0C9B  _COMP_SERIAL_PutString
-       0C9B  COMP_SERIAL_PutString
-       0CAD  COMP_SERIAL_Write
-       0CAD  _COMP_SERIAL_Write
-       0CD5  _COMP_SERIAL_CWrite
-       0CD5  COMP_SERIAL_CWrite
-       0D01  _COMP_SERIAL_CPutString
-       0D01  COMP_SERIAL_CPutString
-       0D13  _COMP_SERIAL_PutCRLF
-       0D13  COMP_SERIAL_PutCRLF
-       0D1C  COMP_SERIAL_CmdReset
-       0D1C  _COMP_SERIAL_CmdReset
-       0D32  _COMP_SERIAL_bCmdCheck
-       0D32  COMP_SERIAL_bCmdCheck
-       0D3A  COMP_SERIAL_bErrCheck
-       0D3A  _COMP_SERIAL_bErrCheck
-       0D45  COMP_SERIAL_bCmdLength
-       0D45  _COMP_SERIAL_bCmdLength
-       0D4B  COMP_SERIAL_szGetParam
-       0D4B  _COMP_SERIAL_szGetParam
-       0DAA  COMP_SERIAL_szGetRestOfParams
-       0DAA  _COMP_SERIAL_szGetRestOfParams
-       0DB5  __UserModules_end
+       0A74  RECEIVE_EnableInt
+       0A74  _RECEIVE_EnableInt
+       0A78  _RECEIVE_DisableInt
+       0A78  RECEIVE_DisableInt
+       0A7C  _RECEIVE_Start
+       0A7C  RECEIVE_Start
+       0A81  _RECEIVE_Stop
+       0A81  RECEIVE_Stop
+       0A85  bRECEIVE_ReadRxData
+       0A85  _bRECEIVE_ReadRxData
+       0A85  _RECEIVE_bReadRxData
+       0A85  RECEIVE_bReadRxData
+       0A88  _RECEIVE_bReadRxStatus
+       0A88  RECEIVE_bReadRxStatus
+       0A88  _bRECEIVE_ReadRxStatus
+       0A88  bRECEIVE_ReadRxStatus
+       0A8B  _RECEIVE_cGetChar
+       0A8B  RECEIVE_cGetChar
+       0A93  RECEIVE_cReadChar
+       0A93  _RECEIVE_cReadChar
+       0AAA  _RECEIVE_iReadChar
+       0AAA  RECEIVE_iReadChar
+       0AC0  RECEIVE_CmdReset
+       0AC0  _RECEIVE_CmdReset
+       0AD6  RECEIVE_bCmdCheck
+       0AD6  _RECEIVE_bCmdCheck
+       0ADE  _RECEIVE_bErrCheck
+       0ADE  RECEIVE_bErrCheck
+       0AE9  _RECEIVE_bCmdLength
+       0AE9  RECEIVE_bCmdLength
+       0AEF  _RECEIVE_szGetParam
+       0AEF  RECEIVE_szGetParam
+       0B4E  _RECEIVE_szGetRestOfParams
+       0B4E  RECEIVE_szGetRestOfParams
+       0B59  _COMP_SERIAL_TX_ISR
+       0B5A  _COMP_SERIAL_RX_ISR
+       0BCE  COMP_SERIAL_EnableInt
+       0BCE  _COMP_SERIAL_EnableInt
+       0BD5  COMP_SERIAL_DisableInt
+       0BD5  _COMP_SERIAL_DisableInt
+       0BDC  _COMP_SERIAL_SetTxIntMode
+       0BDC  COMP_SERIAL_SetTxIntMode
+       0BEE  COMP_SERIAL_Start
+       0BEE  _COMP_SERIAL_Start
+       0BF7  _COMP_SERIAL_Stop
+       0BF7  COMP_SERIAL_Stop
+       0BFE  _COMP_SERIAL_SendData
+       0BFE  COMP_SERIAL_SendData
+       0C01  _bCOMP_SERIAL_ReadTxStatus
+       0C01  bCOMP_SERIAL_ReadTxStatus
+       0C01  COMP_SERIAL_bReadTxStatus
+       0C01  _COMP_SERIAL_bReadTxStatus
+       0C04  bCOMP_SERIAL_ReadRxData
+       0C04  COMP_SERIAL_bReadRxData
+       0C04  _COMP_SERIAL_bReadRxData
+       0C04  _bCOMP_SERIAL_ReadRxData
+       0C07  COMP_SERIAL_bReadRxStatus
+       0C07  bCOMP_SERIAL_ReadRxStatus
+       0C07  _COMP_SERIAL_bReadRxStatus
+       0C07  _bCOMP_SERIAL_ReadRxStatus
+       0C0A  COMP_SERIAL_TxIntMode
+       0C0A  _COMP_SERIAL_TxIntMode
+       0C1D  COMP_SERIAL_IntCntl
+       0C1D  _COMP_SERIAL_IntCntl
+       0C48  COMP_SERIAL_PutSHexByte
+       0C48  _COMP_SERIAL_PutSHexByte
+       0C5B  _COMP_SERIAL_PutSHexInt
+       0C5B  COMP_SERIAL_PutSHexInt
+       0C62  _COMP_SERIAL_PutChar
+       0C62  COMP_SERIAL_PutChar
+       0C6A  _COMP_SERIAL_cGetChar
+       0C6A  COMP_SERIAL_cGetChar
+       0C72  COMP_SERIAL_cReadChar
+       0C72  _COMP_SERIAL_cReadChar
+       0C89  COMP_SERIAL_iReadChar
+       0C89  _COMP_SERIAL_iReadChar
+       0C9F  _COMP_SERIAL_PutString
+       0C9F  COMP_SERIAL_PutString
+       0CB1  COMP_SERIAL_Write
+       0CB1  _COMP_SERIAL_Write
+       0CD9  _COMP_SERIAL_CWrite
+       0CD9  COMP_SERIAL_CWrite
+       0D05  _COMP_SERIAL_CPutString
+       0D05  COMP_SERIAL_CPutString
+       0D17  _COMP_SERIAL_PutCRLF
+       0D17  COMP_SERIAL_PutCRLF
+       0D20  COMP_SERIAL_CmdReset
+       0D20  _COMP_SERIAL_CmdReset
+       0D36  _COMP_SERIAL_bCmdCheck
+       0D36  COMP_SERIAL_bCmdCheck
+       0D3E  COMP_SERIAL_bErrCheck
+       0D3E  _COMP_SERIAL_bErrCheck
+       0D49  COMP_SERIAL_bCmdLength
+       0D49  _COMP_SERIAL_bCmdLength
+       0D4F  COMP_SERIAL_szGetParam
+       0D4F  _COMP_SERIAL_szGetParam
+       0DAE  COMP_SERIAL_szGetRestOfParams
+       0DAE  _COMP_SERIAL_szGetRestOfParams
+       0DB9  __UserModules_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   0DB5   1218 =   4632. bytes (rel,con,rom)
+                            text   0DB9   12F2 =   4850. bytes (rel,con,rom)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0DB5  __text_start
-       0DB5  _main
-       0DD1  _pingModule
-       0EC0  _assignID
-       0FB6  _clearConfig
-       10AF  _sayHello
-       1105  _validTransmission
-       11F9  _decodeTransmission
-       174C  _servoInstruction
-       17EF  _longServoInstruction
-       18A0  _configToggle
-       197A  _unloadAllConfigs
-       1984  _unloadConfig
-       19B3  _busListen
-       1A0D  _initializeSlaves
-       1B4B  _xmitWait
-       1B6A  _TX_TIMEOUT_ISR
-       1B80  _RX_TIMEOUT_ISR
-       1B96  Dispatch_INTERRUPT_10
-       1BC0  Dispatch_INTERRUPT_9
-       1BDF  __divmod_16X16_16
-       1C2D  __divmodu_16X16_16
-       1C38  __i_div16_block_util
-       1C71  _atoi
-       1DB2  _itoa
-       1F8B  _isdigit
-       1FAC  _isspace
-       1FDD  __xidata_end
-       1FCD  __text_end
+       0DB9  __text_start
+       0DB9  _main
+       0E11  _pingModule
+       0F00  _assignID
+       0FF6  _clearConfig
+       10EF  _sayHello
+       1146  _validTransmission
+       123A  _decodeTransmission
+       17E6  _servoInstruction
+       1889  _longServoInstruction
+       193A  _configToggle
+       1A19  _unloadAllConfigs
+       1A23  _unloadConfig
+       1A52  _busListen
+       1AAC  _initializeSlaves
+       1C29  _xmitWait
+       1C48  _TX_TIMEOUT_ISR
+       1C5E  _RX_TIMEOUT_ISR
+       1C74  Dispatch_INTERRUPT_10
+       1C9E  Dispatch_INTERRUPT_9
+       1CBD  __divmod_16X16_16
+       1D0B  __divmodu_16X16_16
+       1D16  __i_div16_block_util
+       1D4F  _atoi
+       1E90  _itoa
+       2069  _isdigit
+       208A  _isspace
+       20BB  __xidata_end
+       20AB  __text_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -391,18 +391,19 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            data   0000   0013 =     19. bytes (rel,con,ram)
+                            data   0000   0015 =     21. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
        0000  __data_start
        0085  _PARAM
-       0098  _NUM_MODULES
+       0098  _MODULE_FAIL
        009A  _STATE
-       009C  _TIMEOUT
-       00A0  _COMMAND_DESTINATION
-       00A1  _COMMAND_SOURCE
+       009C  _NUM_MODULES
+       009E  _TIMEOUT
        00A2  _COMMAND_TYPE
+       00A3  _COMMAND_DESTINATION
+       00A4  _COMMAND_SOURCE
 
 Files Linked      [ module(s) ]
 
@@ -421,7 +422,7 @@ data = 0x0
 SSCParmBlk:0x00F7.0x00FF
 InterruptRAM = 0x0
 virtual_registers = 0x8f
-transmitter_config_RAM = 0xa3
+transmitter_config_RAM = 0xa5
 pc_listener_RAM
-receiver_config_RAM = 0xa3
+receiver_config_RAM = 0xa5
 

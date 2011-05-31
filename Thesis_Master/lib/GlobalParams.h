@@ -16,9 +16,9 @@
 #define PLL_MODE_MASK          0x40    //PLL mode mask
 #define PLL_MODE_JUST          0x0     //PLL mode value justified
 
-#define SLEEP_TIMER            0x0     //Sleep Timer value
+#define SLEEP_TIMER            0x3     //Sleep Timer value
 #define SLEEP_TIMER_MASK       0x18    //Sleep Timer mask
-#define SLEEP_TIMER_JUST       0x0     //Sleep Timer value justified
+#define SLEEP_TIMER_JUST       0x18    //Sleep Timer value justified
 
 #define SLEEP_TIMER2           0x0     //Sleep Timer value
 #define SLEEP_TIMER_MASK2      0x10    //Sleep Timer mask

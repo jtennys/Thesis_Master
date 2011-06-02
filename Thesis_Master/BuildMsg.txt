@@ -22,6 +22,7 @@ lib/tx_timeout.asm
 lib/tx_timeoutint.asm
 ./boot.asm
 ./main.c
+!W C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\main.c(606):[warning] expression with no effect elided
  
 Linking..
 LMM info: area 'InterruptRAM' uses 5 bytes in SRAM page 0
@@ -32,7 +33,6 @@ LMM info: area 'virtual_registers' uses 9 bytes in SRAM page 0
 LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
-LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
 LMM info: area 'COMP_SERIAL_RAM' item of 1 bytes allocated in SRAM page 0
 LMM info: area 'RECEIVE_RAM' item of 1 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
@@ -40,8 +40,8 @@ LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 LMM info: area 'receiver_config_RAM' uses 0 bytes in SRAM page 0
 LMM info: area 'transmitter_config_RAM' uses 0 bytes in SRAM page 0
-  ROM 49% full. 7963 bytes used (does not include absolute areas).
-  RAM 21% full. 165 bytes used (does not include stack usage).
+  ROM 49% full. 7885 bytes used (does not include absolute areas).
+  RAM 21% full. 163 bytes used (does not include stack usage).
 idata dump at output/Thesis_Master.idata
  
-Thesis_Master - 0 error(s) 0 warning(s) 17:49:32
+Thesis_Master - 0 error(s) 1 warning(s) 18:03:58

@@ -52,7 +52,6 @@
 #define		BUS_CLEAR_TIME				(100)	// Min time after a byte to assume bus is clear at boot.
 #define		BOOT_TIMEOUT				(300)	// If nothing is heard by this time, we start the init anyway.
 #define		MAX_TIMEOUTS				(50)	// Number of timeouts allowed before hello mode exit.
-#define		MAX_MODULE_FAIL				(20)	// Number of module fails before the parent resets.
 
 // This is the maximum number of allowable modules per branch out from the master
 #define		MAX_MODULES					(250)
@@ -99,15 +98,11 @@ char COMMAND_DESTINATION;	// Stores who the current command is for.
 char COMMAND_TYPE;			// Stores the type of command that was just read.
 char PARAM[10];				// Stores a parameters that accompanies the command (if any).
 int STATE;					// Stores the current configuration state of the system.
-int MODULE_FAIL;			// Stores the number of times in a row that modules fail to respond.
 
 void main()
-{
+{	
 	// Initialize the number of modules.
 	NUM_MODULES = 0;
-	
-	// Initialize module failures to 0.
-	MODULE_FAIL = 0;
 	
 	// Activate GPIO ISR.
 	M8C_EnableIntMask(INT_MSK0,INT_MSK0_GPIO);
@@ -127,12 +122,6 @@ void main()
 		else if(COMP_SERIAL_bCmdCheck())		// If there's a computer command, read it.
 		{
 			decodeTransmission();
-			
-			// If we have failed too much to read module data, reset NUM_MODULES.
-			if(MODULE_FAIL >= MAX_MODULE_FAIL)
-			{
-				NUM_MODULES = 0;
-			}
 		}
 	}
 }
@@ -378,16 +367,16 @@ int validTransmission(void)
 void decodeTransmission(void)
 {
 	char* param;
-	char ID;
+	char ID = 0;
 	char tempByte;
 	char angle[2];
 	int total = 0;
+	int runningTotal = 0;
 	
 	if(param = COMP_SERIAL_szGetParam())
 	{
 		if((param[0] == 'n') || (param[0] == 'N'))
 		{
-			COMP_SERIAL_CmdReset();
 			itoa(param,NUM_MODULES,10);
 			COMP_SERIAL_PutString(param);
 			COMP_SERIAL_PutChar('\n');
@@ -397,13 +386,13 @@ void decodeTransmission(void)
 			if(param = COMP_SERIAL_szGetParam())
 			{
 				ID = atoi(param);
+				
 				if(param = COMP_SERIAL_szGetParam())
 				{
 					if((param[0] == 'a') || (param[0] == 'A'))
 					{
 						if(param = COMP_SERIAL_szGetParam())
 						{
-							COMP_SERIAL_CmdReset();
 							total = atoi(param);
 							angle[0] = total%256;
 							angle[1] = total/256;
@@ -414,7 +403,6 @@ void decodeTransmission(void)
 					{
 						if(param = COMP_SERIAL_szGetParam())
 						{
-							COMP_SERIAL_CmdReset();
 							servoInstruction(ID,4,WRITE_SERVO,24,atoi(param));
 						}
 					}
@@ -430,38 +418,38 @@ void decodeTransmission(void)
 				{
 					if((param[0] == 'a') || (param[0] == 'A'))
 					{
-						COMP_SERIAL_CmdReset();
+						angle[0] = 0;
+						angle[1] = 0;
+						
 						servoInstruction(ID,4,READ_SERVO,36,2);
 						configToggle(RX_MODE);
 							
 						// Loop until we read a response or time out.
 						while(TIMEOUT < RX_TIMEOUT_DURATION)
 						{
-							if(RECEIVE_cReadChar() == SERVO_START)
+							if(RECEIVE_cReadChar() == ID)
 							{
-								if(RECEIVE_cGetChar() == SERVO_START)
+								while(TIMEOUT < RX_TIMEOUT_DURATION)
 								{
-									if(RECEIVE_cGetChar() == ID)
+									if(RECEIVE_cReadChar() == 4)
 									{
-										if(RECEIVE_cGetChar() == 4)
+										if(RECEIVE_cGetChar() == 0)
 										{
-											if(RECEIVE_cGetChar() == 0)
-											{
-												// Reset module fails.
-												MODULE_FAIL = 0;
-												
-												angle[0] = RECEIVE_cGetChar();
-												angle[1] = RECEIVE_cGetChar();
-												
-												configToggle(PC_MODE);
-												
-												total = ((angle[1])*256) + angle[0];
-												itoa(param,total,10);
-												COMP_SERIAL_PutString(param);
-												COMP_SERIAL_PutChar('\n');
+											angle[0] = RECEIVE_cGetChar();
+											angle[1] = RECEIVE_cGetChar();
+											
+											configToggle(PC_MODE);
+											
+											total = ((angle[1])*256) + angle[0];
+											itoa(param,total,10);
+											COMP_SERIAL_PutString(param);
+											COMP_SERIAL_PutChar('\n');
 
-												TIMEOUT = RX_TIMEOUT_DURATION;
-											}
+											TIMEOUT = RX_TIMEOUT_DURATION;
+										}
+										else
+										{
+											TIMEOUT = RX_TIMEOUT_DURATION;
 										}
 									}
 								}
@@ -470,38 +458,43 @@ void decodeTransmission(void)
 					}
 					else if ((param[0] == 'p') || (param[0] == 'P'))
 					{
-						COMP_SERIAL_CmdReset();
 						servoInstruction(ID,4,READ_SERVO,24,1);
 						configToggle(RX_MODE);
-							
+						
 						// Loop until we read a response or time out.
 						while(TIMEOUT < RX_TIMEOUT_DURATION)
 						{
-							if(RECEIVE_cReadChar() == SERVO_START)
+							if(RECEIVE_cReadChar() == ID)
 							{
-								if(RECEIVE_cGetChar() == SERVO_START)
+								runningTotal = ID;
+								// Loop until we read a response or time out.
+								while(TIMEOUT < RX_TIMEOUT_DURATION)
 								{
-									if(RECEIVE_cGetChar() == ID)
+									// Check the length of the packet.
+									if(RECEIVE_cReadChar() == 3)
 									{
-										// Check the length of the packet.
-										if(RECEIVE_cGetChar() == 3)
+										runningTotal += 3;
+										// Loop until we read a response or time out.
+										while(TIMEOUT < RX_TIMEOUT_DURATION)
 										{
-											// Check to see that there were no errors.
-											if(RECEIVE_cGetChar() == 0)
+											// Check for the checksum or 1.
+											if(tempByte = RECEIVE_cReadChar())
 											{
-												// Reset module fails.
-												MODULE_FAIL = 0;
-												
-												tempByte = RECEIVE_cGetChar();
-												
 												configToggle(PC_MODE);
 												
-												// Convert tempByte to an ascii value and send.
-												total = tempByte + 48;
-												itoa(param,total,10);
-												COMP_SERIAL_PutString(param);
-												COMP_SERIAL_PutChar('\n');
-
+												if((runningTotal%256) == (255-tempByte))
+												{
+													// Send a 0 if we hit the checksum.
+													COMP_SERIAL_PutChar('0');
+													COMP_SERIAL_PutChar('\n');
+												}
+												else
+												{
+													// Send a 1.
+													COMP_SERIAL_PutChar('1');
+													COMP_SERIAL_PutChar('\n');
+												}
+		
 												TIMEOUT = RX_TIMEOUT_DURATION;
 											}
 										}
@@ -512,40 +505,27 @@ void decodeTransmission(void)
 					}
 					else if ((param[0] == 't') || (param[0] == 'T'))
 					{
-						COMP_SERIAL_CmdReset();
 						if(pingModule(ID))
 						{
 							configToggle(PC_MODE);
 												
-							total = PARAM[0];
-							itoa(param,total,10);
-							COMP_SERIAL_PutString(param);
+							COMP_SERIAL_PutChar(PARAM[0]);
 							COMP_SERIAL_PutChar('\n');
 						}
 					}
 					else if ((param[0] == 'c') || (param[0] == 'C'))
 					{
-						COMP_SERIAL_CmdReset();
 						if(pingModule(ID))
 						{	
 							configToggle(PC_MODE);
 							
-							total = PARAM[1];
-							itoa(param,total,10);
-							COMP_SERIAL_PutString(param);
+							COMP_SERIAL_PutChar(PARAM[1]);
 							COMP_SERIAL_PutChar('\n');
 						}
 					}
 				}
 			}
 		}
-//		else
-//		{
-//			COMP_SERIAL_CmdReset();
-//			// Echo back what was sent in.
-//			COMP_SERIAL_PutString(param);
-//			COMP_SERIAL_PutChar('\n');
-//		}
 	}
 	
 	if(STATE != PC_MODE)
@@ -555,10 +535,8 @@ void decodeTransmission(void)
 	else
 	{
 		TIMEOUT = 0;
+		COMP_SERIAL_CmdReset();
 	}
-	
-	// Get closer to failing out.
-	MODULE_FAIL++;
 }
 
 // This function receives a destination, command length, instruction type, address, and value.
@@ -625,7 +603,7 @@ void configToggle(int mode)
 {
 	// Disconnect from the global bus and leave the pin high.
 	PRT0DR |= 0b11111111;
-	PRT0GS &= 0b01000000;
+	PRT0GS &= 0b00000000;
 
 	// Unload the configuration of the current state.
 	// If there is no state, blindly wipe all configurations.
@@ -688,7 +666,7 @@ void configToggle(int mode)
 	}
 	
 	// Reconnect to the global bus.
-	PRT0GS |= 0b10111111;
+	PRT0GS |= 0b11111111;
 }
 
 // This function blindly unloads all user configurations. This will be called once,
@@ -725,7 +703,7 @@ void busListen(void)
 	// Wait for the first byte.
 	while(TIMEOUT < BOOT_TIMEOUT)
 	{	
-		if(RECEIVE_cGetChar())
+		if(RECEIVE_cReadChar())
 		{
 			TIMEOUT = BOOT_TIMEOUT;
 		}
@@ -753,6 +731,7 @@ void initializeSlaves(void)
 	// Set num modules to zero.
 	NUM_MODULES = 0;
 	
+	// Send out a probing message.
 	sayHello();
 	
 	// This loop continuously probes and listens at intervals

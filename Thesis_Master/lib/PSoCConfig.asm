@@ -388,13 +388,16 @@ _LoadConfig_receiver_config:
     RAM_PROLOGUE RAM_USE_CLASS_4
 	M8C_SetBank1
 ; writing Port_0_DriveMode_0 register
-	and		reg[ 0h], ~ 2h
+	and		reg[ 0h], ~10h
 ; writing Port_0_DriveMode_1 register
-	and		reg[ 1h], ~ 2h
-	or		reg[ 1h],  2h
-; writing Row_0_OutputDrive_0 register
+	and		reg[ 1h], ~10h
+	or		reg[ 1h], 10h
+; writing Row_0_InputMux register
 	M8C_SetBank0
-	and		reg[b5h], ~10h
+	and		reg[b0h], ~ 3h
+	or		reg[b0h],  1h
+; writing Row_0_OutputDrive_0 register
+	and		reg[b5h], ~ 2h
 
 	push	x
     M8C_SetBank0                    ; Force bank 0
@@ -462,16 +465,18 @@ _UnloadConfig_receiver_config:
     lcall   LoadConfig              ; Unload the bank 1 values
 
 	M8C_SetBank1
-; writing Row_0_OutputDrive_0 register
+; writing Row_0_InputMux register
 	M8C_SetBank0
-	and		reg[b5h], ~10h
-	or		reg[b5h], 10h
+	and		reg[b0h], ~ 3h
+; writing Row_0_OutputDrive_0 register
+	and		reg[b5h], ~ 2h
+	or		reg[b5h],  2h
 ; writing Port_0_DriveMode_1 register
 	M8C_SetBank1
-	and		reg[ 1h], ~ 2h
+	and		reg[ 1h], ~10h
 ; writing Port_0_DriveMode_0 register
-	and		reg[ 0h], ~ 2h
-	or		reg[ 0h],  2h
+	and		reg[ 0h], ~10h
+	or		reg[ 0h], 10h
 	M8C_SetBank0
 ; clear config active bit
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS

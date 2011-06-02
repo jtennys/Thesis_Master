@@ -96,10 +96,10 @@ SYSCLK_2_DISABLE_JUST:			equ	0h	;SysClk*2 Disable setting justified
 ; register initial values
 ;
 ANALOG_IO_CONTROL:		equ 0h	;Analog IO Control register (ABF_CR)
-PORT_0_GLOBAL_SELECT:	equ 2h	;Port 0 global select register (PRT0GS)
-PORT_0_DRIVE_0:			equ 2h	;Port 0 drive mode 0 register (PRT0DM0)
-PORT_0_DRIVE_1:			equ fdh	;Port 0 drive mode 1 register (PRT0DM1)
-PORT_0_DRIVE_2:			equ fdh	;Port 0 drive mode 2 register (PRT0DM2)
+PORT_0_GLOBAL_SELECT:	equ 10h	;Port 0 global select register (PRT0GS)
+PORT_0_DRIVE_0:			equ 10h	;Port 0 drive mode 0 register (PRT0DM0)
+PORT_0_DRIVE_1:			equ efh	;Port 0 drive mode 1 register (PRT0DM1)
+PORT_0_DRIVE_2:			equ efh	;Port 0 drive mode 2 register (PRT0DM2)
 PORT_0_INTENABLE:		equ 0h	;Port 0 interrupt enable register (PRT0IE)
 PORT_0_INTCTRL_0:		equ 0h	;Port 0 interrupt control 0 register (PRT0IC0)
 PORT_0_INTCTRL_1:		equ 0h	;Port 0 interrupt control 1 register (PRT0IC1)

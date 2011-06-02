@@ -53,7 +53,7 @@ LoadConfigTBL_pc_listener_Bank1:
 	db		2bh, 00h		;TX_REPEATER_(DCC02CR1)
 	db		28h, 1dh		;TX_REPEATER_FUNC_REG     (DCC02FN)
 	db		29h, 01h		;TX_REPEATER_INPUT_REG    (DCC02IN)
-	db		2ah, 85h		;TX_REPEATER_OUTPUT_REG   (DCC02OU)
+	db		2ah, 84h		;TX_REPEATER_OUTPUT_REG   (DCC02OU)
 	db		ffh
 UnloadConfigTBL_pc_listener_Bank0:
 ;  Instance name COMP_SERIAL, User Module UART
@@ -112,7 +112,7 @@ LoadConfigTBL_receiver_config_Bank1:
 ;       Instance name RECEIVE, Block Name RX8(DCC02)
 	db		2bh, 00h		;RECEIVE_(DCC02CR1)
 	db		28h, 05h		;RECEIVE_FUNC_REG     (DCC02FN)
-	db		29h, d1h		;RECEIVE_INPUT_REG    (DCC02IN)
+	db		29h, c1h		;RECEIVE_INPUT_REG    (DCC02IN)
 	db		2ah, 80h		;RECEIVE_OUTPUT_REG   (DCC02OU)
 ;  Instance name RX_TIMEOUT, User Module Timer16
 ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
@@ -211,7 +211,7 @@ LoadConfigTBL_transmitter_config_Bank0:
 	db		b2h, 00h		; Row_0_LogicInputAMux register (RDI0IS)
 	db		b3h, 33h		; Row_0_LogicSelect_0 register (RDI0LT0)
 	db		b4h, 33h		; Row_0_LogicSelect_1 register (RDI0LT1)
-	db		b5h, 10h		; Row_0_OutputDrive_0 register (RDI0RO0)
+	db		b5h, 02h		; Row_0_OutputDrive_0 register (RDI0RO0)
 	db		b6h, 00h		; Row_0_OutputDrive_1 register (RDI0RO1)
 	db		b8h, 55h		; Row_1_InputMux register (RDI1RI)
 	db		b9h, 00h		; Row_1_InputSync register (RDI1SYN)
@@ -234,7 +234,7 @@ LoadConfigTBL_transmitter_config_Bank1:
 	db		2bh, 00h		;TRANSMIT_(DCC02CR1)
 	db		28h, 1dh		;TRANSMIT_FUNC_REG     (DCC02FN)
 	db		29h, 01h		;TRANSMIT_INPUT_REG    (DCC02IN)
-	db		2ah, 85h		;TRANSMIT_OUTPUT_REG   (DCC02OU)
+	db		2ah, 84h		;TRANSMIT_OUTPUT_REG   (DCC02OU)
 ;  Instance name TX_TIMEOUT, User Module Timer16
 ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;TX_TIMEOUT_(DBC00CR1)
@@ -319,11 +319,11 @@ LoadConfigTBL_transmitter_config_Bank1:
 LoadConfigTBL_transmitter_config_Ordered:
 ;  Ordered Global Register values
 	M8C_SetBank1
-	mov	reg[00h], 02h		; Port_0_DriveMode_0 register (PRT0DM0)
-	mov	reg[01h], fdh		; Port_0_DriveMode_1 register (PRT0DM1)
+	mov	reg[00h], 10h		; Port_0_DriveMode_0 register (PRT0DM0)
+	mov	reg[01h], efh		; Port_0_DriveMode_1 register (PRT0DM1)
 	M8C_SetBank0
-	mov	reg[03h], fdh		; Port_0_DriveMode_2 register (PRT0DM2)
-	mov	reg[02h], 02h		; Port_0_GlobalSelect register (PRT0GS)
+	mov	reg[03h], efh		; Port_0_DriveMode_2 register (PRT0DM2)
+	mov	reg[02h], 10h		; Port_0_GlobalSelect register (PRT0GS)
 	M8C_SetBank1
 	mov	reg[02h], 00h		; Port_0_IntCtrl_0 register (PRT0IC0)
 	mov	reg[03h], 00h		; Port_0_IntCtrl_1 register (PRT0IC1)
@@ -404,7 +404,7 @@ ReloadConfigTBL_transmitter_config_Bank1:
 	db		2bh, 00h		;TRANSMIT_(DCC02CR1)
 	db		28h, 1dh		;TRANSMIT_FUNC_REG     (DCC02FN)
 	db		29h, 01h		;TRANSMIT_INPUT_REG    (DCC02IN)
-	db		2ah, 85h		;TRANSMIT_OUTPUT_REG   (DCC02OU)
+	db		2ah, 84h		;TRANSMIT_OUTPUT_REG   (DCC02OU)
 ;  Instance name TX_TIMEOUT, User Module Timer16
 ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;TX_TIMEOUT_(DBC00CR1)

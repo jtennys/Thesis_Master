@@ -370,12 +370,18 @@ void decodeTransmission(void)
 	char ID = 0;
 	char tempByte;
 	char angle[2];
+	char speed[2];
 	int total = 0;
 	int runningTotal = 0;
 	
 	if(param = COMP_SERIAL_szGetParam())
 	{
-		if((param[0] == 'n') || (param[0] == 'N'))
+		if((param[0] == 'x') || (param[0] == 'X'))
+		{
+			// Reset
+			NUM_MODULES = 0;
+		}
+		else if((param[0] == 'n') || (param[0] == 'N'))
 		{
 			itoa(param,NUM_MODULES,10);
 			COMP_SERIAL_PutString(param);
@@ -404,6 +410,21 @@ void decodeTransmission(void)
 						if(param = COMP_SERIAL_szGetParam())
 						{
 							servoInstruction(ID,4,WRITE_SERVO,24,atoi(param));
+						}
+					}
+					else if((param[0] == 's') || (param[0] == 'S'))
+					{
+						if(param = COMP_SERIAL_szGetParam())
+						{
+							total = atoi(param);
+							
+							// If no total, do nothing because 0 is no speed control (undesired).
+							if(total)
+							{
+								speed[0] = total%256;
+								speed[1] = total/256;
+								longServoInstruction(ID,5,WRITE_SERVO,32,speed[0],speed[1]);
+							}
 						}
 					}
 				}

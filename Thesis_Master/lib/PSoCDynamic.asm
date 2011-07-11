@@ -16,20 +16,18 @@
 include "m8c.inc"
 include "memory.inc"
 include "PSoCDynamic.inc"
-export Istransmitter_configLoaded
-export _Istransmitter_configLoaded
-export Ispc_listenerLoaded
-export _Ispc_listenerLoaded
 export Isreceiver_configLoaded
 export _Isreceiver_configLoaded
-Istransmitter_configLoaded:
-_Istransmitter_configLoaded:
+export Ispc_listenerLoaded
+export _Ispc_listenerLoaded
+Isreceiver_configLoaded:
+_Isreceiver_configLoaded:
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
 	mov		a, 0
-	tst		[ACTIVE_CONFIG_STATUS+transmitter_config_ADDR_OFF], transmitter_config_BIT
-	jz		transmitter_configIsNotLoaded
+	tst		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
+	jz		receiver_configIsNotLoaded
 	mov		a, 1
-transmitter_configIsNotLoaded:
+receiver_configIsNotLoaded:
 	ret
 
 Ispc_listenerLoaded:
@@ -40,15 +38,5 @@ _Ispc_listenerLoaded:
 	jz		pc_listenerIsNotLoaded
 	mov		a, 1
 pc_listenerIsNotLoaded:
-	ret
-
-Isreceiver_configLoaded:
-_Isreceiver_configLoaded:
-	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
-	mov		a, 0
-	tst		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
-	jz		receiver_configIsNotLoaded
-	mov		a, 1
-receiver_configIsNotLoaded:
 	ret
 

@@ -1021,21 +1021,17 @@
  0000               or   F, 0
  0000               macro Resume_CodeCompressor
  0000               add  SP, 0
-                export LoadConfigTBL_transmitter_config_Bank1
-                export LoadConfigTBL_transmitter_config_Bank0
-                export LoadConfigTBL_transmitter_config_Ordered
-                export UnloadConfigTBL_transmitter_config_Bank1
-                export UnloadConfigTBL_transmitter_config_Bank0
-                export ReloadConfigTBL_transmitter_config_Bank1
-                export ReloadConfigTBL_transmitter_config_Bank0
+                export LoadConfigTBL_receiver_config_Bank1
+                export LoadConfigTBL_receiver_config_Bank0
+                export LoadConfigTBL_receiver_config_Ordered
+                export UnloadConfigTBL_receiver_config_Bank1
+                export UnloadConfigTBL_receiver_config_Bank0
+                export ReloadConfigTBL_receiver_config_Bank1
+                export ReloadConfigTBL_receiver_config_Bank0
                 export LoadConfigTBL_pc_listener_Bank1
                 export LoadConfigTBL_pc_listener_Bank0
                 export UnloadConfigTBL_pc_listener_Bank1
                 export UnloadConfigTBL_pc_listener_Bank0
-                export LoadConfigTBL_receiver_config_Bank1
-                export LoadConfigTBL_receiver_config_Bank0
-                export UnloadConfigTBL_receiver_config_Bank1
-                export UnloadConfigTBL_receiver_config_Bank0
                 export UnloadConfigTBL_Total_Bank1
                 export UnloadConfigTBL_Total_Bank0
                 AREA lit(rom, rel)
@@ -1049,569 +1045,658 @@
  0006 3B00              db              3bh, 00h                ;COMP_SERIAL_TX_CONTROL_REG(DCC12CR0)
  0008 3900              db              39h, 00h                ;COMP_SERIAL_TX_BUFFER_REG (DCC12DR1)
  000A 3A00              db              3ah, 00h                ;COMP_SERIAL_(DCC12DR2)
- 000C           ;  Instance name TX_REPEATER, User Module TX8
- 000C           ;       Instance name TX_REPEATER, Block Name TX8(DCC02)
- 000C 2B00              db              2bh, 00h                ;TX_REPEATER_CONTROL_REG  (DCC02CR0)
- 000E 2900              db              29h, 00h                ;TX_REPEATER_TX_BUFFER_REG(DCC02DR1)
- 0010 2A00              db              2ah, 00h                ;TX_REPEATER_(DCC02DR2)
- 0012 FF                db              ffh
- 0013           LoadConfigTBL_pc_listener_Bank1:
- 0013           ;  Instance name COMP_SERIAL, User Module UART
- 0013           ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
- 0013 3F00              db              3fh, 00h                ;COMP_SERIAL_(DCC13CR1)
- 0015 3C05              db              3ch, 05h                ;COMP_SERIAL_RX_FUNC_REG   (DCC13FN)
- 0017 3DF6              db              3dh, f6h                ;COMP_SERIAL_RX_INPUT_REG  (DCC13IN)
- 0019 3E80              db              3eh, 80h                ;COMP_SERIAL_RX_OUTPUT_REG (DCC13OU)
- 001B           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
- 001B 3B00              db              3bh, 00h                ;COMP_SERIAL_(DCC12CR1)
- 001D 381D              db              38h, 1dh                ;COMP_SERIAL_TX_FUNC_REG   (DCC12FN)
- 001F 3906              db              39h, 06h                ;COMP_SERIAL_TX_INPUT_REG  (DCC12IN)
- 0021 3A85              db              3ah, 85h                ;COMP_SERIAL_TX_OUTPUT_REG (DCC12OU)
- 0023           ;  Instance name TX_REPEATER, User Module TX8
- 0023           ;       Instance name TX_REPEATER, Block Name TX8(DCC02)
- 0023 2B00              db              2bh, 00h                ;TX_REPEATER_(DCC02CR1)
- 0025 281D              db              28h, 1dh                ;TX_REPEATER_FUNC_REG     (DCC02FN)
- 0027 2901              db              29h, 01h                ;TX_REPEATER_INPUT_REG    (DCC02IN)
- 0029 2A84              db              2ah, 84h                ;TX_REPEATER_OUTPUT_REG   (DCC02OU)
- 002B FF                db              ffh
- 002C           UnloadConfigTBL_pc_listener_Bank0:
- 002C           ;  Instance name COMP_SERIAL, User Module UART
- 002C           ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
- 002C 3F00              db              3fh, 00h                ;COMP_SERIAL_CONTROL_0 (DCC13CR0)
- 002E           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
- 002E 3B00              db              3bh, 00h                ;COMP_SERIAL_CONTROL_0 (DCC12CR0)
- 0030           ;  Instance name TX_REPEATER, User Module TX8
- 0030           ;       Instance name TX_REPEATER, Block Name TX8(DCC02)
- 0030 2B00              db              2bh, 00h                ;TX_REPEATER_CONTROL_0 (DCC02CR0)
- 0032 FF                db              ffh
- 0033           UnloadConfigTBL_pc_listener_Bank1:
- 0033           ;  Instance name COMP_SERIAL, User Module UART
- 0033           ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
- 0033 3F00              db              3fh, 00h                ;COMP_SERIAL_CONTROL_1 (DCC13CR1)
- 0035 3C00              db              3ch, 00h                ;COMP_SERIAL_DIG_BasicFunction (DCC13FN)
- 0037 3D00              db              3dh, 00h                ;COMP_SERIAL_DIG_Input (DCC13IN)
- 0039 3E00              db              3eh, 00h                ;COMP_SERIAL_DIG_Output (DCC13OU)
- 003B           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
- 003B 3B00              db              3bh, 00h                ;COMP_SERIAL_CONTROL_1 (DCC12CR1)
- 003D 3800              db              38h, 00h                ;COMP_SERIAL_DIG_BasicFunction (DCC12FN)
- 003F 3900              db              39h, 00h                ;COMP_SERIAL_DIG_Input (DCC12IN)
- 0041 3A00              db              3ah, 00h                ;COMP_SERIAL_DIG_Output (DCC12OU)
- 0043           ;  Instance name TX_REPEATER, User Module TX8
- 0043           ;       Instance name TX_REPEATER, Block Name TX8(DCC02)
- 0043 2B00              db              2bh, 00h                ;TX_REPEATER_CONTROL_1 (DCC02CR1)
- 0045 2800              db              28h, 00h                ;TX_REPEATER_DIG_BasicFunction (DCC02FN)
- 0047 2900              db              29h, 00h                ;TX_REPEATER_DIG_Input (DCC02IN)
- 0049 2A00              db              2ah, 00h                ;TX_REPEATER_DIG_Output (DCC02OU)
- 004B FF                db              ffh
- 004C           
- 004C           ;  Instance name COMP_SERIAL, User Module UART
- 004C           ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
- 004C           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
- 004C           ;  Instance name TX_REPEATER, User Module TX8
- 004C           ;       Instance name TX_REPEATER, Block Name TX8(DCC02)
- 004C FF                db              ffh
- 004D           LoadConfigTBL_receiver_config_Bank0:
- 004D           ;  Instance name RECEIVE, User Module RX8
- 004D           ;       Instance name RECEIVE, Block Name RX8(DCC02)
- 004D 2B00              db              2bh, 00h                ;RECEIVE_CONTROL_REG  (DCC02CR0)
- 004F 2900              db              29h, 00h                ;RECEIVE_(DCC02DR1)
- 0051 2A00              db              2ah, 00h                ;RECEIVE_RX_BUFFER_REG(DCC02DR2)
- 0053           ;  Instance name RX_TIMEOUT, User Module Timer16
- 0053           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 0053 2300              db              23h, 00h                ;RX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
- 0055 21F0              db              21h, f0h                ;RX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
- 0057 2200              db              22h, 00h                ;RX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
- 0059           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 0059 2704              db              27h, 04h                ;RX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
- 005B 2500              db              25h, 00h                ;RX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
- 005D 2600              db              26h, 00h                ;RX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
- 005F FF                db              ffh
- 0060           LoadConfigTBL_receiver_config_Bank1:
- 0060           ;  Instance name RECEIVE, User Module RX8
- 0060           ;       Instance name RECEIVE, Block Name RX8(DCC02)
- 0060 2B00              db              2bh, 00h                ;RECEIVE_(DCC02CR1)
- 0062 2805              db              28h, 05h                ;RECEIVE_FUNC_REG     (DCC02FN)
- 0064 29C1              db              29h, c1h                ;RECEIVE_INPUT_REG    (DCC02IN)
- 0066 2A80              db              2ah, 80h                ;RECEIVE_OUTPUT_REG   (DCC02OU)
- 0068           ;  Instance name RX_TIMEOUT, User Module Timer16
- 0068           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 0068 2300              db              23h, 00h                ;RX_TIMEOUT_(DBC00CR1)
- 006A 2000              db              20h, 00h                ;RX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
- 006C 2106              db              21h, 06h                ;RX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
- 006E 2240              db              22h, 40h                ;RX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
- 0070           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 0070 2700              db              27h, 00h                ;RX_TIMEOUT_(DBC01CR1)
- 0072 2420              db              24h, 20h                ;RX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
- 0074 2536              db              25h, 36h                ;RX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
- 0076 2640              db              26h, 40h                ;RX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
- 0078 FF                db              ffh
- 0079           UnloadConfigTBL_receiver_config_Bank0:
- 0079           ;  Instance name RECEIVE, User Module RX8
- 0079           ;       Instance name RECEIVE, Block Name RX8(DCC02)
- 0079 2B00              db              2bh, 00h                ;RECEIVE_CONTROL_0 (DCC02CR0)
- 007B           ;  Instance name RX_TIMEOUT, User Module Timer16
- 007B           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 007B 2300              db              23h, 00h                ;RX_TIMEOUT_CONTROL_0 (DBC00CR0)
- 007D           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 007D 2700              db              27h, 00h                ;RX_TIMEOUT_CONTROL_0 (DBC01CR0)
- 007F FF                db              ffh
- 0080           UnloadConfigTBL_receiver_config_Bank1:
- 0080           ;  Instance name RECEIVE, User Module RX8
- 0080           ;       Instance name RECEIVE, Block Name RX8(DCC02)
- 0080 2B00              db              2bh, 00h                ;RECEIVE_CONTROL_1 (DCC02CR1)
- 0082 2800              db              28h, 00h                ;RECEIVE_DIG_BasicFunction (DCC02FN)
- 0084 2900              db              29h, 00h                ;RECEIVE_DIG_Input (DCC02IN)
- 0086 2A00              db              2ah, 00h                ;RECEIVE_DIG_Output (DCC02OU)
- 0088           ;  Instance name RX_TIMEOUT, User Module Timer16
- 0088           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 0088 2300              db              23h, 00h                ;RX_TIMEOUT_CONTROL_1 (DBC00CR1)
- 008A 2000              db              20h, 00h                ;RX_TIMEOUT_DIG_BasicFunction (DBC00FN)
- 008C 2100              db              21h, 00h                ;RX_TIMEOUT_DIG_Input (DBC00IN)
- 008E 2200              db              22h, 00h                ;RX_TIMEOUT_DIG_Output (DBC00OU)
- 0090           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 0090 2700              db              27h, 00h                ;RX_TIMEOUT_CONTROL_1 (DBC01CR1)
- 0092 2400              db              24h, 00h                ;RX_TIMEOUT_DIG_BasicFunction (DBC01FN)
- 0094 2500              db              25h, 00h                ;RX_TIMEOUT_DIG_Input (DBC01IN)
- 0096 2600              db              26h, 00h                ;RX_TIMEOUT_DIG_Output (DBC01OU)
- 0098 FF                db              ffh
- 0099           
- 0099           ;  Instance name RECEIVE, User Module RX8
- 0099           ;       Instance name RECEIVE, Block Name RX8(DCC02)
- 0099           ;  Instance name RX_TIMEOUT, User Module Timer16
- 0099           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 0099           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 0099 FF                db              ffh
- 009A           LoadConfigTBL_transmitter_config_Bank0:
- 009A           ;  Instance name TRANSMIT, User Module TX8
- 009A           ;       Instance name TRANSMIT, Block Name TX8(DCC02)
- 009A 2B00              db              2bh, 00h                ;TRANSMIT_CONTROL_REG  (DCC02CR0)
- 009C 2900              db              29h, 00h                ;TRANSMIT_TX_BUFFER_REG(DCC02DR1)
- 009E 2A00              db              2ah, 00h                ;TRANSMIT_(DCC02DR2)
- 00A0           ;  Instance name TX_TIMEOUT, User Module Timer16
- 00A0           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 00A0 2300              db              23h, 00h                ;TX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
- 00A2 21F0              db              21h, f0h                ;TX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
- 00A4 2200              db              22h, 00h                ;TX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
- 00A6           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 00A6 2704              db              27h, 04h                ;TX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
- 00A8 2500              db              25h, 00h                ;TX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
- 00AA 2600              db              26h, 00h                ;TX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
- 00AC           ;  Global Register values Bank 0
- 00AC 6A00              db              6ah, 00h                ; ADCDataHigh register (SADC_DH)
- 00AE 6B00              db              6bh, 00h                ; ADCDataLow register (SADC_DL)
- 00B0 6200              db              62h, 00h                ; AnalogClockSelect3 register (CLK_CR3)
- 00B2 6009              db              60h, 09h                ; AnalogColumnInputSelect register (AMX_IN)
- 00B4 6600              db              66h, 00h                ; AnalogComparatorControl1 register (CMP_CR1)
- 00B6 6100              db              61h, 00h                ; AnalogMuxBusConfig register (AMUX_CFG)
- 00B8 FC00              db              fch, 00h                ; AnalogMuxDACData:0 register (IDACR_D)
- 00BA FD00              db              fdh, 00h                ; AnalogMuxDACData:1 register (IDACL_D)
- 00BC 6355              db              63h, 55h                ; AnalogReferenceControl register (ARF_CR)
- 00BE 6500              db              65h, 00h                ; AnalogSynchronizationControl register (ASY_CR)
- 00C0 E600              db              e6h, 00h                ; DecimatorControl_0 register (DEC_CR0)
- 00C2 E700              db              e7h, 00h                ; DecimatorControl_1 register (DEC_CR1)
- 00C4 A000              db              a0h, 00h                ; DecimatorDataHigh:0 register (DEC0_DH)
- 00C6 A200              db              a2h, 00h                ; DecimatorDataHigh:1 register (DEC1_DH)
- 00C8 A400              db              a4h, 00h                ; DecimatorDataHigh:2 register (DEC2_DH)
- 00CA A600              db              a6h, 00h                ; DecimatorDataHigh:3 register (DEC3_DH)
- 00CC A100              db              a1h, 00h                ; DecimatorDataLow:0 register (DEC0_DL)
- 00CE A300              db              a3h, 00h                ; DecimatorDataLow:1 register (DEC1_DL)
- 00D0 A500              db              a5h, 00h                ; DecimatorDataLow:2 register (DEC2_DL)
- 00D2 A700              db              a7h, 00h                ; DecimatorDataLow:3 register (DEC3_DL)
- 00D4 D600              db              d6h, 00h                ; I2CConfig:0 register (I2C0_CFG)
- 00D6 E800              db              e8h, 00h                ; Multiply0InputX register (MUL0_X)
- 00D8 E900              db              e9h, 00h                ; Multiply0InputY register (MUL0_Y)
- 00DA A800              db              a8h, 00h                ; Multiply1InputX register (MUL1_X)
- 00DC A900              db              a9h, 00h                ; Multiply1InputY register (MUL1_Y)
- 00DE B700              db              b7h, 00h                ; RowDigitalInterconnectInputSelect:0 register (RDI0DSM)
- 00E0 BF00              db              bfh, 00h                ; RowDigitalInterconnectInputSelect:1 register (RDI1DSM)
- 00E2 C700              db              c7h, 00h                ; RowDigitalInterconnectInputSelect:2 register (RDI2DSM)
- 00E4 B000              db              b0h, 00h                ; Row_0_InputMux register (RDI0RI)
- 00E6 B100              db              b1h, 00h                ; Row_0_InputSync register (RDI0SYN)
- 00E8 B200              db              b2h, 00h                ; Row_0_LogicInputAMux register (RDI0IS)
- 00EA B333              db              b3h, 33h                ; Row_0_LogicSelect_0 register (RDI0LT0)
- 00EC B433              db              b4h, 33h                ; Row_0_LogicSelect_1 register (RDI0LT1)
- 00EE B502              db              b5h, 02h                ; Row_0_OutputDrive_0 register (RDI0RO0)
- 00F0 B600              db              b6h, 00h                ; Row_0_OutputDrive_1 register (RDI0RO1)
- 00F2 B855              db              b8h, 55h                ; Row_1_InputMux register (RDI1RI)
- 00F4 B900              db              b9h, 00h                ; Row_1_InputSync register (RDI1SYN)
- 00F6 BA10              db              bah, 10h                ; Row_1_LogicInputAMux register (RDI1IS)
- 00F8 BB33              db              bbh, 33h                ; Row_1_LogicSelect_0 register (RDI1LT0)
- 00FA BC33              db              bch, 33h                ; Row_1_LogicSelect_1 register (RDI1LT1)
- 00FC BD00              db              bdh, 00h                ; Row_1_OutputDrive_0 register (RDI1RO0)
- 00FE BE00              db              beh, 00h                ; Row_1_OutputDrive_1 register (RDI1RO1)
- 0100 C0AA              db              c0h, aah                ; Row_2_InputMux register (RDI2RI)
- 0102 C100              db              c1h, 00h                ; Row_2_InputSync register (RDI2SYN)
- 0104 C200              db              c2h, 00h                ; Row_2_LogicInputAMux register (RDI2IS)
- 0106 C333              db              c3h, 33h                ; Row_2_LogicSelect_0 register (RDI2LT0)
- 0108 C433              db              c4h, 33h                ; Row_2_LogicSelect_1 register (RDI2LT1)
- 010A C500              db              c5h, 00h                ; Row_2_OutputDrive_0 register (RDI2RO0)
- 010C C600              db              c6h, 00h                ; Row_2_OutputDrive_1 register (RDI2RO1)
- 010E FF                db              ffh
- 010F           LoadConfigTBL_transmitter_config_Bank1:
- 010F           ;  Instance name TRANSMIT, User Module TX8
- 010F           ;       Instance name TRANSMIT, Block Name TX8(DCC02)
- 010F 2B00              db              2bh, 00h                ;TRANSMIT_(DCC02CR1)
- 0111 281D              db              28h, 1dh                ;TRANSMIT_FUNC_REG     (DCC02FN)
- 0113 2901              db              29h, 01h                ;TRANSMIT_INPUT_REG    (DCC02IN)
- 0115 2A84              db              2ah, 84h                ;TRANSMIT_OUTPUT_REG   (DCC02OU)
- 0117           ;  Instance name TX_TIMEOUT, User Module Timer16
- 0117           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 0117 2300              db              23h, 00h                ;TX_TIMEOUT_(DBC00CR1)
- 0119 2000              db              20h, 00h                ;TX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
- 011B 2106              db              21h, 06h                ;TX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
- 011D 2240              db              22h, 40h                ;TX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
- 011F           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 011F 2700              db              27h, 00h                ;TX_TIMEOUT_(DBC01CR1)
- 0121 2420              db              24h, 20h                ;TX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
- 0123 2536              db              25h, 36h                ;TX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
- 0125 2640              db              26h, 40h                ;TX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
- 0127           ;  Global Register values Bank 1
- 0127 A800              db              a8h, 00h                ; ADCControl0 register (SADC_CR0)
- 0129 A900              db              a9h, 00h                ; ADCControl1 register (SADC_CR1)
- 012B AA00              db              aah, 00h                ; ADCControl2 register (ADC_CR2)
- 012D AB00              db              abh, 00h                ; ADCControl3 register (ADC_CR3TRIM)
- 012F AC00              db              ach, 00h                ; ADCControl4 register (ADC_CR4)
- 0131 6100              db              61h, 00h                ; AnalogClockSelect1 register (CLK_CR1)
- 0133 6900              db              69h, 00h                ; AnalogClockSelect2 register (CLK_CR2)
- 0135 8B00              db              8bh, 00h                ; AnalogColumnClockDivide register (ACE_CLK_CR3)
- 0137 6000              db              60h, 00h                ; AnalogColumnClockSelect register (CLK_CR0)
- 0139 8A00              db              8ah, 00h                ; AnalogEClockSelect1 register (ACE_CLK_CR1)
- 013B 8900              db              89h, 00h                ; AnalogEColumnClockSelect register (ACE_CLK_CR0)
- 013D 7509              db              75h, 09h                ; AnalogEColumnInputSelect register (ACE_AMX_IN)
- 013F 7600              db              76h, 00h                ; AnalogEComparatorControl0 register (ACE_CMP_CR0)
- 0141 7700              db              77h, 00h                ; AnalogEComparatorControl1 register (ACE_CMP_CR1)
- 0143 7A03              db              7ah, 03h                ; AnalogELUTControl0 register (ACE_ALT_CR0)
- 0145 6200              db              62h, 00h                ; AnalogIOControl_0 register (ABF_CR0)
- 0147 6733              db              67h, 33h                ; AnalogLUTControl0 register (ALT_CR0)
- 0149 6800              db              68h, 00h                ; AnalogLUTControl1 register (ALT_CR1)
- 014B 6300              db              63h, 00h                ; AnalogModulatorControl_0 register (AMD_CR0)
- 014D 6600              db              66h, 00h                ; AnalogModulatorControl_1 register (AMD_CR1)
- 014F 6A00              db              6ah, 00h                ; AnalogMuxBusConfig1 register (AMUX_CFG1)
- 0151 AF00              db              afh, 00h                ; AnalogMuxClock register (AMUX_CLK)
- 0153 7B00              db              7bh, 00h                ; AnalogOutBufferControl register (ACE_ABF_CR0)
- 0155 7900              db              79h, 00h                ; ComparatorGlobalInEn register (ACE_CMP_GI_EN)
- 0157 6400              db              64h, 00h                ; ComparatorGlobalOutEn register (CMP_GO_EN)
- 0159 FD00              db              fdh, 00h                ; DAC_Control_0 register (IDAC_CR0)
- 015B DC00              db              dch, 00h                ; DAC_Control_1 register (IDAC_CR1)
- 015D 9100              db              91h, 00h                ; DEC_CR0:0 register (DEC0_CR0)
- 015F 9500              db              95h, 00h                ; DEC_CR0:1 register (DEC1_CR0)
- 0161 9900              db              99h, 00h                ; DEC_CR0:2 register (DEC2_CR0)
- 0163 9D00              db              9dh, 00h                ; DEC_CR0:3 register (DEC3_CR0)
- 0165 9A00              db              9ah, 00h                ; DecimatorControl_5 register (DEC_CR5)
- 0167 9200              db              92h, 00h                ; DecimatorEnable:0 register (DEC_CR3)
- 0169 9600              db              96h, 00h                ; DecimatorEnable:1 register (DEC_CR4)
- 016B D400              db              d4h, 00h                ; Decimator_Control:0 register (DEC0_CR)
- 016D D500              db              d5h, 00h                ; Decimator_Control:1 register (DEC1_CR)
- 016F D600              db              d6h, 00h                ; Decimator_Control:2 register (DEC2_CR)
- 0171 D700              db              d7h, 00h                ; Decimator_Control:3 register (DEC3_CR)
- 0173 D100              db              d1h, 00h                ; GlobalDigitalInterconnect_Drive_Even_Input register (GDI_E_IN)
- 0175 A100              db              a1h, 00h                ; GlobalDigitalInterconnect_Drive_Even_Input_Control register (GDI_E_IN_CR)
- 0177 D300              db              d3h, 00h                ; GlobalDigitalInterconnect_Drive_Even_Output register (GDI_E_OU)
- 0179 A300              db              a3h, 00h                ; GlobalDigitalInterconnect_Drive_Even_Output_Control register (GDI_E_OU_CR)
- 017B D000              db              d0h, 00h                ; GlobalDigitalInterconnect_Drive_Odd_Input register (GDI_O_IN)
- 017D A000              db              a0h, 00h                ; GlobalDigitalInterconnect_Drive_Odd_Input_Control register (GDI_O_IN_CR)
- 017F D200              db              d2h, 00h                ; GlobalDigitalInterconnect_Drive_Odd_Output register (GDI_O_OU)
- 0181 A200              db              a2h, 00h                ; GlobalDigitalInterconnect_Drive_Odd_Output_Control register (GDI_O_OU_CR)
- 0183 AD00              db              adh, 00h                ; I2CAddress:0 register (I2C0_ADDR)
- 0185 E700              db              e7h, 00h                ; IDACMode register (IDACMODE)
- 0187 E199              db              e1h, 99h                ; OscillatorControl_1 register (OSC_CR1)
- 0189 E200              db              e2h, 00h                ; OscillatorControl_2 register (OSC_CR2)
- 018B DF05              db              dfh, 05h                ; OscillatorControl_3 register (OSC_CR3)
- 018D DE03              db              deh, 03h                ; OscillatorControl_4 register (OSC_CR4)
- 018F DD00              db              ddh, 00h                ; OscillatorGlobalBusEnableControl register (OSC_GO_EN)
- 0191 8500              db              85h, 00h                ; PWM_Control register (ACE_PWM_CR)
- 0193 D800              db              d8h, 00h                ; Port_0_MUXBusCtrl register (MUX_CR0)
- 0195 D900              db              d9h, 00h                ; Port_1_MUXBusCtrl register (MUX_CR1)
- 0197 DA00              db              dah, 00h                ; Port_2_MUXBusCtrl register (MUX_CR2)
- 0199 DB00              db              dbh, 00h                ; Port_3_MUXBusCtrl register (MUX_CR3)
- 019B EC00              db              ech, 00h                ; Port_4_MUXBusCtrl register (MUX_CR4)
- 019D ED00              db              edh, 00h                ; Port_5_MUXBusCtrl register (MUX_CR5)
- 019F A700              db              a7h, 00h                ; RTClockControl register (RTCCR)
- 01A1 A400              db              a4h, 00h                ; RTCurrentHour register (RTCH)
- 01A3 A500              db              a5h, 00h                ; RTCurrentMinute register (RTCM)
- 01A5 A600              db              a6h, 00h                ; RTCurrentSecond register (RTCS)
- 01A7 8200              db              82h, 00h                ; TSCMPHigh register (SADC_TSCMPH)
- 01A9 8100              db              81h, 00h                ; TSCMPLow register (SADC_TSCMPL)
- 01AB 7100              db              71h, 00h                ; TSource0 register (SADC_TSCR0)
- 01AD 7200              db              72h, 00h                ; TSource1 register (SADC_TSCR1)
- 01AF FF                db              ffh
- 01B0           LoadConfigTBL_transmitter_config_Ordered:
- 01B0           ;  Ordered Global Register values
- 01B0 7110          or    F, FLAG_XIO_MASK
- 01B2 620010            mov     reg[00h], 10h           ; Port_0_DriveMode_0 register (PRT0DM0)
- 01B5 6201EF            mov     reg[01h], efh           ; Port_0_DriveMode_1 register (PRT0DM1)
- 01B8 70EF          and   F, ~FLAG_XIO_MASK
- 01BA 6203EF            mov     reg[03h], efh           ; Port_0_DriveMode_2 register (PRT0DM2)
- 01BD 620210            mov     reg[02h], 10h           ; Port_0_GlobalSelect register (PRT0GS)
- 01C0 7110          or    F, FLAG_XIO_MASK
- 01C2 620200            mov     reg[02h], 00h           ; Port_0_IntCtrl_0 register (PRT0IC0)
- 01C5 620300            mov     reg[03h], 00h           ; Port_0_IntCtrl_1 register (PRT0IC1)
- 01C8 70EF          and   F, ~FLAG_XIO_MASK
- 01CA 620100            mov     reg[01h], 00h           ; Port_0_IntEn register (PRT0IE)
- 01CD 7110          or    F, FLAG_XIO_MASK
- 01CF 620400            mov     reg[04h], 00h           ; Port_1_DriveMode_0 register (PRT1DM0)
- 01D2 6205FF            mov     reg[05h], ffh           ; Port_1_DriveMode_1 register (PRT1DM1)
- 01D5 70EF          and   F, ~FLAG_XIO_MASK
- 01D7 6207FF            mov     reg[07h], ffh           ; Port_1_DriveMode_2 register (PRT1DM2)
- 01DA 620600            mov     reg[06h], 00h           ; Port_1_GlobalSelect register (PRT1GS)
- 01DD 7110          or    F, FLAG_XIO_MASK
- 01DF 620600            mov     reg[06h], 00h           ; Port_1_IntCtrl_0 register (PRT1IC0)
- 01E2 620700            mov     reg[07h], 00h           ; Port_1_IntCtrl_1 register (PRT1IC1)
- 01E5 70EF          and   F, ~FLAG_XIO_MASK
- 01E7 620500            mov     reg[05h], 00h           ; Port_1_IntEn register (PRT1IE)
- 01EA 7110          or    F, FLAG_XIO_MASK
- 01EC 620800            mov     reg[08h], 00h           ; Port_2_DriveMode_0 register (PRT2DM0)
- 01EF 6209FF            mov     reg[09h], ffh           ; Port_2_DriveMode_1 register (PRT2DM1)
- 01F2 70EF          and   F, ~FLAG_XIO_MASK
- 01F4 620BFF            mov     reg[0bh], ffh           ; Port_2_DriveMode_2 register (PRT2DM2)
- 01F7 620A00            mov     reg[0ah], 00h           ; Port_2_GlobalSelect register (PRT2GS)
- 01FA 7110          or    F, FLAG_XIO_MASK
- 01FC 620A00            mov     reg[0ah], 00h           ; Port_2_IntCtrl_0 register (PRT2IC0)
- 01FF 620B00            mov     reg[0bh], 00h           ; Port_2_IntCtrl_1 register (PRT2IC1)
- 0202 70EF          and   F, ~FLAG_XIO_MASK
- 0204 620900            mov     reg[09h], 00h           ; Port_2_IntEn register (PRT2IE)
- 0207 7110          or    F, FLAG_XIO_MASK
- 0209 620C00            mov     reg[0ch], 00h           ; Port_3_DriveMode_0 register (PRT3DM0)
- 020C 620D00            mov     reg[0dh], 00h           ; Port_3_DriveMode_1 register (PRT3DM1)
- 020F 70EF          and   F, ~FLAG_XIO_MASK
- 0211 620F00            mov     reg[0fh], 00h           ; Port_3_DriveMode_2 register (PRT3DM2)
- 0214 620E00            mov     reg[0eh], 00h           ; Port_3_GlobalSelect register (PRT3GS)
- 0217 7110          or    F, FLAG_XIO_MASK
- 0219 620E00            mov     reg[0eh], 00h           ; Port_3_IntCtrl_0 register (PRT3IC0)
- 021C 620F00            mov     reg[0fh], 00h           ; Port_3_IntCtrl_1 register (PRT3IC1)
- 021F 70EF          and   F, ~FLAG_XIO_MASK
- 0221 620D00            mov     reg[0dh], 00h           ; Port_3_IntEn register (PRT3IE)
- 0224 7110          or    F, FLAG_XIO_MASK
- 0226 621000            mov     reg[10h], 00h           ; Port_4_DriveMode_0 register (PRT4DM0)
- 0229 621100            mov     reg[11h], 00h           ; Port_4_DriveMode_1 register (PRT4DM1)
- 022C 70EF          and   F, ~FLAG_XIO_MASK
- 022E 621300            mov     reg[13h], 00h           ; Port_4_DriveMode_2 register (PRT4DM2)
- 0231 621200            mov     reg[12h], 00h           ; Port_4_GlobalSelect register (PRT4GS)
- 0234 7110          or    F, FLAG_XIO_MASK
- 0236 621200            mov     reg[12h], 00h           ; Port_4_IntCtrl_0 register (PRT4IC0)
- 0239 621300            mov     reg[13h], 00h           ; Port_4_IntCtrl_1 register (PRT4IC1)
- 023C 70EF          and   F, ~FLAG_XIO_MASK
- 023E 621100            mov     reg[11h], 00h           ; Port_4_IntEn register (PRT4IE)
- 0241 621500            mov     reg[15h], 00h           ; Port_5_IntEn register (PRT5IE)
- 0244 621600            mov     reg[16h], 00h           ; Port_5_GlobalSelect register (PRT5GS)
- 0247 621700            mov     reg[17h], 00h           ; Port_5_DriveMode_2 register (PRT5DM2)
- 024A 7110          or    F, FLAG_XIO_MASK
- 024C 621500            mov     reg[15h], 00h           ; Port_5_DriveMode_1 register (PRT5DM1)
- 024F 621400            mov     reg[14h], 00h           ; Port_5_DriveMode_0 register (PRT5DM0)
- 0252 621600            mov     reg[16h], 00h           ; Port_5_IntCtrl_0 register (PRT5IC0)
- 0255 621700            mov     reg[17h], 00h           ; Port_5_IntCtrl_1 register (PRT5IC1)
- 0258 7F                ret
- 0259           ReloadConfigTBL_transmitter_config_Bank0:
- 0259           ;  Instance name TRANSMIT, User Module TX8
- 0259           ;       Instance name TRANSMIT, Block Name TX8(DCC02)
- 0259 2B00              db              2bh, 00h                ;TRANSMIT_CONTROL_REG  (DCC02CR0)
- 025B 2900              db              29h, 00h                ;TRANSMIT_TX_BUFFER_REG(DCC02DR1)
- 025D 2A00              db              2ah, 00h                ;TRANSMIT_(DCC02DR2)
- 025F           ;  Instance name TX_TIMEOUT, User Module Timer16
- 025F           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 025F 2300              db              23h, 00h                ;TX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
- 0261 21F0              db              21h, f0h                ;TX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
- 0263 2200              db              22h, 00h                ;TX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
- 0265           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 0265 2704              db              27h, 04h                ;TX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
- 0267 2500              db              25h, 00h                ;TX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
- 0269 2600              db              26h, 00h                ;TX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
- 026B FF                db              ffh
- 026C           ReloadConfigTBL_transmitter_config_Bank1:
- 026C           ;  Instance name TRANSMIT, User Module TX8
- 026C           ;       Instance name TRANSMIT, Block Name TX8(DCC02)
- 026C 2B00              db              2bh, 00h                ;TRANSMIT_(DCC02CR1)
- 026E 281D              db              28h, 1dh                ;TRANSMIT_FUNC_REG     (DCC02FN)
- 0270 2901              db              29h, 01h                ;TRANSMIT_INPUT_REG    (DCC02IN)
- 0272 2A84              db              2ah, 84h                ;TRANSMIT_OUTPUT_REG   (DCC02OU)
- 0274           ;  Instance name TX_TIMEOUT, User Module Timer16
- 0274           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 0274 2300              db              23h, 00h                ;TX_TIMEOUT_(DBC00CR1)
- 0276 2000              db              20h, 00h                ;TX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
- 0278 2106              db              21h, 06h                ;TX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
- 027A 2240              db              22h, 40h                ;TX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
- 027C           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 027C 2700              db              27h, 00h                ;TX_TIMEOUT_(DBC01CR1)
- 027E 2420              db              24h, 20h                ;TX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
- 0280 2536              db              25h, 36h                ;TX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
- 0282 2640              db              26h, 40h                ;TX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
- 0284 FF                db              ffh
- 0285           UnloadConfigTBL_transmitter_config_Bank0:
- 0285           ;  Instance name TRANSMIT, User Module TX8
- 0285           ;       Instance name TRANSMIT, Block Name TX8(DCC02)
- 0285 2B00              db              2bh, 00h                ;TRANSMIT_CONTROL_0 (DCC02CR0)
- 0287           ;  Instance name TX_TIMEOUT, User Module Timer16
- 0287           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 0287 2300              db              23h, 00h                ;TX_TIMEOUT_CONTROL_0 (DBC00CR0)
- 0289           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 0289 2700              db              27h, 00h                ;TX_TIMEOUT_CONTROL_0 (DBC01CR0)
- 028B FF                db              ffh
- 028C           UnloadConfigTBL_transmitter_config_Bank1:
- 028C           ;  Instance name TRANSMIT, User Module TX8
- 028C           ;       Instance name TRANSMIT, Block Name TX8(DCC02)
- 028C 2B00              db              2bh, 00h                ;TRANSMIT_CONTROL_1 (DCC02CR1)
- 028E 2800              db              28h, 00h                ;TRANSMIT_DIG_BasicFunction (DCC02FN)
- 0290 2900              db              29h, 00h                ;TRANSMIT_DIG_Input (DCC02IN)
- 0292 2A00              db              2ah, 00h                ;TRANSMIT_DIG_Output (DCC02OU)
- 0294           ;  Instance name TX_TIMEOUT, User Module Timer16
- 0294           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 0294 2300              db              23h, 00h                ;TX_TIMEOUT_CONTROL_1 (DBC00CR1)
- 0296 2000              db              20h, 00h                ;TX_TIMEOUT_DIG_BasicFunction (DBC00FN)
- 0298 2100              db              21h, 00h                ;TX_TIMEOUT_DIG_Input (DBC00IN)
- 029A 2200              db              22h, 00h                ;TX_TIMEOUT_DIG_Output (DBC00OU)
- 029C           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 029C 2700              db              27h, 00h                ;TX_TIMEOUT_CONTROL_1 (DBC01CR1)
- 029E 2400              db              24h, 00h                ;TX_TIMEOUT_DIG_BasicFunction (DBC01FN)
- 02A0 2500              db              25h, 00h                ;TX_TIMEOUT_DIG_Input (DBC01IN)
- 02A2 2600              db              26h, 00h                ;TX_TIMEOUT_DIG_Output (DBC01OU)
- 02A4 FF                db              ffh
- 02A5           
- 02A5           ;  Instance name TRANSMIT, User Module TX8
- 02A5           ;       Instance name TRANSMIT, Block Name TX8(DCC02)
- 02A5           ;  Instance name TX_TIMEOUT, User Module Timer16
- 02A5           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
- 02A5           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
- 02A5 FF                db              ffh
- 02A6           UnloadConfigTBL_Total_Bank0:
- 02A6           ;  Block DBC00
- 02A6 2300              db              23h, 00h                ; CONTROL_0 register (DBC00CR0)
- 02A8           ;  Block DBC01
- 02A8 2700              db              27h, 00h                ; CONTROL_0 register (DBC01CR0)
- 02AA           ;  Block DCC02
- 02AA 2B00              db              2bh, 00h                ; CONTROL_0 register (DCC02CR0)
- 02AC           ;  Block DCC03
- 02AC 2F00              db              2fh, 00h                ; CONTROL_0 register (DCC03CR0)
- 02AE           ;  Block DBC10
- 02AE 3300              db              33h, 00h                ; CONTROL_0 register (DBC10CR0)
- 02B0           ;  Block DBC11
- 02B0 3700              db              37h, 00h                ; CONTROL_0 register (DBC11CR0)
- 02B2           ;  Block DCC12
- 02B2 3B00              db              3bh, 00h                ; CONTROL_0 register (DCC12CR0)
- 02B4           ;  Block DCC13
- 02B4 3F00              db              3fh, 00h                ; CONTROL_0 register (DCC13CR0)
- 02B6           ;  Block DBC20
- 02B6 4300              db              43h, 00h                ; CONTROL_0 register (DBC20CR0)
- 02B8           ;  Block DBC21
- 02B8 4700              db              47h, 00h                ; CONTROL_0 register (DBC21CR0)
- 02BA           ;  Block DCC22
- 02BA 4B00              db              4bh, 00h                ; CONTROL_0 register (DCC22CR0)
- 02BC           ;  Block DCC23
- 02BC 4F00              db              4fh, 00h                ; CONTROL_0 register (DCC23CR0)
- 02BE           ;  Block ACC00
- 02BE 7300              db              73h, 00h                ; CR2 register (ACC00CR2)
- 02C0           ;  Block ASC10
- 02C0           ;  Block ASD20
- 02C0 9300              db              93h, 00h                ; CR3 register (ASD20CR3)
- 02C2           ;  Block 
- 02C2           ;  Block ACC01
- 02C2 7700              db              77h, 00h                ; CR2 register (ACC01CR2)
- 02C4           ;  Block ASD11
- 02C4 8700              db              87h, 00h                ; CR3 register (ASD11CR3)
- 02C6           ;  Block ASC21
- 02C6           ;  Block 
- 02C6           ;  Block ACE00
- 02C6           ;  Block ASE10
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6           ;  Block ACE01
- 02C6           ;  Block ASE11
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6           ;  Block 
- 02C6 FF                db              ffh
- 02C7           UnloadConfigTBL_Total_Bank1:
- 02C7           ;  Block DBC00
- 02C7 2300              db              23h, 00h                ; CONTROL_1 register (DBC00CR1)
- 02C9 2000              db              20h, 00h                ; DIG_BasicFunction register (DBC00FN)
- 02CB 2100              db              21h, 00h                ; DIG_Input register (DBC00IN)
- 02CD 2200              db              22h, 00h                ; DIG_Output register (DBC00OU)
- 02CF           ;  Block DBC01
- 02CF 2700              db              27h, 00h                ; CONTROL_1 register (DBC01CR1)
- 02D1 2400              db              24h, 00h                ; DIG_BasicFunction register (DBC01FN)
- 02D3 2500              db              25h, 00h                ; DIG_Input register (DBC01IN)
- 02D5 2600              db              26h, 00h                ; DIG_Output register (DBC01OU)
- 02D7           ;  Block DCC02
- 02D7 2B00              db              2bh, 00h                ; CONTROL_1 register (DCC02CR1)
- 02D9 2800              db              28h, 00h                ; DIG_BasicFunction register (DCC02FN)
- 02DB 2900              db              29h, 00h                ; DIG_Input register (DCC02IN)
- 02DD 2A00              db              2ah, 00h                ; DIG_Output register (DCC02OU)
- 02DF           ;  Block DCC03
- 02DF 2F00              db              2fh, 00h                ; CONTROL_1 register (DCC03CR1)
- 02E1 2C00              db              2ch, 00h                ; DIG_BasicFunction register (DCC03FN)
- 02E3 2D00              db              2dh, 00h                ; DIG_Input register (DCC03IN)
- 02E5 2E00              db              2eh, 00h                ; DIG_Output register (DCC03OU)
- 02E7           ;  Block DBC10
- 02E7 3300              db              33h, 00h                ; CONTROL_1 register (DBC10CR1)
- 02E9 3000              db              30h, 00h                ; DIG_BasicFunction register (DBC10FN)
- 02EB 3100              db              31h, 00h                ; DIG_Input register (DBC10IN)
- 02ED 3200              db              32h, 00h                ; DIG_Output register (DBC10OU)
- 02EF           ;  Block DBC11
- 02EF 3700              db              37h, 00h                ; CONTROL_1 register (DBC11CR1)
- 02F1 3400              db              34h, 00h                ; DIG_BasicFunction register (DBC11FN)
- 02F3 3500              db              35h, 00h                ; DIG_Input register (DBC11IN)
- 02F5 3600              db              36h, 00h                ; DIG_Output register (DBC11OU)
- 02F7           ;  Block DCC12
- 02F7 3B00              db              3bh, 00h                ; CONTROL_1 register (DCC12CR1)
- 02F9 3800              db              38h, 00h                ; DIG_BasicFunction register (DCC12FN)
- 02FB 3900              db              39h, 00h                ; DIG_Input register (DCC12IN)
- 02FD 3A00              db              3ah, 00h                ; DIG_Output register (DCC12OU)
- 02FF           ;  Block DCC13
- 02FF 3F00              db              3fh, 00h                ; CONTROL_1 register (DCC13CR1)
- 0301 3C00              db              3ch, 00h                ; DIG_BasicFunction register (DCC13FN)
- 0303 3D00              db              3dh, 00h                ; DIG_Input register (DCC13IN)
- 0305 3E00              db              3eh, 00h                ; DIG_Output register (DCC13OU)
- 0307           ;  Block DBC20
- 0307 4300              db              43h, 00h                ; CONTROL_1 register (DBC20CR1)
- 0309 4000              db              40h, 00h                ; DIG_BasicFunction register (DBC20FN)
- 030B 4100              db              41h, 00h                ; DIG_Input register (DBC20IN)
- 030D 4200              db              42h, 00h                ; DIG_Output register (DBC20OU)
- 030F           ;  Block DBC21
- 030F 4700              db              47h, 00h                ; CONTROL_1 register (DBC21CR1)
- 0311 4400              db              44h, 00h                ; DIG_BasicFunction register (DBC21FN)
- 0313 4500              db              45h, 00h                ; DIG_Input register (DBC21IN)
- 0315 4600              db              46h, 00h                ; DIG_Output register (DBC21OU)
- 0317           ;  Block DCC22
- 0317 4B00              db              4bh, 00h                ; CONTROL_1 register (DCC22CR1)
- 0319 4800              db              48h, 00h                ; DIG_BasicFunction register (DCC22FN)
- 031B 4900              db              49h, 00h                ; DIG_Input register (DCC22IN)
- 031D 4A00              db              4ah, 00h                ; DIG_Output register (DCC22OU)
- 031F           ;  Block DCC23
- 031F 4F00              db              4fh, 00h                ; CONTROL_1 register (DCC23CR1)
- 0321 4C00              db              4ch, 00h                ; DIG_BasicFunction register (DCC23FN)
- 0323 4D00              db              4dh, 00h                ; DIG_Input register (DCC23IN)
- 0325 4E00              db              4eh, 00h                ; DIG_Output register (DCC23OU)
- 0327           ;  Block ACC00
- 0327           ;  Block ASC10
- 0327           ;  Block ASD20
- 0327           ;  Block 
- 0327           ;  Block ACC01
- 0327           ;  Block ASD11
- 0327           ;  Block ASC21
- 0327           ;  Block 
- 0327           ;  Block ACE00
- 0327           ;  Block ASE10
- 0327           ;  Block 
- 0327           ;  Block 
- 0327           ;  Block ACE01
- 0327           ;  Block ASE11
- 0327           ;  Block 
- 0327           ;  Block 
- 0327           ;  Block 
- 0327           ;  Block 
- 0327           ;  Block 
- 0327           ;  Block 
- 0327           ;  Block 
- 0327           ;  Block 
- 0327           ;  Block 
- 0327           ;  Block 
- 0327 FF                db              ffh
- 0328           
- 0328           
- 0328           ; PSoC Configuration file trailer PsocConfig.asm
+ 000C           ;  Instance name TX_REPEATER_014, User Module TX8
+ 000C           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+ 000C 2B00              db              2bh, 00h                ;TX_REPEATER_014_CONTROL_REG  (DCC02CR0)
+ 000E 2900              db              29h, 00h                ;TX_REPEATER_014_TX_BUFFER_REG(DCC02DR1)
+ 0010 2A00              db              2ah, 00h                ;TX_REPEATER_014_(DCC02DR2)
+ 0012           ;  Instance name TX_REPEATER_23, User Module TX8
+ 0012           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+ 0012 2F00              db              2fh, 00h                ;TX_REPEATER_23_CONTROL_REG  (DCC03CR0)
+ 0014 2D00              db              2dh, 00h                ;TX_REPEATER_23_TX_BUFFER_REG(DCC03DR1)
+ 0016 2E00              db              2eh, 00h                ;TX_REPEATER_23_(DCC03DR2)
+ 0018           ;  Instance name TX_TIMEOUT, User Module Timer16
+ 0018           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 0018 2300              db              23h, 00h                ;TX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
+ 001A 2140              db              21h, 40h                ;TX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+ 001C 2200              db              22h, 00h                ;TX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
+ 001E           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 001E 2704              db              27h, 04h                ;TX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
+ 0020 251F              db              25h, 1fh                ;TX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
+ 0022 2600              db              26h, 00h                ;TX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
+ 0024 FF                db              ffh
+ 0025           LoadConfigTBL_pc_listener_Bank1:
+ 0025           ;  Instance name COMP_SERIAL, User Module UART
+ 0025           ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
+ 0025 3F00              db              3fh, 00h                ;COMP_SERIAL_(DCC13CR1)
+ 0027 3C05              db              3ch, 05h                ;COMP_SERIAL_RX_FUNC_REG   (DCC13FN)
+ 0029 3DF6              db              3dh, f6h                ;COMP_SERIAL_RX_INPUT_REG  (DCC13IN)
+ 002B 3E80              db              3eh, 80h                ;COMP_SERIAL_RX_OUTPUT_REG (DCC13OU)
+ 002D           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
+ 002D 3B00              db              3bh, 00h                ;COMP_SERIAL_(DCC12CR1)
+ 002F 381D              db              38h, 1dh                ;COMP_SERIAL_TX_FUNC_REG   (DCC12FN)
+ 0031 3906              db              39h, 06h                ;COMP_SERIAL_TX_INPUT_REG  (DCC12IN)
+ 0033 3A85              db              3ah, 85h                ;COMP_SERIAL_TX_OUTPUT_REG (DCC12OU)
+ 0035           ;  Instance name TX_REPEATER_014, User Module TX8
+ 0035           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+ 0035 2B00              db              2bh, 00h                ;TX_REPEATER_014_(DCC02CR1)
+ 0037 281D              db              28h, 1dh                ;TX_REPEATER_014_FUNC_REG     (DCC02FN)
+ 0039 2901              db              29h, 01h                ;TX_REPEATER_014_INPUT_REG    (DCC02IN)
+ 003B 2A85              db              2ah, 85h                ;TX_REPEATER_014_OUTPUT_REG   (DCC02OU)
+ 003D           ;  Instance name TX_REPEATER_23, User Module TX8
+ 003D           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+ 003D 2F00              db              2fh, 00h                ;TX_REPEATER_23_(DCC03CR1)
+ 003F 2C1D              db              2ch, 1dh                ;TX_REPEATER_23_FUNC_REG     (DCC03FN)
+ 0041 2D01              db              2dh, 01h                ;TX_REPEATER_23_INPUT_REG    (DCC03IN)
+ 0043 2E87              db              2eh, 87h                ;TX_REPEATER_23_OUTPUT_REG   (DCC03OU)
+ 0045           ;  Instance name TX_TIMEOUT, User Module Timer16
+ 0045           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 0045 2300              db              23h, 00h                ;TX_TIMEOUT_(DBC00CR1)
+ 0047 2000              db              20h, 00h                ;TX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
+ 0049 2106              db              21h, 06h                ;TX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+ 004B 2280              db              22h, 80h                ;TX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+ 004D           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 004D 2700              db              27h, 00h                ;TX_TIMEOUT_(DBC01CR1)
+ 004F 2420              db              24h, 20h                ;TX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
+ 0051 2536              db              25h, 36h                ;TX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+ 0053 2680              db              26h, 80h                ;TX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
+ 0055 FF                db              ffh
+ 0056           UnloadConfigTBL_pc_listener_Bank0:
+ 0056           ;  Instance name COMP_SERIAL, User Module UART
+ 0056           ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
+ 0056 3F00              db              3fh, 00h                ;COMP_SERIAL_CONTROL_0 (DCC13CR0)
+ 0058           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
+ 0058 3B00              db              3bh, 00h                ;COMP_SERIAL_CONTROL_0 (DCC12CR0)
+ 005A           ;  Instance name TX_REPEATER_014, User Module TX8
+ 005A           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+ 005A 2B00              db              2bh, 00h                ;TX_REPEATER_014_CONTROL_0 (DCC02CR0)
+ 005C           ;  Instance name TX_REPEATER_23, User Module TX8
+ 005C           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+ 005C 2F00              db              2fh, 00h                ;TX_REPEATER_23_CONTROL_0 (DCC03CR0)
+ 005E           ;  Instance name TX_TIMEOUT, User Module Timer16
+ 005E           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 005E 2300              db              23h, 00h                ;TX_TIMEOUT_CONTROL_0 (DBC00CR0)
+ 0060           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 0060 2700              db              27h, 00h                ;TX_TIMEOUT_CONTROL_0 (DBC01CR0)
+ 0062 FF                db              ffh
+ 0063           UnloadConfigTBL_pc_listener_Bank1:
+ 0063           ;  Instance name COMP_SERIAL, User Module UART
+ 0063           ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
+ 0063 3F00              db              3fh, 00h                ;COMP_SERIAL_CONTROL_1 (DCC13CR1)
+ 0065 3C00              db              3ch, 00h                ;COMP_SERIAL_DIG_BasicFunction (DCC13FN)
+ 0067 3D00              db              3dh, 00h                ;COMP_SERIAL_DIG_Input (DCC13IN)
+ 0069 3E00              db              3eh, 00h                ;COMP_SERIAL_DIG_Output (DCC13OU)
+ 006B           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
+ 006B 3B00              db              3bh, 00h                ;COMP_SERIAL_CONTROL_1 (DCC12CR1)
+ 006D 3800              db              38h, 00h                ;COMP_SERIAL_DIG_BasicFunction (DCC12FN)
+ 006F 3900              db              39h, 00h                ;COMP_SERIAL_DIG_Input (DCC12IN)
+ 0071 3A00              db              3ah, 00h                ;COMP_SERIAL_DIG_Output (DCC12OU)
+ 0073           ;  Instance name TX_REPEATER_014, User Module TX8
+ 0073           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+ 0073 2B00              db              2bh, 00h                ;TX_REPEATER_014_CONTROL_1 (DCC02CR1)
+ 0075 2800              db              28h, 00h                ;TX_REPEATER_014_DIG_BasicFunction (DCC02FN)
+ 0077 2900              db              29h, 00h                ;TX_REPEATER_014_DIG_Input (DCC02IN)
+ 0079 2A00              db              2ah, 00h                ;TX_REPEATER_014_DIG_Output (DCC02OU)
+ 007B           ;  Instance name TX_REPEATER_23, User Module TX8
+ 007B           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+ 007B 2F00              db              2fh, 00h                ;TX_REPEATER_23_CONTROL_1 (DCC03CR1)
+ 007D 2C00              db              2ch, 00h                ;TX_REPEATER_23_DIG_BasicFunction (DCC03FN)
+ 007F 2D00              db              2dh, 00h                ;TX_REPEATER_23_DIG_Input (DCC03IN)
+ 0081 2E00              db              2eh, 00h                ;TX_REPEATER_23_DIG_Output (DCC03OU)
+ 0083           ;  Instance name TX_TIMEOUT, User Module Timer16
+ 0083           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 0083 2300              db              23h, 00h                ;TX_TIMEOUT_CONTROL_1 (DBC00CR1)
+ 0085 2000              db              20h, 00h                ;TX_TIMEOUT_DIG_BasicFunction (DBC00FN)
+ 0087 2100              db              21h, 00h                ;TX_TIMEOUT_DIG_Input (DBC00IN)
+ 0089 2200              db              22h, 00h                ;TX_TIMEOUT_DIG_Output (DBC00OU)
+ 008B           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 008B 2700              db              27h, 00h                ;TX_TIMEOUT_CONTROL_1 (DBC01CR1)
+ 008D 2400              db              24h, 00h                ;TX_TIMEOUT_DIG_BasicFunction (DBC01FN)
+ 008F 2500              db              25h, 00h                ;TX_TIMEOUT_DIG_Input (DBC01IN)
+ 0091 2600              db              26h, 00h                ;TX_TIMEOUT_DIG_Output (DBC01OU)
+ 0093 FF                db              ffh
+ 0094           
+ 0094           ;  Instance name COMP_SERIAL, User Module UART
+ 0094           ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
+ 0094           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
+ 0094           ;  Instance name TX_REPEATER_014, User Module TX8
+ 0094           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+ 0094           ;  Instance name TX_REPEATER_23, User Module TX8
+ 0094           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+ 0094           ;  Instance name TX_TIMEOUT, User Module Timer16
+ 0094           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 0094           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 0094 FF                db              ffh
+ 0095           LoadConfigTBL_receiver_config_Bank0:
+ 0095           ;  Instance name RECEIVE_1, User Module RX8
+ 0095           ;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+ 0095 2B00              db              2bh, 00h                ;RECEIVE_1_CONTROL_REG  (DCC02CR0)
+ 0097 2900              db              29h, 00h                ;RECEIVE_1_(DCC02DR1)
+ 0099 2A00              db              2ah, 00h                ;RECEIVE_1_RX_BUFFER_REG(DCC02DR2)
+ 009B           ;  Instance name RECEIVE_2, User Module RX8
+ 009B           ;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+ 009B 2F00              db              2fh, 00h                ;RECEIVE_2_CONTROL_REG  (DCC03CR0)
+ 009D 2D00              db              2dh, 00h                ;RECEIVE_2_(DCC03DR1)
+ 009F 2E00              db              2eh, 00h                ;RECEIVE_2_RX_BUFFER_REG(DCC03DR2)
+ 00A1           ;  Instance name RECEIVE_3, User Module RX8
+ 00A1           ;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+ 00A1 3B00              db              3bh, 00h                ;RECEIVE_3_CONTROL_REG  (DCC12CR0)
+ 00A3 3900              db              39h, 00h                ;RECEIVE_3_(DCC12DR1)
+ 00A5 3A00              db              3ah, 00h                ;RECEIVE_3_RX_BUFFER_REG(DCC12DR2)
+ 00A7           ;  Instance name RECEIVE_4, User Module RX8
+ 00A7           ;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+ 00A7 3F00              db              3fh, 00h                ;RECEIVE_4_CONTROL_REG  (DCC13CR0)
+ 00A9 3D00              db              3dh, 00h                ;RECEIVE_4_(DCC13DR1)
+ 00AB 3E00              db              3eh, 00h                ;RECEIVE_4_RX_BUFFER_REG(DCC13DR2)
+ 00AD           ;  Instance name RX_TIMEOUT, User Module Timer16
+ 00AD           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 00AD 2300              db              23h, 00h                ;RX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
+ 00AF 21F0              db              21h, f0h                ;RX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+ 00B1 2200              db              22h, 00h                ;RX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
+ 00B3           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 00B3 2704              db              27h, 04h                ;RX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
+ 00B5 2500              db              25h, 00h                ;RX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
+ 00B7 2600              db              26h, 00h                ;RX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
+ 00B9           ;  Global Register values Bank 0
+ 00B9 6A00              db              6ah, 00h                ; ADCDataHigh register (SADC_DH)
+ 00BB 6B00              db              6bh, 00h                ; ADCDataLow register (SADC_DL)
+ 00BD 6200              db              62h, 00h                ; AnalogClockSelect3 register (CLK_CR3)
+ 00BF 6009              db              60h, 09h                ; AnalogColumnInputSelect register (AMX_IN)
+ 00C1 6600              db              66h, 00h                ; AnalogComparatorControl1 register (CMP_CR1)
+ 00C3 6100              db              61h, 00h                ; AnalogMuxBusConfig register (AMUX_CFG)
+ 00C5 FC00              db              fch, 00h                ; AnalogMuxDACData:0 register (IDACR_D)
+ 00C7 FD00              db              fdh, 00h                ; AnalogMuxDACData:1 register (IDACL_D)
+ 00C9 6355              db              63h, 55h                ; AnalogReferenceControl register (ARF_CR)
+ 00CB 6500              db              65h, 00h                ; AnalogSynchronizationControl register (ASY_CR)
+ 00CD E600              db              e6h, 00h                ; DecimatorControl_0 register (DEC_CR0)
+ 00CF E700              db              e7h, 00h                ; DecimatorControl_1 register (DEC_CR1)
+ 00D1 A000              db              a0h, 00h                ; DecimatorDataHigh:0 register (DEC0_DH)
+ 00D3 A200              db              a2h, 00h                ; DecimatorDataHigh:1 register (DEC1_DH)
+ 00D5 A400              db              a4h, 00h                ; DecimatorDataHigh:2 register (DEC2_DH)
+ 00D7 A600              db              a6h, 00h                ; DecimatorDataHigh:3 register (DEC3_DH)
+ 00D9 A100              db              a1h, 00h                ; DecimatorDataLow:0 register (DEC0_DL)
+ 00DB A300              db              a3h, 00h                ; DecimatorDataLow:1 register (DEC1_DL)
+ 00DD A500              db              a5h, 00h                ; DecimatorDataLow:2 register (DEC2_DL)
+ 00DF A700              db              a7h, 00h                ; DecimatorDataLow:3 register (DEC3_DL)
+ 00E1 D600              db              d6h, 00h                ; I2CConfig:0 register (I2C0_CFG)
+ 00E3 E800              db              e8h, 00h                ; Multiply0InputX register (MUL0_X)
+ 00E5 E900              db              e9h, 00h                ; Multiply0InputY register (MUL0_Y)
+ 00E7 A800              db              a8h, 00h                ; Multiply1InputX register (MUL1_X)
+ 00E9 A900              db              a9h, 00h                ; Multiply1InputY register (MUL1_Y)
+ 00EB B700              db              b7h, 00h                ; RowDigitalInterconnectInputSelect:0 register (RDI0DSM)
+ 00ED BF00              db              bfh, 00h                ; RowDigitalInterconnectInputSelect:1 register (RDI1DSM)
+ 00EF C700              db              c7h, 00h                ; RowDigitalInterconnectInputSelect:2 register (RDI2DSM)
+ 00F1 B040              db              b0h, 40h                ; Row_0_InputMux register (RDI0RI)
+ 00F3 B100              db              b1h, 00h                ; Row_0_InputSync register (RDI0SYN)
+ 00F5 B200              db              b2h, 00h                ; Row_0_LogicInputAMux register (RDI0IS)
+ 00F7 B333              db              b3h, 33h                ; Row_0_LogicSelect_0 register (RDI0LT0)
+ 00F9 B433              db              b4h, 33h                ; Row_0_LogicSelect_1 register (RDI0LT1)
+ 00FB B500              db              b5h, 00h                ; Row_0_OutputDrive_0 register (RDI0RO0)
+ 00FD B600              db              b6h, 00h                ; Row_0_OutputDrive_1 register (RDI0RO1)
+ 00FF B815              db              b8h, 15h                ; Row_1_InputMux register (RDI1RI)
+ 0101 B900              db              b9h, 00h                ; Row_1_InputSync register (RDI1SYN)
+ 0103 BA10              db              bah, 10h                ; Row_1_LogicInputAMux register (RDI1IS)
+ 0105 BB33              db              bbh, 33h                ; Row_1_LogicSelect_0 register (RDI1LT0)
+ 0107 BC33              db              bch, 33h                ; Row_1_LogicSelect_1 register (RDI1LT1)
+ 0109 BD00              db              bdh, 00h                ; Row_1_OutputDrive_0 register (RDI1RO0)
+ 010B BE00              db              beh, 00h                ; Row_1_OutputDrive_1 register (RDI1RO1)
+ 010D C0AA              db              c0h, aah                ; Row_2_InputMux register (RDI2RI)
+ 010F C100              db              c1h, 00h                ; Row_2_InputSync register (RDI2SYN)
+ 0111 C200              db              c2h, 00h                ; Row_2_LogicInputAMux register (RDI2IS)
+ 0113 C333              db              c3h, 33h                ; Row_2_LogicSelect_0 register (RDI2LT0)
+ 0115 C433              db              c4h, 33h                ; Row_2_LogicSelect_1 register (RDI2LT1)
+ 0117 C500              db              c5h, 00h                ; Row_2_OutputDrive_0 register (RDI2RO0)
+ 0119 C600              db              c6h, 00h                ; Row_2_OutputDrive_1 register (RDI2RO1)
+ 011B FF                db              ffh
+ 011C           LoadConfigTBL_receiver_config_Bank1:
+ 011C           ;  Instance name RECEIVE_1, User Module RX8
+ 011C           ;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+ 011C 2B00              db              2bh, 00h                ;RECEIVE_1_(DCC02CR1)
+ 011E 2805              db              28h, 05h                ;RECEIVE_1_FUNC_REG     (DCC02FN)
+ 0120 29D1              db              29h, d1h                ;RECEIVE_1_INPUT_REG    (DCC02IN)
+ 0122 2A80              db              2ah, 80h                ;RECEIVE_1_OUTPUT_REG   (DCC02OU)
+ 0124           ;  Instance name RECEIVE_2, User Module RX8
+ 0124           ;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+ 0124 2F00              db              2fh, 00h                ;RECEIVE_2_(DCC03CR1)
+ 0126 2C05              db              2ch, 05h                ;RECEIVE_2_FUNC_REG     (DCC03FN)
+ 0128 2DE1              db              2dh, e1h                ;RECEIVE_2_INPUT_REG    (DCC03IN)
+ 012A 2E80              db              2eh, 80h                ;RECEIVE_2_OUTPUT_REG   (DCC03OU)
+ 012C           ;  Instance name RECEIVE_3, User Module RX8
+ 012C           ;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+ 012C 3B00              db              3bh, 00h                ;RECEIVE_3_(DCC12CR1)
+ 012E 3805              db              38h, 05h                ;RECEIVE_3_FUNC_REG     (DCC12FN)
+ 0130 39F1              db              39h, f1h                ;RECEIVE_3_INPUT_REG    (DCC12IN)
+ 0132 3A80              db              3ah, 80h                ;RECEIVE_3_OUTPUT_REG   (DCC12OU)
+ 0134           ;  Instance name RECEIVE_4, User Module RX8
+ 0134           ;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+ 0134 3F00              db              3fh, 00h                ;RECEIVE_4_(DCC13CR1)
+ 0136 3C05              db              3ch, 05h                ;RECEIVE_4_FUNC_REG     (DCC13FN)
+ 0138 3DC1              db              3dh, c1h                ;RECEIVE_4_INPUT_REG    (DCC13IN)
+ 013A 3E80              db              3eh, 80h                ;RECEIVE_4_OUTPUT_REG   (DCC13OU)
+ 013C           ;  Instance name RX_TIMEOUT, User Module Timer16
+ 013C           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 013C 2300              db              23h, 00h                ;RX_TIMEOUT_(DBC00CR1)
+ 013E 2000              db              20h, 00h                ;RX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
+ 0140 2106              db              21h, 06h                ;RX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+ 0142 2240              db              22h, 40h                ;RX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+ 0144           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 0144 2700              db              27h, 00h                ;RX_TIMEOUT_(DBC01CR1)
+ 0146 2420              db              24h, 20h                ;RX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
+ 0148 2536              db              25h, 36h                ;RX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+ 014A 2640              db              26h, 40h                ;RX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
+ 014C           ;  Global Register values Bank 1
+ 014C A800              db              a8h, 00h                ; ADCControl0 register (SADC_CR0)
+ 014E A900              db              a9h, 00h                ; ADCControl1 register (SADC_CR1)
+ 0150 AA00              db              aah, 00h                ; ADCControl2 register (ADC_CR2)
+ 0152 AB00              db              abh, 00h                ; ADCControl3 register (ADC_CR3TRIM)
+ 0154 AC00              db              ach, 00h                ; ADCControl4 register (ADC_CR4)
+ 0156 6100              db              61h, 00h                ; AnalogClockSelect1 register (CLK_CR1)
+ 0158 6900              db              69h, 00h                ; AnalogClockSelect2 register (CLK_CR2)
+ 015A 8B00              db              8bh, 00h                ; AnalogColumnClockDivide register (ACE_CLK_CR3)
+ 015C 6000              db              60h, 00h                ; AnalogColumnClockSelect register (CLK_CR0)
+ 015E 8A00              db              8ah, 00h                ; AnalogEClockSelect1 register (ACE_CLK_CR1)
+ 0160 8900              db              89h, 00h                ; AnalogEColumnClockSelect register (ACE_CLK_CR0)
+ 0162 7509              db              75h, 09h                ; AnalogEColumnInputSelect register (ACE_AMX_IN)
+ 0164 7600              db              76h, 00h                ; AnalogEComparatorControl0 register (ACE_CMP_CR0)
+ 0166 7700              db              77h, 00h                ; AnalogEComparatorControl1 register (ACE_CMP_CR1)
+ 0168 7A03              db              7ah, 03h                ; AnalogELUTControl0 register (ACE_ALT_CR0)
+ 016A 6200              db              62h, 00h                ; AnalogIOControl_0 register (ABF_CR0)
+ 016C 6733              db              67h, 33h                ; AnalogLUTControl0 register (ALT_CR0)
+ 016E 6800              db              68h, 00h                ; AnalogLUTControl1 register (ALT_CR1)
+ 0170 6300              db              63h, 00h                ; AnalogModulatorControl_0 register (AMD_CR0)
+ 0172 6600              db              66h, 00h                ; AnalogModulatorControl_1 register (AMD_CR1)
+ 0174 6A00              db              6ah, 00h                ; AnalogMuxBusConfig1 register (AMUX_CFG1)
+ 0176 AF00              db              afh, 00h                ; AnalogMuxClock register (AMUX_CLK)
+ 0178 7B00              db              7bh, 00h                ; AnalogOutBufferControl register (ACE_ABF_CR0)
+ 017A 7900              db              79h, 00h                ; ComparatorGlobalInEn register (ACE_CMP_GI_EN)
+ 017C 6400              db              64h, 00h                ; ComparatorGlobalOutEn register (CMP_GO_EN)
+ 017E FD00              db              fdh, 00h                ; DAC_Control_0 register (IDAC_CR0)
+ 0180 DC00              db              dch, 00h                ; DAC_Control_1 register (IDAC_CR1)
+ 0182 9100              db              91h, 00h                ; DEC_CR0:0 register (DEC0_CR0)
+ 0184 9500              db              95h, 00h                ; DEC_CR0:1 register (DEC1_CR0)
+ 0186 9900              db              99h, 00h                ; DEC_CR0:2 register (DEC2_CR0)
+ 0188 9D00              db              9dh, 00h                ; DEC_CR0:3 register (DEC3_CR0)
+ 018A 9A00              db              9ah, 00h                ; DecimatorControl_5 register (DEC_CR5)
+ 018C 9200              db              92h, 00h                ; DecimatorEnable:0 register (DEC_CR3)
+ 018E 9600              db              96h, 00h                ; DecimatorEnable:1 register (DEC_CR4)
+ 0190 D400              db              d4h, 00h                ; Decimator_Control:0 register (DEC0_CR)
+ 0192 D500              db              d5h, 00h                ; Decimator_Control:1 register (DEC1_CR)
+ 0194 D600              db              d6h, 00h                ; Decimator_Control:2 register (DEC2_CR)
+ 0196 D700              db              d7h, 00h                ; Decimator_Control:3 register (DEC3_CR)
+ 0198 D100              db              d1h, 00h                ; GlobalDigitalInterconnect_Drive_Even_Input register (GDI_E_IN)
+ 019A A100              db              a1h, 00h                ; GlobalDigitalInterconnect_Drive_Even_Input_Control register (GDI_E_IN_CR)
+ 019C D300              db              d3h, 00h                ; GlobalDigitalInterconnect_Drive_Even_Output register (GDI_E_OU)
+ 019E A300              db              a3h, 00h                ; GlobalDigitalInterconnect_Drive_Even_Output_Control register (GDI_E_OU_CR)
+ 01A0 D000              db              d0h, 00h                ; GlobalDigitalInterconnect_Drive_Odd_Input register (GDI_O_IN)
+ 01A2 A000              db              a0h, 00h                ; GlobalDigitalInterconnect_Drive_Odd_Input_Control register (GDI_O_IN_CR)
+ 01A4 D200              db              d2h, 00h                ; GlobalDigitalInterconnect_Drive_Odd_Output register (GDI_O_OU)
+ 01A6 A200              db              a2h, 00h                ; GlobalDigitalInterconnect_Drive_Odd_Output_Control register (GDI_O_OU_CR)
+ 01A8 AD00              db              adh, 00h                ; I2CAddress:0 register (I2C0_ADDR)
+ 01AA E700              db              e7h, 00h                ; IDACMode register (IDACMODE)
+ 01AC E199              db              e1h, 99h                ; OscillatorControl_1 register (OSC_CR1)
+ 01AE E200              db              e2h, 00h                ; OscillatorControl_2 register (OSC_CR2)
+ 01B0 DF05              db              dfh, 05h                ; OscillatorControl_3 register (OSC_CR3)
+ 01B2 DE03              db              deh, 03h                ; OscillatorControl_4 register (OSC_CR4)
+ 01B4 DD00              db              ddh, 00h                ; OscillatorGlobalBusEnableControl register (OSC_GO_EN)
+ 01B6 8500              db              85h, 00h                ; PWM_Control register (ACE_PWM_CR)
+ 01B8 D800              db              d8h, 00h                ; Port_0_MUXBusCtrl register (MUX_CR0)
+ 01BA D900              db              d9h, 00h                ; Port_1_MUXBusCtrl register (MUX_CR1)
+ 01BC DA00              db              dah, 00h                ; Port_2_MUXBusCtrl register (MUX_CR2)
+ 01BE DB00              db              dbh, 00h                ; Port_3_MUXBusCtrl register (MUX_CR3)
+ 01C0 EC00              db              ech, 00h                ; Port_4_MUXBusCtrl register (MUX_CR4)
+ 01C2 ED00              db              edh, 00h                ; Port_5_MUXBusCtrl register (MUX_CR5)
+ 01C4 A700              db              a7h, 00h                ; RTClockControl register (RTCCR)
+ 01C6 A400              db              a4h, 00h                ; RTCurrentHour register (RTCH)
+ 01C8 A500              db              a5h, 00h                ; RTCurrentMinute register (RTCM)
+ 01CA A600              db              a6h, 00h                ; RTCurrentSecond register (RTCS)
+ 01CC 8200              db              82h, 00h                ; TSCMPHigh register (SADC_TSCMPH)
+ 01CE 8100              db              81h, 00h                ; TSCMPLow register (SADC_TSCMPL)
+ 01D0 7100              db              71h, 00h                ; TSource0 register (SADC_TSCR0)
+ 01D2 7200              db              72h, 00h                ; TSource1 register (SADC_TSCR1)
+ 01D4 FF                db              ffh
+ 01D5           LoadConfigTBL_receiver_config_Ordered:
+ 01D5           ;  Ordered Global Register values
+ 01D5 7110          or    F, FLAG_XIO_MASK
+ 01D7 620000            mov     reg[00h], 00h           ; Port_0_DriveMode_0 register (PRT0DM0)
+ 01DA 6201FF            mov     reg[01h], ffh           ; Port_0_DriveMode_1 register (PRT0DM1)
+ 01DD 70EF          and   F, ~FLAG_XIO_MASK
+ 01DF 6203E1            mov     reg[03h], e1h           ; Port_0_DriveMode_2 register (PRT0DM2)
+ 01E2 62021E            mov     reg[02h], 1eh           ; Port_0_GlobalSelect register (PRT0GS)
+ 01E5 7110          or    F, FLAG_XIO_MASK
+ 01E7 620200            mov     reg[02h], 00h           ; Port_0_IntCtrl_0 register (PRT0IC0)
+ 01EA 620300            mov     reg[03h], 00h           ; Port_0_IntCtrl_1 register (PRT0IC1)
+ 01ED 70EF          and   F, ~FLAG_XIO_MASK
+ 01EF 620100            mov     reg[01h], 00h           ; Port_0_IntEn register (PRT0IE)
+ 01F2 7110          or    F, FLAG_XIO_MASK
+ 01F4 620400            mov     reg[04h], 00h           ; Port_1_DriveMode_0 register (PRT1DM0)
+ 01F7 6205FF            mov     reg[05h], ffh           ; Port_1_DriveMode_1 register (PRT1DM1)
+ 01FA 70EF          and   F, ~FLAG_XIO_MASK
+ 01FC 6207FF            mov     reg[07h], ffh           ; Port_1_DriveMode_2 register (PRT1DM2)
+ 01FF 620600            mov     reg[06h], 00h           ; Port_1_GlobalSelect register (PRT1GS)
+ 0202 7110          or    F, FLAG_XIO_MASK
+ 0204 620600            mov     reg[06h], 00h           ; Port_1_IntCtrl_0 register (PRT1IC0)
+ 0207 620700            mov     reg[07h], 00h           ; Port_1_IntCtrl_1 register (PRT1IC1)
+ 020A 70EF          and   F, ~FLAG_XIO_MASK
+ 020C 620500            mov     reg[05h], 00h           ; Port_1_IntEn register (PRT1IE)
+ 020F 7110          or    F, FLAG_XIO_MASK
+ 0211 620800            mov     reg[08h], 00h           ; Port_2_DriveMode_0 register (PRT2DM0)
+ 0214 6209FF            mov     reg[09h], ffh           ; Port_2_DriveMode_1 register (PRT2DM1)
+ 0217 70EF          and   F, ~FLAG_XIO_MASK
+ 0219 620BFF            mov     reg[0bh], ffh           ; Port_2_DriveMode_2 register (PRT2DM2)
+ 021C 620A00            mov     reg[0ah], 00h           ; Port_2_GlobalSelect register (PRT2GS)
+ 021F 7110          or    F, FLAG_XIO_MASK
+ 0221 620A00            mov     reg[0ah], 00h           ; Port_2_IntCtrl_0 register (PRT2IC0)
+ 0224 620B00            mov     reg[0bh], 00h           ; Port_2_IntCtrl_1 register (PRT2IC1)
+ 0227 70EF          and   F, ~FLAG_XIO_MASK
+ 0229 620900            mov     reg[09h], 00h           ; Port_2_IntEn register (PRT2IE)
+ 022C 7110          or    F, FLAG_XIO_MASK
+ 022E 620C00            mov     reg[0ch], 00h           ; Port_3_DriveMode_0 register (PRT3DM0)
+ 0231 620D00            mov     reg[0dh], 00h           ; Port_3_DriveMode_1 register (PRT3DM1)
+ 0234 70EF          and   F, ~FLAG_XIO_MASK
+ 0236 620F00            mov     reg[0fh], 00h           ; Port_3_DriveMode_2 register (PRT3DM2)
+ 0239 620E00            mov     reg[0eh], 00h           ; Port_3_GlobalSelect register (PRT3GS)
+ 023C 7110          or    F, FLAG_XIO_MASK
+ 023E 620E00            mov     reg[0eh], 00h           ; Port_3_IntCtrl_0 register (PRT3IC0)
+ 0241 620F00            mov     reg[0fh], 00h           ; Port_3_IntCtrl_1 register (PRT3IC1)
+ 0244 70EF          and   F, ~FLAG_XIO_MASK
+ 0246 620D00            mov     reg[0dh], 00h           ; Port_3_IntEn register (PRT3IE)
+ 0249 7110          or    F, FLAG_XIO_MASK
+ 024B 621000            mov     reg[10h], 00h           ; Port_4_DriveMode_0 register (PRT4DM0)
+ 024E 621100            mov     reg[11h], 00h           ; Port_4_DriveMode_1 register (PRT4DM1)
+ 0251 70EF          and   F, ~FLAG_XIO_MASK
+ 0253 621300            mov     reg[13h], 00h           ; Port_4_DriveMode_2 register (PRT4DM2)
+ 0256 621200            mov     reg[12h], 00h           ; Port_4_GlobalSelect register (PRT4GS)
+ 0259 7110          or    F, FLAG_XIO_MASK
+ 025B 621200            mov     reg[12h], 00h           ; Port_4_IntCtrl_0 register (PRT4IC0)
+ 025E 621300            mov     reg[13h], 00h           ; Port_4_IntCtrl_1 register (PRT4IC1)
+ 0261 70EF          and   F, ~FLAG_XIO_MASK
+ 0263 621100            mov     reg[11h], 00h           ; Port_4_IntEn register (PRT4IE)
+ 0266 621500            mov     reg[15h], 00h           ; Port_5_IntEn register (PRT5IE)
+ 0269 621600            mov     reg[16h], 00h           ; Port_5_GlobalSelect register (PRT5GS)
+ 026C 621700            mov     reg[17h], 00h           ; Port_5_DriveMode_2 register (PRT5DM2)
+ 026F 7110          or    F, FLAG_XIO_MASK
+ 0271 621500            mov     reg[15h], 00h           ; Port_5_DriveMode_1 register (PRT5DM1)
+ 0274 621400            mov     reg[14h], 00h           ; Port_5_DriveMode_0 register (PRT5DM0)
+ 0277 621600            mov     reg[16h], 00h           ; Port_5_IntCtrl_0 register (PRT5IC0)
+ 027A 621700            mov     reg[17h], 00h           ; Port_5_IntCtrl_1 register (PRT5IC1)
+ 027D 7F                ret
+ 027E           ReloadConfigTBL_receiver_config_Bank0:
+ 027E           ;  Instance name RECEIVE_1, User Module RX8
+ 027E           ;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+ 027E 2B00              db              2bh, 00h                ;RECEIVE_1_CONTROL_REG  (DCC02CR0)
+ 0280 2900              db              29h, 00h                ;RECEIVE_1_(DCC02DR1)
+ 0282 2A00              db              2ah, 00h                ;RECEIVE_1_RX_BUFFER_REG(DCC02DR2)
+ 0284           ;  Instance name RECEIVE_2, User Module RX8
+ 0284           ;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+ 0284 2F00              db              2fh, 00h                ;RECEIVE_2_CONTROL_REG  (DCC03CR0)
+ 0286 2D00              db              2dh, 00h                ;RECEIVE_2_(DCC03DR1)
+ 0288 2E00              db              2eh, 00h                ;RECEIVE_2_RX_BUFFER_REG(DCC03DR2)
+ 028A           ;  Instance name RECEIVE_3, User Module RX8
+ 028A           ;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+ 028A 3B00              db              3bh, 00h                ;RECEIVE_3_CONTROL_REG  (DCC12CR0)
+ 028C 3900              db              39h, 00h                ;RECEIVE_3_(DCC12DR1)
+ 028E 3A00              db              3ah, 00h                ;RECEIVE_3_RX_BUFFER_REG(DCC12DR2)
+ 0290           ;  Instance name RECEIVE_4, User Module RX8
+ 0290           ;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+ 0290 3F00              db              3fh, 00h                ;RECEIVE_4_CONTROL_REG  (DCC13CR0)
+ 0292 3D00              db              3dh, 00h                ;RECEIVE_4_(DCC13DR1)
+ 0294 3E00              db              3eh, 00h                ;RECEIVE_4_RX_BUFFER_REG(DCC13DR2)
+ 0296           ;  Instance name RX_TIMEOUT, User Module Timer16
+ 0296           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 0296 2300              db              23h, 00h                ;RX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
+ 0298 21F0              db              21h, f0h                ;RX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+ 029A 2200              db              22h, 00h                ;RX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
+ 029C           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 029C 2704              db              27h, 04h                ;RX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
+ 029E 2500              db              25h, 00h                ;RX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
+ 02A0 2600              db              26h, 00h                ;RX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
+ 02A2 FF                db              ffh
+ 02A3           ReloadConfigTBL_receiver_config_Bank1:
+ 02A3           ;  Instance name RECEIVE_1, User Module RX8
+ 02A3           ;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+ 02A3 2B00              db              2bh, 00h                ;RECEIVE_1_(DCC02CR1)
+ 02A5 2805              db              28h, 05h                ;RECEIVE_1_FUNC_REG     (DCC02FN)
+ 02A7 29D1              db              29h, d1h                ;RECEIVE_1_INPUT_REG    (DCC02IN)
+ 02A9 2A80              db              2ah, 80h                ;RECEIVE_1_OUTPUT_REG   (DCC02OU)
+ 02AB           ;  Instance name RECEIVE_2, User Module RX8
+ 02AB           ;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+ 02AB 2F00              db              2fh, 00h                ;RECEIVE_2_(DCC03CR1)
+ 02AD 2C05              db              2ch, 05h                ;RECEIVE_2_FUNC_REG     (DCC03FN)
+ 02AF 2DE1              db              2dh, e1h                ;RECEIVE_2_INPUT_REG    (DCC03IN)
+ 02B1 2E80              db              2eh, 80h                ;RECEIVE_2_OUTPUT_REG   (DCC03OU)
+ 02B3           ;  Instance name RECEIVE_3, User Module RX8
+ 02B3           ;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+ 02B3 3B00              db              3bh, 00h                ;RECEIVE_3_(DCC12CR1)
+ 02B5 3805              db              38h, 05h                ;RECEIVE_3_FUNC_REG     (DCC12FN)
+ 02B7 39F1              db              39h, f1h                ;RECEIVE_3_INPUT_REG    (DCC12IN)
+ 02B9 3A80              db              3ah, 80h                ;RECEIVE_3_OUTPUT_REG   (DCC12OU)
+ 02BB           ;  Instance name RECEIVE_4, User Module RX8
+ 02BB           ;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+ 02BB 3F00              db              3fh, 00h                ;RECEIVE_4_(DCC13CR1)
+ 02BD 3C05              db              3ch, 05h                ;RECEIVE_4_FUNC_REG     (DCC13FN)
+ 02BF 3DC1              db              3dh, c1h                ;RECEIVE_4_INPUT_REG    (DCC13IN)
+ 02C1 3E80              db              3eh, 80h                ;RECEIVE_4_OUTPUT_REG   (DCC13OU)
+ 02C3           ;  Instance name RX_TIMEOUT, User Module Timer16
+ 02C3           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 02C3 2300              db              23h, 00h                ;RX_TIMEOUT_(DBC00CR1)
+ 02C5 2000              db              20h, 00h                ;RX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
+ 02C7 2106              db              21h, 06h                ;RX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+ 02C9 2240              db              22h, 40h                ;RX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+ 02CB           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 02CB 2700              db              27h, 00h                ;RX_TIMEOUT_(DBC01CR1)
+ 02CD 2420              db              24h, 20h                ;RX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
+ 02CF 2536              db              25h, 36h                ;RX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+ 02D1 2640              db              26h, 40h                ;RX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
+ 02D3 FF                db              ffh
+ 02D4           UnloadConfigTBL_receiver_config_Bank0:
+ 02D4           ;  Instance name RECEIVE_1, User Module RX8
+ 02D4           ;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+ 02D4 2B00              db              2bh, 00h                ;RECEIVE_1_CONTROL_0 (DCC02CR0)
+ 02D6           ;  Instance name RECEIVE_2, User Module RX8
+ 02D6           ;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+ 02D6 2F00              db              2fh, 00h                ;RECEIVE_2_CONTROL_0 (DCC03CR0)
+ 02D8           ;  Instance name RECEIVE_3, User Module RX8
+ 02D8           ;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+ 02D8 3B00              db              3bh, 00h                ;RECEIVE_3_CONTROL_0 (DCC12CR0)
+ 02DA           ;  Instance name RECEIVE_4, User Module RX8
+ 02DA           ;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+ 02DA 3F00              db              3fh, 00h                ;RECEIVE_4_CONTROL_0 (DCC13CR0)
+ 02DC           ;  Instance name RX_TIMEOUT, User Module Timer16
+ 02DC           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 02DC 2300              db              23h, 00h                ;RX_TIMEOUT_CONTROL_0 (DBC00CR0)
+ 02DE           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 02DE 2700              db              27h, 00h                ;RX_TIMEOUT_CONTROL_0 (DBC01CR0)
+ 02E0 FF                db              ffh
+ 02E1           UnloadConfigTBL_receiver_config_Bank1:
+ 02E1           ;  Instance name RECEIVE_1, User Module RX8
+ 02E1           ;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+ 02E1 2B00              db              2bh, 00h                ;RECEIVE_1_CONTROL_1 (DCC02CR1)
+ 02E3 2800              db              28h, 00h                ;RECEIVE_1_DIG_BasicFunction (DCC02FN)
+ 02E5 2900              db              29h, 00h                ;RECEIVE_1_DIG_Input (DCC02IN)
+ 02E7 2A00              db              2ah, 00h                ;RECEIVE_1_DIG_Output (DCC02OU)
+ 02E9           ;  Instance name RECEIVE_2, User Module RX8
+ 02E9           ;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+ 02E9 2F00              db              2fh, 00h                ;RECEIVE_2_CONTROL_1 (DCC03CR1)
+ 02EB 2C00              db              2ch, 00h                ;RECEIVE_2_DIG_BasicFunction (DCC03FN)
+ 02ED 2D00              db              2dh, 00h                ;RECEIVE_2_DIG_Input (DCC03IN)
+ 02EF 2E00              db              2eh, 00h                ;RECEIVE_2_DIG_Output (DCC03OU)
+ 02F1           ;  Instance name RECEIVE_3, User Module RX8
+ 02F1           ;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+ 02F1 3B00              db              3bh, 00h                ;RECEIVE_3_CONTROL_1 (DCC12CR1)
+ 02F3 3800              db              38h, 00h                ;RECEIVE_3_DIG_BasicFunction (DCC12FN)
+ 02F5 3900              db              39h, 00h                ;RECEIVE_3_DIG_Input (DCC12IN)
+ 02F7 3A00              db              3ah, 00h                ;RECEIVE_3_DIG_Output (DCC12OU)
+ 02F9           ;  Instance name RECEIVE_4, User Module RX8
+ 02F9           ;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+ 02F9 3F00              db              3fh, 00h                ;RECEIVE_4_CONTROL_1 (DCC13CR1)
+ 02FB 3C00              db              3ch, 00h                ;RECEIVE_4_DIG_BasicFunction (DCC13FN)
+ 02FD 3D00              db              3dh, 00h                ;RECEIVE_4_DIG_Input (DCC13IN)
+ 02FF 3E00              db              3eh, 00h                ;RECEIVE_4_DIG_Output (DCC13OU)
+ 0301           ;  Instance name RX_TIMEOUT, User Module Timer16
+ 0301           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 0301 2300              db              23h, 00h                ;RX_TIMEOUT_CONTROL_1 (DBC00CR1)
+ 0303 2000              db              20h, 00h                ;RX_TIMEOUT_DIG_BasicFunction (DBC00FN)
+ 0305 2100              db              21h, 00h                ;RX_TIMEOUT_DIG_Input (DBC00IN)
+ 0307 2200              db              22h, 00h                ;RX_TIMEOUT_DIG_Output (DBC00OU)
+ 0309           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 0309 2700              db              27h, 00h                ;RX_TIMEOUT_CONTROL_1 (DBC01CR1)
+ 030B 2400              db              24h, 00h                ;RX_TIMEOUT_DIG_BasicFunction (DBC01FN)
+ 030D 2500              db              25h, 00h                ;RX_TIMEOUT_DIG_Input (DBC01IN)
+ 030F 2600              db              26h, 00h                ;RX_TIMEOUT_DIG_Output (DBC01OU)
+ 0311 FF                db              ffh
+ 0312           
+ 0312           ;  Instance name RECEIVE_1, User Module RX8
+ 0312           ;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+ 0312           ;  Instance name RECEIVE_2, User Module RX8
+ 0312           ;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+ 0312           ;  Instance name RECEIVE_3, User Module RX8
+ 0312           ;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+ 0312           ;  Instance name RECEIVE_4, User Module RX8
+ 0312           ;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+ 0312           ;  Instance name RX_TIMEOUT, User Module Timer16
+ 0312           ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+ 0312           ;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+ 0312 FF                db              ffh
+ 0313           UnloadConfigTBL_Total_Bank0:
+ 0313           ;  Block DBC00
+ 0313 2300              db              23h, 00h                ; CONTROL_0 register (DBC00CR0)
+ 0315           ;  Block DBC01
+ 0315 2700              db              27h, 00h                ; CONTROL_0 register (DBC01CR0)
+ 0317           ;  Block DCC02
+ 0317 2B00              db              2bh, 00h                ; CONTROL_0 register (DCC02CR0)
+ 0319           ;  Block DCC03
+ 0319 2F00              db              2fh, 00h                ; CONTROL_0 register (DCC03CR0)
+ 031B           ;  Block DBC10
+ 031B 3300              db              33h, 00h                ; CONTROL_0 register (DBC10CR0)
+ 031D           ;  Block DBC11
+ 031D 3700              db              37h, 00h                ; CONTROL_0 register (DBC11CR0)
+ 031F           ;  Block DCC12
+ 031F 3B00              db              3bh, 00h                ; CONTROL_0 register (DCC12CR0)
+ 0321           ;  Block DCC13
+ 0321 3F00              db              3fh, 00h                ; CONTROL_0 register (DCC13CR0)
+ 0323           ;  Block DBC20
+ 0323 4300              db              43h, 00h                ; CONTROL_0 register (DBC20CR0)
+ 0325           ;  Block DBC21
+ 0325 4700              db              47h, 00h                ; CONTROL_0 register (DBC21CR0)
+ 0327           ;  Block DCC22
+ 0327 4B00              db              4bh, 00h                ; CONTROL_0 register (DCC22CR0)
+ 0329           ;  Block DCC23
+ 0329 4F00              db              4fh, 00h                ; CONTROL_0 register (DCC23CR0)
+ 032B           ;  Block ACC00
+ 032B 7300              db              73h, 00h                ; CR2 register (ACC00CR2)
+ 032D           ;  Block ASC10
+ 032D           ;  Block ASD20
+ 032D 9300              db              93h, 00h                ; CR3 register (ASD20CR3)
+ 032F           ;  Block 
+ 032F           ;  Block ACC01
+ 032F 7700              db              77h, 00h                ; CR2 register (ACC01CR2)
+ 0331           ;  Block ASD11
+ 0331 8700              db              87h, 00h                ; CR3 register (ASD11CR3)
+ 0333           ;  Block ASC21
+ 0333           ;  Block 
+ 0333           ;  Block ACE00
+ 0333           ;  Block ASE10
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333           ;  Block ACE01
+ 0333           ;  Block ASE11
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333           ;  Block 
+ 0333 FF                db              ffh
+ 0334           UnloadConfigTBL_Total_Bank1:
+ 0334           ;  Block DBC00
+ 0334 2300              db              23h, 00h                ; CONTROL_1 register (DBC00CR1)
+ 0336 2000              db              20h, 00h                ; DIG_BasicFunction register (DBC00FN)
+ 0338 2100              db              21h, 00h                ; DIG_Input register (DBC00IN)
+ 033A 2200              db              22h, 00h                ; DIG_Output register (DBC00OU)
+ 033C           ;  Block DBC01
+ 033C 2700              db              27h, 00h                ; CONTROL_1 register (DBC01CR1)
+ 033E 2400              db              24h, 00h                ; DIG_BasicFunction register (DBC01FN)
+ 0340 2500              db              25h, 00h                ; DIG_Input register (DBC01IN)
+ 0342 2600              db              26h, 00h                ; DIG_Output register (DBC01OU)
+ 0344           ;  Block DCC02
+ 0344 2B00              db              2bh, 00h                ; CONTROL_1 register (DCC02CR1)
+ 0346 2800              db              28h, 00h                ; DIG_BasicFunction register (DCC02FN)
+ 0348 2900              db              29h, 00h                ; DIG_Input register (DCC02IN)
+ 034A 2A00              db              2ah, 00h                ; DIG_Output register (DCC02OU)
+ 034C           ;  Block DCC03
+ 034C 2F00              db              2fh, 00h                ; CONTROL_1 register (DCC03CR1)
+ 034E 2C00              db              2ch, 00h                ; DIG_BasicFunction register (DCC03FN)
+ 0350 2D00              db              2dh, 00h                ; DIG_Input register (DCC03IN)
+ 0352 2E00              db              2eh, 00h                ; DIG_Output register (DCC03OU)
+ 0354           ;  Block DBC10
+ 0354 3300              db              33h, 00h                ; CONTROL_1 register (DBC10CR1)
+ 0356 3000              db              30h, 00h                ; DIG_BasicFunction register (DBC10FN)
+ 0358 3100              db              31h, 00h                ; DIG_Input register (DBC10IN)
+ 035A 3200              db              32h, 00h                ; DIG_Output register (DBC10OU)
+ 035C           ;  Block DBC11
+ 035C 3700              db              37h, 00h                ; CONTROL_1 register (DBC11CR1)
+ 035E 3400              db              34h, 00h                ; DIG_BasicFunction register (DBC11FN)
+ 0360 3500              db              35h, 00h                ; DIG_Input register (DBC11IN)
+ 0362 3600              db              36h, 00h                ; DIG_Output register (DBC11OU)
+ 0364           ;  Block DCC12
+ 0364 3B00              db              3bh, 00h                ; CONTROL_1 register (DCC12CR1)
+ 0366 3800              db              38h, 00h                ; DIG_BasicFunction register (DCC12FN)
+ 0368 3900              db              39h, 00h                ; DIG_Input register (DCC12IN)
+ 036A 3A00              db              3ah, 00h                ; DIG_Output register (DCC12OU)
+ 036C           ;  Block DCC13
+ 036C 3F00              db              3fh, 00h                ; CONTROL_1 register (DCC13CR1)
+ 036E 3C00              db              3ch, 00h                ; DIG_BasicFunction register (DCC13FN)
+ 0370 3D00              db              3dh, 00h                ; DIG_Input register (DCC13IN)
+ 0372 3E00              db              3eh, 00h                ; DIG_Output register (DCC13OU)
+ 0374           ;  Block DBC20
+ 0374 4300              db              43h, 00h                ; CONTROL_1 register (DBC20CR1)
+ 0376 4000              db              40h, 00h                ; DIG_BasicFunction register (DBC20FN)
+ 0378 4100              db              41h, 00h                ; DIG_Input register (DBC20IN)
+ 037A 4200              db              42h, 00h                ; DIG_Output register (DBC20OU)
+ 037C           ;  Block DBC21
+ 037C 4700              db              47h, 00h                ; CONTROL_1 register (DBC21CR1)
+ 037E 4400              db              44h, 00h                ; DIG_BasicFunction register (DBC21FN)
+ 0380 4500              db              45h, 00h                ; DIG_Input register (DBC21IN)
+ 0382 4600              db              46h, 00h                ; DIG_Output register (DBC21OU)
+ 0384           ;  Block DCC22
+ 0384 4B00              db              4bh, 00h                ; CONTROL_1 register (DCC22CR1)
+ 0386 4800              db              48h, 00h                ; DIG_BasicFunction register (DCC22FN)
+ 0388 4900              db              49h, 00h                ; DIG_Input register (DCC22IN)
+ 038A 4A00              db              4ah, 00h                ; DIG_Output register (DCC22OU)
+ 038C           ;  Block DCC23
+ 038C 4F00              db              4fh, 00h                ; CONTROL_1 register (DCC23CR1)
+ 038E 4C00              db              4ch, 00h                ; DIG_BasicFunction register (DCC23FN)
+ 0390 4D00              db              4dh, 00h                ; DIG_Input register (DCC23IN)
+ 0392 4E00              db              4eh, 00h                ; DIG_Output register (DCC23OU)
+ 0394           ;  Block ACC00
+ 0394           ;  Block ASC10
+ 0394           ;  Block ASD20
+ 0394           ;  Block 
+ 0394           ;  Block ACC01
+ 0394           ;  Block ASD11
+ 0394           ;  Block ASC21
+ 0394           ;  Block 
+ 0394           ;  Block ACE00
+ 0394           ;  Block ASE10
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394           ;  Block ACE01
+ 0394           ;  Block ASE11
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394           ;  Block 
+ 0394 FF                db              ffh
+ 0395           
+ 0395           
+ 0395           ; PSoC Configuration file trailer PsocConfig.asm

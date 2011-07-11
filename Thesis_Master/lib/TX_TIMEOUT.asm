@@ -61,7 +61,7 @@ export  wTX_TIMEOUT_CaptureCounter    ; obsolete
 export _wTX_TIMEOUT_CaptureCounter    ; obsolete
 
 
-AREA transmitter_config_RAM (RAM,REL)
+AREA pc_listener_RAM (RAM,REL)
 
 ;-----------------------------------------------
 ;  Constant Definitions

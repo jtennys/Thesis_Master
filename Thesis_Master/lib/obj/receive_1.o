@@ -1,0 +1,250 @@
+XH
+H 3 areas 43 global symbols
+M receive_1.asm
+S RECEIVE_1_bRxCnt Ref0000
+S RECEIVE_1_aRxBuffer Ref0000
+S RECEIVE_1_fStatus Ref0000
+A text size 0 flags 0
+dbfile lib/receive_1.asm
+dbfunc 0 ? 0 I
+dbfile RECEIVE_1.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/RECEIVE_1.inc
+dbfunc 0 ? 0 I
+dbfile lib/receive_1.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/receive_1.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+dbfunc 0 ? 0 I
+A RECEIVE_1_RAM size 1 flags 20
+A UserModules size E5 flags 0
+dbfile lib/receive_1.asm
+dbfunc 0 ? 0 I
+dbline 78 0
+dbline 7A 3
+dbline 95 4
+dbline 97 7
+dbline B3 8
+dbline B4 A
+dbline B6 C
+dbline D0 D
+dbline D2 10
+dbline F0 11
+dbline F2 13
+dbline 110 14
+dbline 112 16
+dbline 137 17
+dbline 138 1A
+dbline 13A 1C
+dbline 13C 1E
+dbline 15A 1F
+dbline 15B 21
+dbline 15C 22
+dbline 15D 24
+dbline 15E 26
+dbline 15F 27
+dbline 162 29
+dbline 163 2B
+dbline 165 2C
+dbline 166 2D
+dbline 167 2F
+dbline 168 31
+dbline 16A 32
+dbline 16D 33
+dbline 171 35
+dbline 196 36
+dbline 198 38
+dbline 199 3A
+dbline 19A 3B
+dbline 19B 3D
+dbline 19C 3F
+dbline 19D 40
+dbline 19E 42
+dbline 19F 43
+dbline 1A2 45
+dbline 1A3 46
+dbline 1A4 48
+dbline 1A5 49
+dbline 1AA 4B
+dbline 1D5 4C
+dbline 1D6 4F
+dbline 1D7 52
+dbline 1D8 55
+dbline 1D9 58
+dbline 1DA 5B
+dbline 1DB 5E
+dbline 1DD 61
+dbline 1FE 62
+dbline 1FF 65
+dbline 200 67
+dbline 202 69
+dbline 229 6A
+dbline 22A 6D
+dbline 22B 6F
+dbline 22C 71
+dbline 22E 74
+dbline 24B 75
+dbline 24C 78
+dbline 24E 7A
+dbline 284 7B
+dbline 285 7D
+dbline 286 80
+dbline 288 83
+dbline 289 85
+dbline 28A 87
+dbline 28C 88
+dbline 28D 8A
+dbline 28E 8C
+dbline 28F 8D
+dbline 294 8F
+dbline 295 91
+dbline 296 93
+dbline 297 94
+dbline 298 96
+dbline 299 98
+dbline 29A 9B
+dbline 29D 9D
+dbline 29F 9E
+dbline 2A0 A1
+dbline 2A3 A3
+dbline 2A7 A4
+dbline 2A8 A5
+dbline 2A9 A7
+dbline 2AA AA
+dbline 2AB AC
+dbline 2AC AE
+dbline 2AD B0
+dbline 2AE B2
+dbline 2B0 B4
+dbline 2B1 B7
+dbline 2B2 B9
+dbline 2B3 BC
+dbline 2B4 BE
+dbline 2B8 C1
+dbline 2B9 C2
+dbline 2BA C3
+dbline 2BB C6
+dbline 2BC C8
+dbline 2BD C9
+dbline 2BE CB
+dbline 2BF CF
+dbline 2C1 D1
+dbline 2C4 D2
+dbline 2C5 D3
+dbline 2C6 D7
+dbline 2C8 D9
+dbline 2E6 DA
+dbline 2E8 DD
+dbline 2E9 DF
+dbline 2EA E1
+dbline 2EB E2
+dbline 2EE E4
+S RECEIVE_1_Start Def0008
+S RECEIVE_1_CmdReset Def004C
+S $sb$RECEIVE_1_szGetParam Def007B
+S $se$RECEIVE_1_szGetParam Def00DA
+S $sb$RECEIVE_1_cGetChar Def0017
+S $se$RECEIVE_1_cGetChar Def001F
+S bRECEIVE_1_ReadRxData Def0011
+S RECEIVE_1_bReadRxData Def0011
+S _RECEIVE_1_szGetRestOfParams Def00DA
+S $sb$RECEIVE_1_Start Def0008
+S bRECEIVE_1_ReadRxStatus Def0014
+S RECEIVE_1_bReadRxStatus Def0014
+S $se$RECEIVE_1_Start Def000D
+S $sb$RECEIVE_1_CmdReset Def004C
+S $se$RECEIVE_1_CmdReset Def0062
+S _RECEIVE_1_bCmdLength Def0075
+S _RECEIVE_1_DisableInt Def0004
+S $sb$RECEIVE_1_bReadRxData Def0011
+S $se$RECEIVE_1_bReadRxData Def0014
+S $sb$RECEIVE_1_bReadRxStatus Def0014
+S $se$RECEIVE_1_bReadRxStatus Def0017
+S RECEIVE_1_bCmdCheck Def0062
+S _RECEIVE_1_szGetParam Def007B
+S RECEIVE_1_cReadChar Def001F
+S _RECEIVE_1_cGetChar Def0017
+S RECEIVE_1_iReadChar Def0036
+S RECEIVE_1_bErrCheck Def006A
+S _RECEIVE_1_Start Def0008
+S $sb$RECEIVE_1_bCmdCheck Def0062
+S RECEIVE_1_EnableInt Def0000
+S $se$RECEIVE_1_bCmdCheck Def006A
+S _RECEIVE_1_CmdReset Def004C
+S $sb$RECEIVE_1_cReadChar Def001F
+S $se$RECEIVE_1_cReadChar Def0036
+S $sb$RECEIVE_1_iReadChar Def0036
+S _bRECEIVE_1_ReadRxData Def0011
+S _RECEIVE_1_bReadRxData Def0011
+S $se$RECEIVE_1_iReadChar Def004C
+S $sb$RECEIVE_1_bErrCheck Def006A
+S $se$RECEIVE_1_bErrCheck Def0075
+S _bRECEIVE_1_ReadRxStatus Def0014
+S _RECEIVE_1_bReadRxStatus Def0014
+S $sb$RECEIVE_1_EnableInt Def0000
+S $se$RECEIVE_1_EnableInt Def0004
+S RECEIVE_1_Stop Def000D
+S _RECEIVE_1_bCmdCheck Def0062
+S _RECEIVE_1_cReadChar Def001F
+S _RECEIVE_1_iReadChar Def0036
+S $sb$RECEIVE_1_Stop Def000D
+S RECEIVE_1_szGetRestOfParams Def00DA
+S $se$RECEIVE_1_Stop Def0011
+S _RECEIVE_1_bErrCheck Def006A
+S _RECEIVE_1_EnableInt Def0000
+S RECEIVE_1_bCmdLength Def0075
+S RECEIVE_1_DisableInt Def0004
+S $sb$RECEIVE_1_szGetRestOfParams Def00DA
+S $se$RECEIVE_1_szGetRestOfParams Def00E5
+S $sb$RECEIVE_1_bCmdLength Def0075
+S $se$RECEIVE_1_bCmdLength Def007B
+S $sb$RECEIVE_1_DisableInt Def0004
+S RECEIVE_1_szGetParam Def007B
+S $se$RECEIVE_1_DisableInt Def0008
+S RECEIVE_1_cGetChar Def0017
+S _RECEIVE_1_Stop Def000D
+T 00 00 43 E1 04 7F 41 E1 FB 7F 29 01 60 2B 7F 41
+R 00 00 00 02
+T 00 0E 2B FE 7F 5D 2A 7F 5D 2B 7F 49 2B 08 AF FC
+R 00 00 00 02
+T 00 1C 5D 2A 7F 5D 2B 08 21 08 B0 04 18 80 0B 5D
+R 00 00 00 02
+T 00 2A 2A 4B 18 21 A0 B0 03 4B 7F 50 00 7F 5D 2B
+R 00 00 00 02
+T 00 38 21 E8 08 21 08 B0 07 18 29 01 4B 80 07 18
+R 00 00 00 02
+T 00 46 21 E0 4B 5D 2A 7F 62 D0 00 00 55 00 00 00
+R 00 00 00 02 4B 0A 00 01 0B 0D 00 01
+T 00 52 62 D0 00 00 55 00 00 00 62 D0 00 00 55
+R 00 00 00 02 49 04 00 01 09 07 00 01 4B 0C 00 00
+T 00 5C 00 00 00 26 00 00 00 7F 62 D0 00 00 51
+R 00 00 00 02 0B 02 00 00 0B 06 00 02 4B 0C 00 02
+T 00 66 00 00 21 01 7F 62 D0 00 00 51 00 00 21 F0
+R 00 00 00 02 0B 02 00 02 4B 09 00 02 0B 0C 00 02
+T 00 71 26 00 00 0F 7F 62 D0 00 00 51 00 00 7F 70
+R 00 00 00 02 0B 03 00 02 4B 09 00 00 0B 0C 00 00
+T 00 7C BF 62 D0 00 00 62 D3 00 00 50 00 00 02
+R 00 00 00 02 49 05 00 01 4B 09 00 01 0B 0C 00 01
+T 00 86 00 00 5C 52 00 B0 04 10 80 33 39 00 B0 11
+R 00 00 00 02 09 02 00 01
+T 00 93 75 76 00 00 52 00 3C 00 00 0F BF F3 10 56
+R 00 00 00 02 09 04 00 01 09 09 00 01
+T 00 9F 00 00 80 1F 10 75 76 00 00 3C 00 00 0F AF
+R 00 00 00 02 09 09 00 01 09 0C 00 01
+T 00 AB F3 52 00 A0 12 39 00 BF F1 56 00 00 76
+R 00 00 00 02
+T 00 B8 00 00 3C 00 00 0F B0 04 55 00 00 0F 20 10
+R 00 00 00 02 09 02 00 01 09 05 00 01 09 0B 00 01
+T 00 C3 3D 00 00 B0 0B 20 57 00 50 00 00 70 3F 71
+R 00 00 00 02 4B 0B 00 01
+T 00 D0 C0 7F 20 50 00 00 70 3F 71 C0 7F 62 D0
+R 00 00 00 02 4B 06 00 01
+T 00 DC 00 00 50 00 00 02 00 00 5C 50
+R 00 00 00 02 49 02 00 01 0B 05 00 01 09 08 00 01
+T 00 E3 00 00 7F
+R 00 00 00 02 4B 02 00 01

@@ -18,7 +18,7 @@ dbfile lib/tx_timeout.asm
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
 dbfunc 0 ? 0 I
-A transmitter_config_RAM size 0 flags 20
+A pc_listener_RAM size 0 flags 20
 A UserModules size 60 flags 0
 dbfile lib/tx_timeout.asm
 dbfunc 0 ? 0 I

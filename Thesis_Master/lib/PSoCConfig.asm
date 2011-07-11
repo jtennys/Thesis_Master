@@ -23,20 +23,16 @@ include "GlobalParams.inc"
 
 export LoadConfigInit
 export _LoadConfigInit
-export LoadConfig_transmitter_config
-export _LoadConfig_transmitter_config
-export UnloadConfig_transmitter_config
-export _UnloadConfig_transmitter_config
-export ReloadConfig_transmitter_config
-export _ReloadConfig_transmitter_config
-export LoadConfig_pc_listener
-export _LoadConfig_pc_listener
-export UnloadConfig_pc_listener
-export _UnloadConfig_pc_listener
 export LoadConfig_receiver_config
 export _LoadConfig_receiver_config
 export UnloadConfig_receiver_config
 export _UnloadConfig_receiver_config
+export ReloadConfig_receiver_config
+export _ReloadConfig_receiver_config
+export LoadConfig_pc_listener
+export _LoadConfig_pc_listener
+export UnloadConfig_pc_listener
+export _UnloadConfig_pc_listener
 export UnloadConfig_Total
 export _UnloadConfig_Total
 export ACTIVE_CONFIG_STATUS
@@ -73,17 +69,17 @@ _LoadConfigInit:
     RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
 	mov		[ACTIVE_CONFIG_STATUS], 0
 
-	lcall	LoadConfig_transmitter_config
-	lcall	LoadConfigTBL_transmitter_config_Ordered
+	lcall	LoadConfig_receiver_config
+	lcall	LoadConfigTBL_receiver_config_Ordered
 
 
     RAM_EPILOGUE RAM_USE_CLASS_4
     ret
 
 ;---------------------------------------------------------------------------
-; Load Configuration transmitter_config
+; Load Configuration receiver_config
 ;
-;    Load configuration registers for transmitter_config.
+;    Load configuration registers for receiver_config.
 ;    IO Bank 0 registers a loaded first,then those in IO Bank 1.
 ;
 ;       INPUTS: None.
@@ -99,8 +95,8 @@ _LoadConfigInit:
 ;               Page Pointer Registers Modified: 
 ;               CUR_PP
 ;
-_LoadConfig_transmitter_config:
- LoadConfig_transmitter_config:
+_LoadConfig_receiver_config:
+ LoadConfig_receiver_config:
     RAM_PROLOGUE RAM_USE_CLASS_4
 	M8C_SetBank1
 
@@ -109,20 +105,20 @@ _LoadConfig_transmitter_config:
     mov     a, 0                    ; Specify bank 0
     asr     a                       ; Store in carry flag
                                     ; Load bank 0 table:
-    mov     A, >LoadConfigTBL_transmitter_config_Bank0
-    mov     X, <LoadConfigTBL_transmitter_config_Bank0
+    mov     A, >LoadConfigTBL_receiver_config_Bank0
+    mov     X, <LoadConfigTBL_receiver_config_Bank0
     lcall   LoadConfig              ; Load the bank 0 values
 
     mov     a, 1                    ; Specify bank 1
     asr     a                       ; Store in carry flag
                                     ; Load bank 1 table:
-    mov     A, >LoadConfigTBL_transmitter_config_Bank1
-    mov     X, <LoadConfigTBL_transmitter_config_Bank1
+    mov     A, >LoadConfigTBL_receiver_config_Bank1
+    mov     X, <LoadConfigTBL_receiver_config_Bank1
     lcall   LoadConfig              ; Load the bank 1 values
 
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
 ; set config active bit
-	or		[ACTIVE_CONFIG_STATUS+transmitter_config_ADDR_OFF], transmitter_config_BIT
+	or		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
     M8C_SetBank0                    ; Force return to bank 0
 	pop		x
 
@@ -130,9 +126,9 @@ _LoadConfig_transmitter_config:
     ret
 
 ;---------------------------------------------------------------------------
-; Reload Configuration transmitter_config
+; Reload Configuration receiver_config
 ;
-;    Reload configuration registers for transmitter_config.
+;    Reload configuration registers for receiver_config.
 ;    IO Bank 0 registers a loaded first,then those in IO Bank 1.
 ;
 ;       INPUTS: None.
@@ -148,8 +144,8 @@ _LoadConfig_transmitter_config:
 ;               Page Pointer Registers Modified: 
 ;               CUR_PP
 ;
-_ReloadConfig_transmitter_config:
- ReloadConfig_transmitter_config:
+_ReloadConfig_receiver_config:
+ ReloadConfig_receiver_config:
     RAM_PROLOGUE RAM_USE_CLASS_4
 
 	push	x
@@ -157,20 +153,20 @@ _ReloadConfig_transmitter_config:
     mov     a, 0                    ; Specify bank 0
     asr     a                       ; Store in carry flag
                                     ; Bank 0 table address:
-    mov     A, >ReloadConfigTBL_transmitter_config_Bank0
-    mov     X, <ReloadConfigTBL_transmitter_config_Bank0
+    mov     A, >ReloadConfigTBL_receiver_config_Bank0
+    mov     X, <ReloadConfigTBL_receiver_config_Bank0
     lcall   LoadConfig              ; Reload the bank 0 values
 
     mov     a, 1                    ; Specify bank 1
     asr     a                       ; Store in carry flag
                                     ; Bank 1 table address:
-    mov     A, >ReloadConfigTBL_transmitter_config_Bank1
-    mov     X, <ReloadConfigTBL_transmitter_config_Bank1
+    mov     A, >ReloadConfigTBL_receiver_config_Bank1
+    mov     X, <ReloadConfigTBL_receiver_config_Bank1
     lcall   LoadConfig              ; Reload the bank 1 values
 
 ; set config active bit
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
-	or		[ACTIVE_CONFIG_STATUS+transmitter_config_ADDR_OFF], transmitter_config_BIT
+	or		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
     M8C_SetBank0                    ; Force return to bank 0
 	pop		x
 
@@ -178,9 +174,9 @@ _ReloadConfig_transmitter_config:
     ret
 
 ;---------------------------------------------------------------------------
-; Unload Configuration transmitter_config
+; Unload Configuration receiver_config
 ;
-;    Reset configuration registers for transmitter_config
+;    Reset configuration registers for receiver_config
 ;    to their values as initially configured.
 ;    IO Bank 0 registers a loaded first,then those in IO Bank 1.
 ;
@@ -197,8 +193,8 @@ _ReloadConfig_transmitter_config:
 ;               Page Pointer Registers Modified: 
 ;               CUR_PP
 ;
-_UnloadConfig_transmitter_config:
- UnloadConfig_transmitter_config:
+_UnloadConfig_receiver_config:
+ UnloadConfig_receiver_config:
     RAM_PROLOGUE RAM_USE_CLASS_4
 
 	push	x
@@ -206,22 +202,22 @@ _UnloadConfig_transmitter_config:
     mov     a, 0                    ; Specify bank 0
     asr     a                       ; Store in carry flag
                                     ; Bank 0 table address:
-    mov     A, >UnloadConfigTBL_transmitter_config_Bank0
-    mov     X, <UnloadConfigTBL_transmitter_config_Bank0
+    mov     A, >UnloadConfigTBL_receiver_config_Bank0
+    mov     X, <UnloadConfigTBL_receiver_config_Bank0
     lcall   LoadConfig              ; Unload the bank 0 values
 
     mov     a, 1                    ; Specify bank 1
     asr     a                       ; Store in carry flag
                                     ; Bank 1 table address:
-    mov     A, >UnloadConfigTBL_transmitter_config_Bank1
-    mov     X, <UnloadConfigTBL_transmitter_config_Bank1
+    mov     A, >UnloadConfigTBL_receiver_config_Bank1
+    mov     X, <UnloadConfigTBL_receiver_config_Bank1
     lcall   LoadConfig              ; Unload the bank 1 values
 
 	M8C_SetBank1
 	M8C_SetBank0
 ; clear config active bit
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
-	and		[ACTIVE_CONFIG_STATUS+transmitter_config_ADDR_OFF], ~transmitter_config_BIT
+	and		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], ~receiver_config_BIT
     M8C_SetBank0                    ; Force return to bank 0
 	pop		x
 
@@ -252,10 +248,10 @@ _LoadConfig_pc_listener:
     RAM_PROLOGUE RAM_USE_CLASS_4
 	M8C_SetBank1
 ; writing Port_0_DriveMode_0 register
-	and		reg[ 0h], ~20h
-	or		reg[ 0h], 20h
+	and		reg[ 0h], ~3eh
+	or		reg[ 0h], 3eh
 ; writing Port_0_DriveMode_1 register
-	and		reg[ 1h], ~20h
+	and		reg[ 1h], ~3eh
 ; writing Port_0_DriveMode_2 register
 	M8C_SetBank0
 	and		reg[ 3h], ~a0h
@@ -266,8 +262,25 @@ _LoadConfig_pc_listener:
 	M8C_SetBank1
 	and		reg[e1h], ~ffh
 	or		reg[e1h], c1h
-; writing Row_1_OutputDrive_0 register
+; writing Row_0_InputMux register
 	M8C_SetBank0
+	and		reg[b0h], ~c0h
+; writing Row_0_LogicSelect_0 register
+	and		reg[b3h], ~ fh
+	or		reg[b3h],  5h
+; writing Row_0_LogicSelect_1 register
+	and		reg[b4h], ~ fh
+	or		reg[b4h],  5h
+; writing Row_0_OutputDrive_0 register
+	and		reg[b5h], ~12h
+	or		reg[b5h], 12h
+; writing Row_0_OutputDrive_1 register
+	and		reg[b6h], ~11h
+	or		reg[b6h], 11h
+; writing Row_1_InputMux register
+	and		reg[b8h], ~c0h
+	or		reg[b8h], 40h
+; writing Row_1_OutputDrive_0 register
 	and		reg[bdh], ~20h
 	or		reg[bdh], 20h
 
@@ -340,8 +353,23 @@ _UnloadConfig_pc_listener:
 ; writing OscillatorControl_1 register
 	and		reg[e1h], ~ffh
 	or		reg[e1h], 99h
-; writing Row_1_OutputDrive_0 register
+; writing Row_0_InputMux register
 	M8C_SetBank0
+	and		reg[b0h], ~c0h
+	or		reg[b0h], 40h
+; writing Row_0_LogicSelect_0 register
+	and		reg[b3h], ~ fh
+	or		reg[b3h],  3h
+; writing Row_0_LogicSelect_1 register
+	and		reg[b4h], ~ fh
+	or		reg[b4h],  3h
+; writing Row_0_OutputDrive_0 register
+	and		reg[b5h], ~12h
+; writing Row_0_OutputDrive_1 register
+	and		reg[b6h], ~11h
+; writing Row_1_InputMux register
+	and		reg[b8h], ~c0h
+; writing Row_1_OutputDrive_0 register
 	and		reg[bdh], ~20h
 ; writing Port_0_GlobalSelect register
 	and		reg[ 2h], ~a0h
@@ -350,137 +378,14 @@ _UnloadConfig_pc_listener:
 	or		reg[ 3h], a0h
 ; writing Port_0_DriveMode_1 register
 	M8C_SetBank1
-	and		reg[ 1h], ~20h
-	or		reg[ 1h], 20h
+	and		reg[ 1h], ~3eh
+	or		reg[ 1h], 3eh
 ; writing Port_0_DriveMode_0 register
-	and		reg[ 0h], ~20h
+	and		reg[ 0h], ~3eh
 	M8C_SetBank0
 ; clear config active bit
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
 	and		[ACTIVE_CONFIG_STATUS+pc_listener_ADDR_OFF], ~pc_listener_BIT
-    M8C_SetBank0                    ; Force return to bank 0
-	pop		x
-
-    RAM_EPILOGUE RAM_USE_CLASS_4
-    ret
-
-;---------------------------------------------------------------------------
-; Load Configuration receiver_config
-;
-;    Load configuration registers for receiver_config.
-;    IO Bank 0 registers a loaded first,then those in IO Bank 1.
-;
-;       INPUTS: None.
-;      RETURNS: Nothing.
-; SIDE EFFECTS: Registers are volatile: the CPU A and X registers may be
-;               modified as may the Page Pointer registers!
-;               In the large memory model currently only the page
-;               pointer registers listed below are modified.  This does
-;               not guarantee that in future implementations of this
-;               function other page pointer registers will not be
-;               modified.
-;          
-;               Page Pointer Registers Modified: 
-;               CUR_PP
-;
-_LoadConfig_receiver_config:
- LoadConfig_receiver_config:
-    RAM_PROLOGUE RAM_USE_CLASS_4
-	M8C_SetBank1
-; writing Port_0_DriveMode_0 register
-	and		reg[ 0h], ~10h
-; writing Port_0_DriveMode_1 register
-	and		reg[ 1h], ~10h
-	or		reg[ 1h], 10h
-; writing Row_0_InputMux register
-	M8C_SetBank0
-	and		reg[b0h], ~ 3h
-	or		reg[b0h],  1h
-; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~ 2h
-
-	push	x
-    M8C_SetBank0                    ; Force bank 0
-    mov     a, 0                    ; Specify bank 0
-    asr     a                       ; Store in carry flag
-                                    ; Load bank 0 table:
-    mov     A, >LoadConfigTBL_receiver_config_Bank0
-    mov     X, <LoadConfigTBL_receiver_config_Bank0
-    lcall   LoadConfig              ; Load the bank 0 values
-
-    mov     a, 1                    ; Specify bank 1
-    asr     a                       ; Store in carry flag
-                                    ; Load bank 1 table:
-    mov     A, >LoadConfigTBL_receiver_config_Bank1
-    mov     X, <LoadConfigTBL_receiver_config_Bank1
-    lcall   LoadConfig              ; Load the bank 1 values
-
-	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
-; set config active bit
-	or		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
-    M8C_SetBank0                    ; Force return to bank 0
-	pop		x
-
-    RAM_EPILOGUE RAM_USE_CLASS_4
-    ret
-
-;---------------------------------------------------------------------------
-; Unload Configuration receiver_config
-;
-;    Reset configuration registers for receiver_config
-;    to their values as initially configured.
-;    IO Bank 0 registers a loaded first,then those in IO Bank 1.
-;
-;       INPUTS: None.
-;      RETURNS: Nothing.
-; SIDE EFFECTS: Registers are volatile: the CPU A and X registers may be
-;               modified as may the Page Pointer registers!
-;               In the large memory model currently only the page
-;               pointer registers listed below are modified.  This does
-;               not guarantee that in future implementations of this
-;               function other page pointer registers will not be
-;               modified.
-;          
-;               Page Pointer Registers Modified: 
-;               CUR_PP
-;
-_UnloadConfig_receiver_config:
- UnloadConfig_receiver_config:
-    RAM_PROLOGUE RAM_USE_CLASS_4
-
-	push	x
-    M8C_SetBank0                    ; Force bank 0
-    mov     a, 0                    ; Specify bank 0
-    asr     a                       ; Store in carry flag
-                                    ; Bank 0 table address:
-    mov     A, >UnloadConfigTBL_receiver_config_Bank0
-    mov     X, <UnloadConfigTBL_receiver_config_Bank0
-    lcall   LoadConfig              ; Unload the bank 0 values
-
-    mov     a, 1                    ; Specify bank 1
-    asr     a                       ; Store in carry flag
-                                    ; Bank 1 table address:
-    mov     A, >UnloadConfigTBL_receiver_config_Bank1
-    mov     X, <UnloadConfigTBL_receiver_config_Bank1
-    lcall   LoadConfig              ; Unload the bank 1 values
-
-	M8C_SetBank1
-; writing Row_0_InputMux register
-	M8C_SetBank0
-	and		reg[b0h], ~ 3h
-; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~ 2h
-	or		reg[b5h],  2h
-; writing Port_0_DriveMode_1 register
-	M8C_SetBank1
-	and		reg[ 1h], ~10h
-; writing Port_0_DriveMode_0 register
-	and		reg[ 0h], ~10h
-	or		reg[ 0h], 10h
-	M8C_SetBank0
-; clear config active bit
-	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
-	and		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], ~receiver_config_BIT
     M8C_SetBank0                    ; Force return to bank 0
 	pop		x
 

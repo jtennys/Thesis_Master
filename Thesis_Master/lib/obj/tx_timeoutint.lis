@@ -2229,7 +2229,7 @@
  0000           ; Constants for TX_TIMEOUT user defined values
  0000           ;--------------------------------------------------
  0000           
- 00F0           TX_TIMEOUT_PERIOD:                         equ 0xf0
+ 1F40           TX_TIMEOUT_PERIOD:                         equ 0x1f40
  0000           TX_TIMEOUT_COMPARE_VALUE:                  equ 0x0
  0000           
  0000           

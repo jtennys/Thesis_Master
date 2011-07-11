@@ -1,0 +1,102 @@
+XH
+H 4 areas 7 global symbols
+M receive_3int.asm
+A text size 0 flags 0
+dbfile lib/receive_3int.asm
+dbfunc 0 ? 0 I
+dbfile RECEIVE_3.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/RECEIVE_3.inc
+dbfunc 0 ? 0 I
+dbfile lib/receive_3int.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/receive_3int.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 2 flags 20
+S _RECEIVE_3_fStatus Def0000
+S RECEIVE_3_bRxCnt Def0001
+S _RECEIVE_3_bRxCnt Def0001
+S RECEIVE_3_fStatus Def0000
+A RECEIVE_3_RAM size 10 flags 20
+S RECEIVE_3_aRxBuffer Def0000
+S _RECEIVE_3_aRxBuffer Def0000
+A UserModules size 74 flags 0
+dbfile lib/receive_3int.asm
+dbfunc 0 ? 0 I
+dbline 67 0
+dbline 68 1
+dbline 6B 4
+dbline 6E 5
+dbline 6F 7
+dbline 70 9
+dbline 72 A
+dbline 73 C
+dbline 74 E
+dbline 75 F
+dbline 79 11
+dbline 7C 12
+dbline 7D 14
+dbline 7F 16
+dbline 81 18
+dbline 83 1B
+dbline 84 1D
+dbline 88 1F
+dbline 89 22
+dbline 8A 25
+dbline 8E 27
+dbline 91 29
+dbline 92 2C
+dbline 94 2E
+dbline 95 30
+dbline 96 32
+dbline 98 35
+dbline 99 3A
+dbline 9A 3C
+dbline 9B 41
+dbline 9C 43
+dbline A7 45
+dbline A8 48
+dbline A9 4A
+dbline AB 4D
+dbline AC 52
+dbline AD 54
+dbline AE 59
+dbline AF 5B
+dbline B3 5D
+dbline B4 5E
+dbline B5 60
+dbline B7 61
+dbline B8 66
+dbline B9 68
+dbline BA 6C
+dbline BF 6F
+dbline C3 71
+dbline C4 72
+dbline C9 73
+S _RECEIVE_3_ISR Def0000
+T 00 00 08 10 5D D3 08 58 00 01 5D 3B 08 21 08 B0
+R 00 00 00 03 09 08 00 01
+T 00 0D 04 18 80 5E 18 21 E0 A0 12 2C 00 00 49 3A
+R 00 00 00 03 09 0C 00 01
+T 00 1A 00 21 20 A0 50 41 3B FE 43 3B 01 80 48 5D
+R 00 00 00 03
+T 00 28 3A 47 00 00 01 B0 41 39 00 B0 14 2E 00 00
+R 00 00 00 03 09 04 00 01 09 0E 00 01
+T 00 34 01 62 D3 00 00 70 3F 71 80 56 00 00 00 70
+R 00 00 00 03 49 05 00 02 09 0C 00 02
+T 00 40 3F 71 00 80 2A 3C 00 01 0F C0 14 2E 00 00
+R 00 00 00 03 09 08 00 01 09 0E 00 01
+T 00 4C 10 62 D3 00 00 70 3F 71 80 56 00 00 00 70
+R 00 00 00 03 49 05 00 02 09 0C 00 02
+T 00 58 3F 71 00 80 12 75 5A 00 01 79 62 D3 00 00
+R 00 00 00 03 09 09 00 01 49 0E 00 02
+T 00 64 70 3F 71 80 54 00 00 70 3F 71 00 18 60 D3
+R 00 00 00 03 09 07 00 02
+T 00 71 20 18 7E
+R 00 00 00 03

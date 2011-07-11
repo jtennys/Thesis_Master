@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <PSOC_WND_PERSIST>
   <APP_EDITOR_SETTINGS>
-    <OPEN_FILE PATH="C:\Users\Admin\Documents\PSoC Designer 5.0 Projects\Thesis_Master\Thesis_Master\Thesis_Master.soc" />
-    <OPEN_FILE PATH="C:\Users\Admin\Documents\PSoC Designer 5.0 Projects\Thesis_Master\Thesis_Master.cmx" />
-    <OPEN_FILE PATH="C:\Users\Admin\Documents\PSoC Designer 5.0 Projects\Thesis_Master\Thesis_Master\main.c" ACTIVE="true" />
   </APP_EDITOR_SETTINGS>
   <DEBUGGER_SETTINGS>
     <TRACE_MODE VALUE="PCOnly" />

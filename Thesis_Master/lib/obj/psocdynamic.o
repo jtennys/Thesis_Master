@@ -1,28 +1,22 @@
 XH
-H 1 areas 7 global symbols
+H 1 areas 5 global symbols
 M psocdynamic.asm
 S ACTIVE_CONFIG_STATUS Ref0000
-A text size 27 flags 0
+A text size 1A flags 0
 dbfile lib/psocdynamic.asm
 dbfunc 0 ? 0 I
-dbline 1B 0
-dbline 1C 3
-dbline 1D 5
-dbline 1E 8
-dbline 1F A
-dbline 21 C
-dbline 25 D
-dbline 26 10
-dbline 27 12
-dbline 28 15
-dbline 29 17
-dbline 2B 19
-dbline 2F 1A
-dbline 30 1D
-dbline 31 1F
-dbline 32 22
-dbline 33 24
-dbline 35 26
+dbline 19 0
+dbline 1A 3
+dbline 1B 5
+dbline 1C 8
+dbline 1D A
+dbline 1F C
+dbline 23 D
+dbline 24 10
+dbline 25 12
+dbline 26 15
+dbline 27 17
+dbline 29 19
 dbfile ./lib/PSoCDynamic.inc
 dbfunc 0 ? 0 I
 dbfile lib/psocdynamic.asm
@@ -33,17 +27,13 @@ dbfile lib/psocdynamic.asm
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
 dbfunc 0 ? 0 I
-S Isreceiver_configLoaded Def001A
-S _Isreceiver_configLoaded Def001A
-S Istransmitter_configLoaded Def0000
+S Isreceiver_configLoaded Def0000
+S _Isreceiver_configLoaded Def0000
 S Ispc_listenerLoaded Def000D
-S _Istransmitter_configLoaded Def0000
 S _Ispc_listenerLoaded Def000D
 T 00 00 62 D0 00 00 50 00 47 00 00 01 A0 03 50 01
 R 00 00 00 00 4B 04 00 00 0B 09 00 00
 T 00 0C 7F 62 D0 00 00 50 00 47 00 00 02 A0 03 50
 R 00 00 00 00 4B 05 00 00 0B 0A 00 00
-T 00 18 01 7F 62 D0 00 00 50 00 47 00 00 04 A0 03
-R 00 00 00 00 4B 06 00 00 0B 0B 00 00
-T 00 24 50 01 7F
+T 00 18 01 7F
 R 00 00 00 00

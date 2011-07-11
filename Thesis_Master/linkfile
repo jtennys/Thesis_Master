@@ -2,7 +2,28 @@
  -bdata:0.0x2ff -bSSCParmBlk:0x00F7.0x00FF -BInterruptRAM:0 -Bvirtual_registers  
  -Btransmitter_config_RAM   
  -Bpc_listener_RAM   
- -Breceiver_config_RAM 
+ -Breceiver_config_RAM   
+ -Btransmitter_config_RAM   
+ -Bpc_listener_RAM   
+ -Breceiver_config_RAM   
+ -Breceiver_config_RAM   
+ -Bpc_listener_RAM   
+ -Breceiver_config_RAM   
+ -Bpc_listener_RAM   
+ -Breceiver_config_RAM   
+ -Bpc_listener_RAM   
+ -Breceiver_config_RAM   
+ -Bpc_listener_RAM   
+ -Breceiver_config_RAM   
+ -Bpc_listener_RAM   
+ -Breceiver_config_RAM   
+ -Bpc_listener_RAM   
+ -Breceiver_config_RAM   
+ -Bpc_listener_RAM   
+ -Breceiver_config_RAM   
+ -Bpc_listener_RAM   
+ -Breceiver_config_RAM   
+ -Bpc_listener_RAM 
  -o"output/Thesis_Master" 
  ./obj/main.o   
  C:/Users/Admin/DOCUME~1/PSOCDE~1.0PR/THESIS~4/THESIS~1/lib/libPSoc.a -LC:/PROGRA~1/Cypress/Common/CYPRES~3/tools/lib/LMM/eightpages C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/lib/CY8C28033/cms.a C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/lib/LMM/UASW/NoMAC/arith.a  

@@ -2,21 +2,17 @@
 ;
 include "m8c.inc"
 ;  Personalization tables 
-export LoadConfigTBL_transmitter_config_Bank1
-export LoadConfigTBL_transmitter_config_Bank0
-export LoadConfigTBL_transmitter_config_Ordered
-export UnloadConfigTBL_transmitter_config_Bank1
-export UnloadConfigTBL_transmitter_config_Bank0
-export ReloadConfigTBL_transmitter_config_Bank1
-export ReloadConfigTBL_transmitter_config_Bank0
+export LoadConfigTBL_receiver_config_Bank1
+export LoadConfigTBL_receiver_config_Bank0
+export LoadConfigTBL_receiver_config_Ordered
+export UnloadConfigTBL_receiver_config_Bank1
+export UnloadConfigTBL_receiver_config_Bank0
+export ReloadConfigTBL_receiver_config_Bank1
+export ReloadConfigTBL_receiver_config_Bank0
 export LoadConfigTBL_pc_listener_Bank1
 export LoadConfigTBL_pc_listener_Bank0
 export UnloadConfigTBL_pc_listener_Bank1
 export UnloadConfigTBL_pc_listener_Bank0
-export LoadConfigTBL_receiver_config_Bank1
-export LoadConfigTBL_receiver_config_Bank0
-export UnloadConfigTBL_receiver_config_Bank1
-export UnloadConfigTBL_receiver_config_Bank0
 export UnloadConfigTBL_Total_Bank1
 export UnloadConfigTBL_Total_Bank0
 AREA lit(rom, rel)
@@ -30,11 +26,25 @@ LoadConfigTBL_pc_listener_Bank0:
 	db		3bh, 00h		;COMP_SERIAL_TX_CONTROL_REG(DCC12CR0)
 	db		39h, 00h		;COMP_SERIAL_TX_BUFFER_REG (DCC12DR1)
 	db		3ah, 00h		;COMP_SERIAL_(DCC12DR2)
-;  Instance name TX_REPEATER, User Module TX8
-;       Instance name TX_REPEATER, Block Name TX8(DCC02)
-	db		2bh, 00h		;TX_REPEATER_CONTROL_REG  (DCC02CR0)
-	db		29h, 00h		;TX_REPEATER_TX_BUFFER_REG(DCC02DR1)
-	db		2ah, 00h		;TX_REPEATER_(DCC02DR2)
+;  Instance name TX_REPEATER_014, User Module TX8
+;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+	db		2bh, 00h		;TX_REPEATER_014_CONTROL_REG  (DCC02CR0)
+	db		29h, 00h		;TX_REPEATER_014_TX_BUFFER_REG(DCC02DR1)
+	db		2ah, 00h		;TX_REPEATER_014_(DCC02DR2)
+;  Instance name TX_REPEATER_23, User Module TX8
+;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+	db		2fh, 00h		;TX_REPEATER_23_CONTROL_REG  (DCC03CR0)
+	db		2dh, 00h		;TX_REPEATER_23_TX_BUFFER_REG(DCC03DR1)
+	db		2eh, 00h		;TX_REPEATER_23_(DCC03DR2)
+;  Instance name TX_TIMEOUT, User Module Timer16
+;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+	db		23h, 00h		;TX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
+	db		21h, 40h		;TX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+	db		22h, 00h		;TX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
+;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+	db		27h, 04h		;TX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
+	db		25h, 1fh		;TX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
+	db		26h, 00h		;TX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
 	db		ffh
 LoadConfigTBL_pc_listener_Bank1:
 ;  Instance name COMP_SERIAL, User Module UART
@@ -48,12 +58,29 @@ LoadConfigTBL_pc_listener_Bank1:
 	db		38h, 1dh		;COMP_SERIAL_TX_FUNC_REG   (DCC12FN)
 	db		39h, 06h		;COMP_SERIAL_TX_INPUT_REG  (DCC12IN)
 	db		3ah, 85h		;COMP_SERIAL_TX_OUTPUT_REG (DCC12OU)
-;  Instance name TX_REPEATER, User Module TX8
-;       Instance name TX_REPEATER, Block Name TX8(DCC02)
-	db		2bh, 00h		;TX_REPEATER_(DCC02CR1)
-	db		28h, 1dh		;TX_REPEATER_FUNC_REG     (DCC02FN)
-	db		29h, 01h		;TX_REPEATER_INPUT_REG    (DCC02IN)
-	db		2ah, 84h		;TX_REPEATER_OUTPUT_REG   (DCC02OU)
+;  Instance name TX_REPEATER_014, User Module TX8
+;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+	db		2bh, 00h		;TX_REPEATER_014_(DCC02CR1)
+	db		28h, 1dh		;TX_REPEATER_014_FUNC_REG     (DCC02FN)
+	db		29h, 01h		;TX_REPEATER_014_INPUT_REG    (DCC02IN)
+	db		2ah, 85h		;TX_REPEATER_014_OUTPUT_REG   (DCC02OU)
+;  Instance name TX_REPEATER_23, User Module TX8
+;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+	db		2fh, 00h		;TX_REPEATER_23_(DCC03CR1)
+	db		2ch, 1dh		;TX_REPEATER_23_FUNC_REG     (DCC03FN)
+	db		2dh, 01h		;TX_REPEATER_23_INPUT_REG    (DCC03IN)
+	db		2eh, 87h		;TX_REPEATER_23_OUTPUT_REG   (DCC03OU)
+;  Instance name TX_TIMEOUT, User Module Timer16
+;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+	db		23h, 00h		;TX_TIMEOUT_(DBC00CR1)
+	db		20h, 00h		;TX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
+	db		21h, 06h		;TX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+	db		22h, 80h		;TX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+	db		27h, 00h		;TX_TIMEOUT_(DBC01CR1)
+	db		24h, 20h		;TX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
+	db		25h, 36h		;TX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+	db		26h, 80h		;TX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
 	db		ffh
 UnloadConfigTBL_pc_listener_Bank0:
 ;  Instance name COMP_SERIAL, User Module UART
@@ -61,9 +88,17 @@ UnloadConfigTBL_pc_listener_Bank0:
 	db		3fh, 00h		;COMP_SERIAL_CONTROL_0 (DCC13CR0)
 ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
 	db		3bh, 00h		;COMP_SERIAL_CONTROL_0 (DCC12CR0)
-;  Instance name TX_REPEATER, User Module TX8
-;       Instance name TX_REPEATER, Block Name TX8(DCC02)
-	db		2bh, 00h		;TX_REPEATER_CONTROL_0 (DCC02CR0)
+;  Instance name TX_REPEATER_014, User Module TX8
+;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+	db		2bh, 00h		;TX_REPEATER_014_CONTROL_0 (DCC02CR0)
+;  Instance name TX_REPEATER_23, User Module TX8
+;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+	db		2fh, 00h		;TX_REPEATER_23_CONTROL_0 (DCC03CR0)
+;  Instance name TX_TIMEOUT, User Module Timer16
+;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+	db		23h, 00h		;TX_TIMEOUT_CONTROL_0 (DBC00CR0)
+;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+	db		27h, 00h		;TX_TIMEOUT_CONTROL_0 (DBC01CR0)
 	db		ffh
 UnloadConfigTBL_pc_listener_Bank1:
 ;  Instance name COMP_SERIAL, User Module UART
@@ -77,26 +112,63 @@ UnloadConfigTBL_pc_listener_Bank1:
 	db		38h, 00h		;COMP_SERIAL_DIG_BasicFunction (DCC12FN)
 	db		39h, 00h		;COMP_SERIAL_DIG_Input (DCC12IN)
 	db		3ah, 00h		;COMP_SERIAL_DIG_Output (DCC12OU)
-;  Instance name TX_REPEATER, User Module TX8
-;       Instance name TX_REPEATER, Block Name TX8(DCC02)
-	db		2bh, 00h		;TX_REPEATER_CONTROL_1 (DCC02CR1)
-	db		28h, 00h		;TX_REPEATER_DIG_BasicFunction (DCC02FN)
-	db		29h, 00h		;TX_REPEATER_DIG_Input (DCC02IN)
-	db		2ah, 00h		;TX_REPEATER_DIG_Output (DCC02OU)
+;  Instance name TX_REPEATER_014, User Module TX8
+;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+	db		2bh, 00h		;TX_REPEATER_014_CONTROL_1 (DCC02CR1)
+	db		28h, 00h		;TX_REPEATER_014_DIG_BasicFunction (DCC02FN)
+	db		29h, 00h		;TX_REPEATER_014_DIG_Input (DCC02IN)
+	db		2ah, 00h		;TX_REPEATER_014_DIG_Output (DCC02OU)
+;  Instance name TX_REPEATER_23, User Module TX8
+;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+	db		2fh, 00h		;TX_REPEATER_23_CONTROL_1 (DCC03CR1)
+	db		2ch, 00h		;TX_REPEATER_23_DIG_BasicFunction (DCC03FN)
+	db		2dh, 00h		;TX_REPEATER_23_DIG_Input (DCC03IN)
+	db		2eh, 00h		;TX_REPEATER_23_DIG_Output (DCC03OU)
+;  Instance name TX_TIMEOUT, User Module Timer16
+;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+	db		23h, 00h		;TX_TIMEOUT_CONTROL_1 (DBC00CR1)
+	db		20h, 00h		;TX_TIMEOUT_DIG_BasicFunction (DBC00FN)
+	db		21h, 00h		;TX_TIMEOUT_DIG_Input (DBC00IN)
+	db		22h, 00h		;TX_TIMEOUT_DIG_Output (DBC00OU)
+;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+	db		27h, 00h		;TX_TIMEOUT_CONTROL_1 (DBC01CR1)
+	db		24h, 00h		;TX_TIMEOUT_DIG_BasicFunction (DBC01FN)
+	db		25h, 00h		;TX_TIMEOUT_DIG_Input (DBC01IN)
+	db		26h, 00h		;TX_TIMEOUT_DIG_Output (DBC01OU)
 	db		ffh
 
 ;  Instance name COMP_SERIAL, User Module UART
 ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
 ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
-;  Instance name TX_REPEATER, User Module TX8
-;       Instance name TX_REPEATER, Block Name TX8(DCC02)
+;  Instance name TX_REPEATER_014, User Module TX8
+;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+;  Instance name TX_REPEATER_23, User Module TX8
+;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
+;  Instance name TX_TIMEOUT, User Module Timer16
+;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		ffh
 LoadConfigTBL_receiver_config_Bank0:
-;  Instance name RECEIVE, User Module RX8
-;       Instance name RECEIVE, Block Name RX8(DCC02)
-	db		2bh, 00h		;RECEIVE_CONTROL_REG  (DCC02CR0)
-	db		29h, 00h		;RECEIVE_(DCC02DR1)
-	db		2ah, 00h		;RECEIVE_RX_BUFFER_REG(DCC02DR2)
+;  Instance name RECEIVE_1, User Module RX8
+;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+	db		2bh, 00h		;RECEIVE_1_CONTROL_REG  (DCC02CR0)
+	db		29h, 00h		;RECEIVE_1_(DCC02DR1)
+	db		2ah, 00h		;RECEIVE_1_RX_BUFFER_REG(DCC02DR2)
+;  Instance name RECEIVE_2, User Module RX8
+;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+	db		2fh, 00h		;RECEIVE_2_CONTROL_REG  (DCC03CR0)
+	db		2dh, 00h		;RECEIVE_2_(DCC03DR1)
+	db		2eh, 00h		;RECEIVE_2_RX_BUFFER_REG(DCC03DR2)
+;  Instance name RECEIVE_3, User Module RX8
+;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+	db		3bh, 00h		;RECEIVE_3_CONTROL_REG  (DCC12CR0)
+	db		39h, 00h		;RECEIVE_3_(DCC12DR1)
+	db		3ah, 00h		;RECEIVE_3_RX_BUFFER_REG(DCC12DR2)
+;  Instance name RECEIVE_4, User Module RX8
+;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+	db		3fh, 00h		;RECEIVE_4_CONTROL_REG  (DCC13CR0)
+	db		3dh, 00h		;RECEIVE_4_(DCC13DR1)
+	db		3eh, 00h		;RECEIVE_4_RX_BUFFER_REG(DCC13DR2)
 ;  Instance name RX_TIMEOUT, User Module Timer16
 ;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;RX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
@@ -106,77 +178,6 @@ LoadConfigTBL_receiver_config_Bank0:
 	db		27h, 04h		;RX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
 	db		25h, 00h		;RX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
 	db		26h, 00h		;RX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
-	db		ffh
-LoadConfigTBL_receiver_config_Bank1:
-;  Instance name RECEIVE, User Module RX8
-;       Instance name RECEIVE, Block Name RX8(DCC02)
-	db		2bh, 00h		;RECEIVE_(DCC02CR1)
-	db		28h, 05h		;RECEIVE_FUNC_REG     (DCC02FN)
-	db		29h, c1h		;RECEIVE_INPUT_REG    (DCC02IN)
-	db		2ah, 80h		;RECEIVE_OUTPUT_REG   (DCC02OU)
-;  Instance name RX_TIMEOUT, User Module Timer16
-;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-	db		23h, 00h		;RX_TIMEOUT_(DBC00CR1)
-	db		20h, 00h		;RX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
-	db		21h, 06h		;RX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
-	db		22h, 40h		;RX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
-;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		27h, 00h		;RX_TIMEOUT_(DBC01CR1)
-	db		24h, 20h		;RX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
-	db		25h, 36h		;RX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
-	db		26h, 40h		;RX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
-	db		ffh
-UnloadConfigTBL_receiver_config_Bank0:
-;  Instance name RECEIVE, User Module RX8
-;       Instance name RECEIVE, Block Name RX8(DCC02)
-	db		2bh, 00h		;RECEIVE_CONTROL_0 (DCC02CR0)
-;  Instance name RX_TIMEOUT, User Module Timer16
-;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-	db		23h, 00h		;RX_TIMEOUT_CONTROL_0 (DBC00CR0)
-;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		27h, 00h		;RX_TIMEOUT_CONTROL_0 (DBC01CR0)
-	db		ffh
-UnloadConfigTBL_receiver_config_Bank1:
-;  Instance name RECEIVE, User Module RX8
-;       Instance name RECEIVE, Block Name RX8(DCC02)
-	db		2bh, 00h		;RECEIVE_CONTROL_1 (DCC02CR1)
-	db		28h, 00h		;RECEIVE_DIG_BasicFunction (DCC02FN)
-	db		29h, 00h		;RECEIVE_DIG_Input (DCC02IN)
-	db		2ah, 00h		;RECEIVE_DIG_Output (DCC02OU)
-;  Instance name RX_TIMEOUT, User Module Timer16
-;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-	db		23h, 00h		;RX_TIMEOUT_CONTROL_1 (DBC00CR1)
-	db		20h, 00h		;RX_TIMEOUT_DIG_BasicFunction (DBC00FN)
-	db		21h, 00h		;RX_TIMEOUT_DIG_Input (DBC00IN)
-	db		22h, 00h		;RX_TIMEOUT_DIG_Output (DBC00OU)
-;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		27h, 00h		;RX_TIMEOUT_CONTROL_1 (DBC01CR1)
-	db		24h, 00h		;RX_TIMEOUT_DIG_BasicFunction (DBC01FN)
-	db		25h, 00h		;RX_TIMEOUT_DIG_Input (DBC01IN)
-	db		26h, 00h		;RX_TIMEOUT_DIG_Output (DBC01OU)
-	db		ffh
-
-;  Instance name RECEIVE, User Module RX8
-;       Instance name RECEIVE, Block Name RX8(DCC02)
-;  Instance name RX_TIMEOUT, User Module Timer16
-;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		ffh
-LoadConfigTBL_transmitter_config_Bank0:
-;  Instance name TRANSMIT, User Module TX8
-;       Instance name TRANSMIT, Block Name TX8(DCC02)
-	db		2bh, 00h		;TRANSMIT_CONTROL_REG  (DCC02CR0)
-	db		29h, 00h		;TRANSMIT_TX_BUFFER_REG(DCC02DR1)
-	db		2ah, 00h		;TRANSMIT_(DCC02DR2)
-;  Instance name TX_TIMEOUT, User Module Timer16
-;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-	db		23h, 00h		;TX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
-	db		21h, f0h		;TX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
-	db		22h, 00h		;TX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
-;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		27h, 04h		;TX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
-	db		25h, 00h		;TX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
-	db		26h, 00h		;TX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
 ;  Global Register values Bank 0
 	db		6ah, 00h		; ADCDataHigh register (SADC_DH)
 	db		6bh, 00h		; ADCDataLow register (SADC_DL)
@@ -206,14 +207,14 @@ LoadConfigTBL_transmitter_config_Bank0:
 	db		b7h, 00h		; RowDigitalInterconnectInputSelect:0 register (RDI0DSM)
 	db		bfh, 00h		; RowDigitalInterconnectInputSelect:1 register (RDI1DSM)
 	db		c7h, 00h		; RowDigitalInterconnectInputSelect:2 register (RDI2DSM)
-	db		b0h, 00h		; Row_0_InputMux register (RDI0RI)
+	db		b0h, 40h		; Row_0_InputMux register (RDI0RI)
 	db		b1h, 00h		; Row_0_InputSync register (RDI0SYN)
 	db		b2h, 00h		; Row_0_LogicInputAMux register (RDI0IS)
 	db		b3h, 33h		; Row_0_LogicSelect_0 register (RDI0LT0)
 	db		b4h, 33h		; Row_0_LogicSelect_1 register (RDI0LT1)
-	db		b5h, 02h		; Row_0_OutputDrive_0 register (RDI0RO0)
+	db		b5h, 00h		; Row_0_OutputDrive_0 register (RDI0RO0)
 	db		b6h, 00h		; Row_0_OutputDrive_1 register (RDI0RO1)
-	db		b8h, 55h		; Row_1_InputMux register (RDI1RI)
+	db		b8h, 15h		; Row_1_InputMux register (RDI1RI)
 	db		b9h, 00h		; Row_1_InputSync register (RDI1SYN)
 	db		bah, 10h		; Row_1_LogicInputAMux register (RDI1IS)
 	db		bbh, 33h		; Row_1_LogicSelect_0 register (RDI1LT0)
@@ -228,24 +229,42 @@ LoadConfigTBL_transmitter_config_Bank0:
 	db		c5h, 00h		; Row_2_OutputDrive_0 register (RDI2RO0)
 	db		c6h, 00h		; Row_2_OutputDrive_1 register (RDI2RO1)
 	db		ffh
-LoadConfigTBL_transmitter_config_Bank1:
-;  Instance name TRANSMIT, User Module TX8
-;       Instance name TRANSMIT, Block Name TX8(DCC02)
-	db		2bh, 00h		;TRANSMIT_(DCC02CR1)
-	db		28h, 1dh		;TRANSMIT_FUNC_REG     (DCC02FN)
-	db		29h, 01h		;TRANSMIT_INPUT_REG    (DCC02IN)
-	db		2ah, 84h		;TRANSMIT_OUTPUT_REG   (DCC02OU)
-;  Instance name TX_TIMEOUT, User Module Timer16
-;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-	db		23h, 00h		;TX_TIMEOUT_(DBC00CR1)
-	db		20h, 00h		;TX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
-	db		21h, 06h		;TX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
-	db		22h, 40h		;TX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
-;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		27h, 00h		;TX_TIMEOUT_(DBC01CR1)
-	db		24h, 20h		;TX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
-	db		25h, 36h		;TX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
-	db		26h, 40h		;TX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
+LoadConfigTBL_receiver_config_Bank1:
+;  Instance name RECEIVE_1, User Module RX8
+;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+	db		2bh, 00h		;RECEIVE_1_(DCC02CR1)
+	db		28h, 05h		;RECEIVE_1_FUNC_REG     (DCC02FN)
+	db		29h, d1h		;RECEIVE_1_INPUT_REG    (DCC02IN)
+	db		2ah, 80h		;RECEIVE_1_OUTPUT_REG   (DCC02OU)
+;  Instance name RECEIVE_2, User Module RX8
+;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+	db		2fh, 00h		;RECEIVE_2_(DCC03CR1)
+	db		2ch, 05h		;RECEIVE_2_FUNC_REG     (DCC03FN)
+	db		2dh, e1h		;RECEIVE_2_INPUT_REG    (DCC03IN)
+	db		2eh, 80h		;RECEIVE_2_OUTPUT_REG   (DCC03OU)
+;  Instance name RECEIVE_3, User Module RX8
+;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+	db		3bh, 00h		;RECEIVE_3_(DCC12CR1)
+	db		38h, 05h		;RECEIVE_3_FUNC_REG     (DCC12FN)
+	db		39h, f1h		;RECEIVE_3_INPUT_REG    (DCC12IN)
+	db		3ah, 80h		;RECEIVE_3_OUTPUT_REG   (DCC12OU)
+;  Instance name RECEIVE_4, User Module RX8
+;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+	db		3fh, 00h		;RECEIVE_4_(DCC13CR1)
+	db		3ch, 05h		;RECEIVE_4_FUNC_REG     (DCC13FN)
+	db		3dh, c1h		;RECEIVE_4_INPUT_REG    (DCC13IN)
+	db		3eh, 80h		;RECEIVE_4_OUTPUT_REG   (DCC13OU)
+;  Instance name RX_TIMEOUT, User Module Timer16
+;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+	db		23h, 00h		;RX_TIMEOUT_(DBC00CR1)
+	db		20h, 00h		;RX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
+	db		21h, 06h		;RX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+	db		22h, 40h		;RX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+	db		27h, 00h		;RX_TIMEOUT_(DBC01CR1)
+	db		24h, 20h		;RX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
+	db		25h, 36h		;RX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+	db		26h, 40h		;RX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
 ;  Global Register values Bank 1
 	db		a8h, 00h		; ADCControl0 register (SADC_CR0)
 	db		a9h, 00h		; ADCControl1 register (SADC_CR1)
@@ -316,14 +335,14 @@ LoadConfigTBL_transmitter_config_Bank1:
 	db		71h, 00h		; TSource0 register (SADC_TSCR0)
 	db		72h, 00h		; TSource1 register (SADC_TSCR1)
 	db		ffh
-LoadConfigTBL_transmitter_config_Ordered:
+LoadConfigTBL_receiver_config_Ordered:
 ;  Ordered Global Register values
 	M8C_SetBank1
-	mov	reg[00h], 10h		; Port_0_DriveMode_0 register (PRT0DM0)
-	mov	reg[01h], efh		; Port_0_DriveMode_1 register (PRT0DM1)
+	mov	reg[00h], 00h		; Port_0_DriveMode_0 register (PRT0DM0)
+	mov	reg[01h], ffh		; Port_0_DriveMode_1 register (PRT0DM1)
 	M8C_SetBank0
-	mov	reg[03h], efh		; Port_0_DriveMode_2 register (PRT0DM2)
-	mov	reg[02h], 10h		; Port_0_GlobalSelect register (PRT0GS)
+	mov	reg[03h], e1h		; Port_0_DriveMode_2 register (PRT0DM2)
+	mov	reg[02h], 1eh		; Port_0_GlobalSelect register (PRT0GS)
 	M8C_SetBank1
 	mov	reg[02h], 00h		; Port_0_IntCtrl_0 register (PRT0IC0)
 	mov	reg[03h], 00h		; Port_0_IntCtrl_1 register (PRT0IC1)
@@ -382,76 +401,142 @@ LoadConfigTBL_transmitter_config_Ordered:
 	mov	reg[16h], 00h		; Port_5_IntCtrl_0 register (PRT5IC0)
 	mov	reg[17h], 00h		; Port_5_IntCtrl_1 register (PRT5IC1)
 	ret
-ReloadConfigTBL_transmitter_config_Bank0:
-;  Instance name TRANSMIT, User Module TX8
-;       Instance name TRANSMIT, Block Name TX8(DCC02)
-	db		2bh, 00h		;TRANSMIT_CONTROL_REG  (DCC02CR0)
-	db		29h, 00h		;TRANSMIT_TX_BUFFER_REG(DCC02DR1)
-	db		2ah, 00h		;TRANSMIT_(DCC02DR2)
-;  Instance name TX_TIMEOUT, User Module Timer16
-;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-	db		23h, 00h		;TX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
-	db		21h, f0h		;TX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
-	db		22h, 00h		;TX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
-;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		27h, 04h		;TX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
-	db		25h, 00h		;TX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
-	db		26h, 00h		;TX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
+ReloadConfigTBL_receiver_config_Bank0:
+;  Instance name RECEIVE_1, User Module RX8
+;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+	db		2bh, 00h		;RECEIVE_1_CONTROL_REG  (DCC02CR0)
+	db		29h, 00h		;RECEIVE_1_(DCC02DR1)
+	db		2ah, 00h		;RECEIVE_1_RX_BUFFER_REG(DCC02DR2)
+;  Instance name RECEIVE_2, User Module RX8
+;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+	db		2fh, 00h		;RECEIVE_2_CONTROL_REG  (DCC03CR0)
+	db		2dh, 00h		;RECEIVE_2_(DCC03DR1)
+	db		2eh, 00h		;RECEIVE_2_RX_BUFFER_REG(DCC03DR2)
+;  Instance name RECEIVE_3, User Module RX8
+;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+	db		3bh, 00h		;RECEIVE_3_CONTROL_REG  (DCC12CR0)
+	db		39h, 00h		;RECEIVE_3_(DCC12DR1)
+	db		3ah, 00h		;RECEIVE_3_RX_BUFFER_REG(DCC12DR2)
+;  Instance name RECEIVE_4, User Module RX8
+;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+	db		3fh, 00h		;RECEIVE_4_CONTROL_REG  (DCC13CR0)
+	db		3dh, 00h		;RECEIVE_4_(DCC13DR1)
+	db		3eh, 00h		;RECEIVE_4_RX_BUFFER_REG(DCC13DR2)
+;  Instance name RX_TIMEOUT, User Module Timer16
+;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+	db		23h, 00h		;RX_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
+	db		21h, f0h		;RX_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+	db		22h, 00h		;RX_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
+;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+	db		27h, 04h		;RX_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
+	db		25h, 00h		;RX_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
+	db		26h, 00h		;RX_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
 	db		ffh
-ReloadConfigTBL_transmitter_config_Bank1:
-;  Instance name TRANSMIT, User Module TX8
-;       Instance name TRANSMIT, Block Name TX8(DCC02)
-	db		2bh, 00h		;TRANSMIT_(DCC02CR1)
-	db		28h, 1dh		;TRANSMIT_FUNC_REG     (DCC02FN)
-	db		29h, 01h		;TRANSMIT_INPUT_REG    (DCC02IN)
-	db		2ah, 84h		;TRANSMIT_OUTPUT_REG   (DCC02OU)
-;  Instance name TX_TIMEOUT, User Module Timer16
-;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-	db		23h, 00h		;TX_TIMEOUT_(DBC00CR1)
-	db		20h, 00h		;TX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
-	db		21h, 06h		;TX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
-	db		22h, 40h		;TX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
-;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		27h, 00h		;TX_TIMEOUT_(DBC01CR1)
-	db		24h, 20h		;TX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
-	db		25h, 36h		;TX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
-	db		26h, 40h		;TX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
+ReloadConfigTBL_receiver_config_Bank1:
+;  Instance name RECEIVE_1, User Module RX8
+;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+	db		2bh, 00h		;RECEIVE_1_(DCC02CR1)
+	db		28h, 05h		;RECEIVE_1_FUNC_REG     (DCC02FN)
+	db		29h, d1h		;RECEIVE_1_INPUT_REG    (DCC02IN)
+	db		2ah, 80h		;RECEIVE_1_OUTPUT_REG   (DCC02OU)
+;  Instance name RECEIVE_2, User Module RX8
+;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+	db		2fh, 00h		;RECEIVE_2_(DCC03CR1)
+	db		2ch, 05h		;RECEIVE_2_FUNC_REG     (DCC03FN)
+	db		2dh, e1h		;RECEIVE_2_INPUT_REG    (DCC03IN)
+	db		2eh, 80h		;RECEIVE_2_OUTPUT_REG   (DCC03OU)
+;  Instance name RECEIVE_3, User Module RX8
+;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+	db		3bh, 00h		;RECEIVE_3_(DCC12CR1)
+	db		38h, 05h		;RECEIVE_3_FUNC_REG     (DCC12FN)
+	db		39h, f1h		;RECEIVE_3_INPUT_REG    (DCC12IN)
+	db		3ah, 80h		;RECEIVE_3_OUTPUT_REG   (DCC12OU)
+;  Instance name RECEIVE_4, User Module RX8
+;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+	db		3fh, 00h		;RECEIVE_4_(DCC13CR1)
+	db		3ch, 05h		;RECEIVE_4_FUNC_REG     (DCC13FN)
+	db		3dh, c1h		;RECEIVE_4_INPUT_REG    (DCC13IN)
+	db		3eh, 80h		;RECEIVE_4_OUTPUT_REG   (DCC13OU)
+;  Instance name RX_TIMEOUT, User Module Timer16
+;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+	db		23h, 00h		;RX_TIMEOUT_(DBC00CR1)
+	db		20h, 00h		;RX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
+	db		21h, 06h		;RX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+	db		22h, 40h		;RX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+	db		27h, 00h		;RX_TIMEOUT_(DBC01CR1)
+	db		24h, 20h		;RX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
+	db		25h, 36h		;RX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+	db		26h, 40h		;RX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
 	db		ffh
-UnloadConfigTBL_transmitter_config_Bank0:
-;  Instance name TRANSMIT, User Module TX8
-;       Instance name TRANSMIT, Block Name TX8(DCC02)
-	db		2bh, 00h		;TRANSMIT_CONTROL_0 (DCC02CR0)
-;  Instance name TX_TIMEOUT, User Module Timer16
-;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-	db		23h, 00h		;TX_TIMEOUT_CONTROL_0 (DBC00CR0)
-;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		27h, 00h		;TX_TIMEOUT_CONTROL_0 (DBC01CR0)
+UnloadConfigTBL_receiver_config_Bank0:
+;  Instance name RECEIVE_1, User Module RX8
+;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+	db		2bh, 00h		;RECEIVE_1_CONTROL_0 (DCC02CR0)
+;  Instance name RECEIVE_2, User Module RX8
+;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+	db		2fh, 00h		;RECEIVE_2_CONTROL_0 (DCC03CR0)
+;  Instance name RECEIVE_3, User Module RX8
+;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+	db		3bh, 00h		;RECEIVE_3_CONTROL_0 (DCC12CR0)
+;  Instance name RECEIVE_4, User Module RX8
+;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+	db		3fh, 00h		;RECEIVE_4_CONTROL_0 (DCC13CR0)
+;  Instance name RX_TIMEOUT, User Module Timer16
+;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+	db		23h, 00h		;RX_TIMEOUT_CONTROL_0 (DBC00CR0)
+;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+	db		27h, 00h		;RX_TIMEOUT_CONTROL_0 (DBC01CR0)
 	db		ffh
-UnloadConfigTBL_transmitter_config_Bank1:
-;  Instance name TRANSMIT, User Module TX8
-;       Instance name TRANSMIT, Block Name TX8(DCC02)
-	db		2bh, 00h		;TRANSMIT_CONTROL_1 (DCC02CR1)
-	db		28h, 00h		;TRANSMIT_DIG_BasicFunction (DCC02FN)
-	db		29h, 00h		;TRANSMIT_DIG_Input (DCC02IN)
-	db		2ah, 00h		;TRANSMIT_DIG_Output (DCC02OU)
-;  Instance name TX_TIMEOUT, User Module Timer16
-;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-	db		23h, 00h		;TX_TIMEOUT_CONTROL_1 (DBC00CR1)
-	db		20h, 00h		;TX_TIMEOUT_DIG_BasicFunction (DBC00FN)
-	db		21h, 00h		;TX_TIMEOUT_DIG_Input (DBC00IN)
-	db		22h, 00h		;TX_TIMEOUT_DIG_Output (DBC00OU)
-;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
-	db		27h, 00h		;TX_TIMEOUT_CONTROL_1 (DBC01CR1)
-	db		24h, 00h		;TX_TIMEOUT_DIG_BasicFunction (DBC01FN)
-	db		25h, 00h		;TX_TIMEOUT_DIG_Input (DBC01IN)
-	db		26h, 00h		;TX_TIMEOUT_DIG_Output (DBC01OU)
+UnloadConfigTBL_receiver_config_Bank1:
+;  Instance name RECEIVE_1, User Module RX8
+;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+	db		2bh, 00h		;RECEIVE_1_CONTROL_1 (DCC02CR1)
+	db		28h, 00h		;RECEIVE_1_DIG_BasicFunction (DCC02FN)
+	db		29h, 00h		;RECEIVE_1_DIG_Input (DCC02IN)
+	db		2ah, 00h		;RECEIVE_1_DIG_Output (DCC02OU)
+;  Instance name RECEIVE_2, User Module RX8
+;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+	db		2fh, 00h		;RECEIVE_2_CONTROL_1 (DCC03CR1)
+	db		2ch, 00h		;RECEIVE_2_DIG_BasicFunction (DCC03FN)
+	db		2dh, 00h		;RECEIVE_2_DIG_Input (DCC03IN)
+	db		2eh, 00h		;RECEIVE_2_DIG_Output (DCC03OU)
+;  Instance name RECEIVE_3, User Module RX8
+;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+	db		3bh, 00h		;RECEIVE_3_CONTROL_1 (DCC12CR1)
+	db		38h, 00h		;RECEIVE_3_DIG_BasicFunction (DCC12FN)
+	db		39h, 00h		;RECEIVE_3_DIG_Input (DCC12IN)
+	db		3ah, 00h		;RECEIVE_3_DIG_Output (DCC12OU)
+;  Instance name RECEIVE_4, User Module RX8
+;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+	db		3fh, 00h		;RECEIVE_4_CONTROL_1 (DCC13CR1)
+	db		3ch, 00h		;RECEIVE_4_DIG_BasicFunction (DCC13FN)
+	db		3dh, 00h		;RECEIVE_4_DIG_Input (DCC13IN)
+	db		3eh, 00h		;RECEIVE_4_DIG_Output (DCC13OU)
+;  Instance name RX_TIMEOUT, User Module Timer16
+;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+	db		23h, 00h		;RX_TIMEOUT_CONTROL_1 (DBC00CR1)
+	db		20h, 00h		;RX_TIMEOUT_DIG_BasicFunction (DBC00FN)
+	db		21h, 00h		;RX_TIMEOUT_DIG_Input (DBC00IN)
+	db		22h, 00h		;RX_TIMEOUT_DIG_Output (DBC00OU)
+;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+	db		27h, 00h		;RX_TIMEOUT_CONTROL_1 (DBC01CR1)
+	db		24h, 00h		;RX_TIMEOUT_DIG_BasicFunction (DBC01FN)
+	db		25h, 00h		;RX_TIMEOUT_DIG_Input (DBC01IN)
+	db		26h, 00h		;RX_TIMEOUT_DIG_Output (DBC01OU)
 	db		ffh
 
-;  Instance name TRANSMIT, User Module TX8
-;       Instance name TRANSMIT, Block Name TX8(DCC02)
-;  Instance name TX_TIMEOUT, User Module Timer16
-;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
-;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
+;  Instance name RECEIVE_1, User Module RX8
+;       Instance name RECEIVE_1, Block Name RX8(DCC02)
+;  Instance name RECEIVE_2, User Module RX8
+;       Instance name RECEIVE_2, Block Name RX8(DCC03)
+;  Instance name RECEIVE_3, User Module RX8
+;       Instance name RECEIVE_3, Block Name RX8(DCC12)
+;  Instance name RECEIVE_4, User Module RX8
+;       Instance name RECEIVE_4, Block Name RX8(DCC13)
+;  Instance name RX_TIMEOUT, User Module Timer16
+;       Instance name RX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
+;       Instance name RX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		ffh
 UnloadConfigTBL_Total_Bank0:
 ;  Block DBC00

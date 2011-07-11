@@ -7,41 +7,57 @@ lib/psocconfig.asm
 lib/psocconfigtbl.asm
 lib/psocdynamic.asm
 lib/psocdynamicint.asm
-lib/receive.asm
-lib/receiveint.asm
-lib/receiveplus.asm
+lib/receive_1.asm
+lib/receive_1int.asm
+lib/receive_1plus.asm
+lib/receive_2.asm
+lib/receive_2int.asm
+lib/receive_2plus.asm
+lib/receive_3.asm
+lib/receive_3int.asm
+lib/receive_3plus.asm
+lib/receive_4.asm
+lib/receive_4int.asm
+lib/receive_4plus.asm
 lib/rx_timeout.asm
 lib/rx_timeoutint.asm
-lib/transmit.asm
-lib/transmitint.asm
-lib/transmitplus.asm
-lib/tx_repeater.asm
-lib/tx_repeaterint.asm
-lib/tx_repeaterplus.asm
+lib/tx_repeater_014.asm
+lib/tx_repeater_014int.asm
+lib/tx_repeater_014plus.asm
+lib/tx_repeater_23.asm
+lib/tx_repeater_23int.asm
+lib/tx_repeater_23plus.asm
 lib/tx_timeout.asm
 lib/tx_timeoutint.asm
 ./boot.asm
 ./main.c
-!W C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\main.c(627):[warning] expression with no effect elided
+!W C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\main.c(685):[warning] expression with no effect elided
  
 Linking..
-LMM info: area 'InterruptRAM' uses 5 bytes in SRAM page 0
+LMM info: area 'InterruptRAM' uses 11 bytes in SRAM page 0
 LMM info: area 'COMP_SERIAL_RAM' item of 64 bytes allocated in SRAM page 0
-LMM info: area 'RECEIVE_RAM' item of 64 bytes allocated in SRAM page 0
+LMM info: area 'RECEIVE_2_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'RECEIVE_1_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'RECEIVE_3_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'RECEIVE_4_RAM' item of 16 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 10 bytes allocated in SRAM page 0
 LMM info: area 'virtual_registers' uses 9 bytes in SRAM page 0
 LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+LMM info: area 'RECEIVE_4_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'RECEIVE_1_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'RECEIVE_2_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'RECEIVE_3_RAM' item of 1 bytes allocated in SRAM page 0
 LMM info: area 'COMP_SERIAL_RAM' item of 1 bytes allocated in SRAM page 0
-LMM info: area 'RECEIVE_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
 LMM info: area 'receiver_config_RAM' uses 0 bytes in SRAM page 0
-LMM info: area 'transmitter_config_RAM' uses 0 bytes in SRAM page 0
-  ROM 50% full. 8116 bytes used (does not include absolute areas).
-  RAM 21% full. 163 bytes used (does not include stack usage).
+LMM info: area 'pc_listener_RAM' uses 0 bytes in SRAM page 0
+  ROM 59% full. 9557 bytes used (does not include absolute areas).
+  RAM 22% full. 173 bytes used (does not include stack usage).
 idata dump at output/Thesis_Master.idata
  
-Thesis_Master - 0 error(s) 1 warning(s) 13:14:17
+Thesis_Master - 0 error(s) 1 warning(s) 19:10:37

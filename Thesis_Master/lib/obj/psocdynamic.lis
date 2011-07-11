@@ -1202,31 +1202,26 @@
  0000                 REG_RESTORE IDX_PP
  0000                 REG_RESTORE CUR_PP
  0000              ENDIF
- 0001           transmitter_config_BIT:	equ	 1h
- 0000           transmitter_config_ORD:	equ	 0
- 0000           transmitter_config_ADDR_OFF:	equ	 0
+ 0001           receiver_config_BIT:	equ	 1h
+ 0000           receiver_config_ORD:	equ	 0
+ 0000           receiver_config_ADDR_OFF:	equ	 0
  0002           pc_listener_BIT:	equ	 2h
  0001           pc_listener_ORD:	equ	 1
  0000           pc_listener_ADDR_OFF:	equ	 0
- 0004           receiver_config_BIT:	equ	 4h
- 0002           receiver_config_ORD:	equ	 2
- 0000           receiver_config_ADDR_OFF:	equ	 0
-                export Istransmitter_configLoaded
-                export _Istransmitter_configLoaded
-                export Ispc_listenerLoaded
-                export _Ispc_listenerLoaded
                 export Isreceiver_configLoaded
                 export _Isreceiver_configLoaded
- 0000           Istransmitter_configLoaded:
- 0000           _Istransmitter_configLoaded:
+                export Ispc_listenerLoaded
+                export _Ispc_listenerLoaded
+ 0000           Isreceiver_configLoaded:
+ 0000           _Isreceiver_configLoaded:
                    IF ( SYSTEM_LARGE_MEMORY_MODEL )
  0000 62D000          mov reg[CUR_PP], >ACTIVE_CONFIG_STATUS
                    ENDIF
  0003 5000              mov             a, 0
- 0005 470001            tst             [ACTIVE_CONFIG_STATUS+transmitter_config_ADDR_OFF], transmitter_config_BIT
- 0008 A003              jz              transmitter_configIsNotLoaded
+ 0005 470001            tst             [ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
+ 0008 A003              jz              receiver_configIsNotLoaded
  000A 5001              mov             a, 1
- 000C           transmitter_configIsNotLoaded:
+ 000C           receiver_configIsNotLoaded:
  000C 7F                ret
  000D           
  000D           Ispc_listenerLoaded:
@@ -1241,15 +1236,3 @@
  0019           pc_listenerIsNotLoaded:
  0019 7F                ret
  001A           
- 001A           Isreceiver_configLoaded:
- 001A           _Isreceiver_configLoaded:
-                   IF ( SYSTEM_LARGE_MEMORY_MODEL )
- 001A 62D000          mov reg[CUR_PP], >ACTIVE_CONFIG_STATUS
-                   ENDIF
- 001D 5000              mov             a, 0
- 001F 470004            tst             [ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
- 0022 A003              jz              receiver_configIsNotLoaded
- 0024 5001              mov             a, 1
- 0026           receiver_configIsNotLoaded:
- 0026 7F                ret
- 0027           

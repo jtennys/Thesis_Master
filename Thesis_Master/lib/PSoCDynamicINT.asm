@@ -17,6 +17,9 @@
 include "PSoCDynamic.inc"
 include "m8c.inc"
 export	Dispatch_INTERRUPT_10
+export	Dispatch_INTERRUPT_11
+export	Dispatch_INTERRUPT_14
+export	Dispatch_INTERRUPT_15
 export	Dispatch_INTERRUPT_9
 
 
@@ -28,9 +31,6 @@ Dispatch_INTERRUPT_10:
 	mov		a,4
 	tst		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
 	jnz		Dispatch_INTERRUPT_10_END
-	mov		a,8
-	tst		[ACTIVE_CONFIG_STATUS+transmitter_config_ADDR_OFF], transmitter_config_BIT
-	jnz		Dispatch_INTERRUPT_10_END
 	pop		a
 	reti
 ; Stop Code Compressor from breaking table alignment
@@ -40,11 +40,81 @@ Dispatch_INTERRUPT_10_END:
 	jacc	Dispatch_INTERRUPT_10_TBL
 Dispatch_INTERRUPT_10_TBL:
 	pop		a
-	ljmp	_TX_REPEATER_ISR
+	ljmp	_TX_REPEATER_014_ISR
 	pop		a
-	ljmp	_RECEIVE_ISR
+	ljmp	_RECEIVE_1_ISR
+; Resume Code Compressor.
+; The next instruction does not get executed.
+	Resume_CodeCompressor
+
+Dispatch_INTERRUPT_11:
+	push	a
+	mov		a,0
+	tst		[ACTIVE_CONFIG_STATUS+pc_listener_ADDR_OFF], pc_listener_BIT
+	jnz		Dispatch_INTERRUPT_11_END
+	mov		a,4
+	tst		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
+	jnz		Dispatch_INTERRUPT_11_END
 	pop		a
-	ljmp	_TRANSMIT_ISR
+	reti
+; Stop Code Compressor from breaking table alignment
+; The next instruction does not get executed.
+	Suspend_CodeCompressor
+Dispatch_INTERRUPT_11_END:
+	jacc	Dispatch_INTERRUPT_11_TBL
+Dispatch_INTERRUPT_11_TBL:
+	pop		a
+	ljmp	_TX_REPEATER_23_ISR
+	pop		a
+	ljmp	_RECEIVE_2_ISR
+; Resume Code Compressor.
+; The next instruction does not get executed.
+	Resume_CodeCompressor
+
+Dispatch_INTERRUPT_14:
+	push	a
+	mov		a,0
+	tst		[ACTIVE_CONFIG_STATUS+pc_listener_ADDR_OFF], pc_listener_BIT
+	jnz		Dispatch_INTERRUPT_14_END
+	mov		a,4
+	tst		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
+	jnz		Dispatch_INTERRUPT_14_END
+	pop		a
+	reti
+; Stop Code Compressor from breaking table alignment
+; The next instruction does not get executed.
+	Suspend_CodeCompressor
+Dispatch_INTERRUPT_14_END:
+	jacc	Dispatch_INTERRUPT_14_TBL
+Dispatch_INTERRUPT_14_TBL:
+	pop		a
+	ljmp	_COMP_SERIAL_TX_ISR
+	pop		a
+	ljmp	_RECEIVE_3_ISR
+; Resume Code Compressor.
+; The next instruction does not get executed.
+	Resume_CodeCompressor
+
+Dispatch_INTERRUPT_15:
+	push	a
+	mov		a,0
+	tst		[ACTIVE_CONFIG_STATUS+pc_listener_ADDR_OFF], pc_listener_BIT
+	jnz		Dispatch_INTERRUPT_15_END
+	mov		a,4
+	tst		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
+	jnz		Dispatch_INTERRUPT_15_END
+	pop		a
+	reti
+; Stop Code Compressor from breaking table alignment
+; The next instruction does not get executed.
+	Suspend_CodeCompressor
+Dispatch_INTERRUPT_15_END:
+	jacc	Dispatch_INTERRUPT_15_TBL
+Dispatch_INTERRUPT_15_TBL:
+	pop		a
+	ljmp	_COMP_SERIAL_RX_ISR
+	pop		a
+	ljmp	_RECEIVE_4_ISR
 ; Resume Code Compressor.
 ; The next instruction does not get executed.
 	Resume_CodeCompressor
@@ -52,10 +122,10 @@ Dispatch_INTERRUPT_10_TBL:
 Dispatch_INTERRUPT_9:
 	push	a
 	mov		a,0
-	tst		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
+	tst		[ACTIVE_CONFIG_STATUS+pc_listener_ADDR_OFF], pc_listener_BIT
 	jnz		Dispatch_INTERRUPT_9_END
 	mov		a,4
-	tst		[ACTIVE_CONFIG_STATUS+transmitter_config_ADDR_OFF], transmitter_config_BIT
+	tst		[ACTIVE_CONFIG_STATUS+receiver_config_ADDR_OFF], receiver_config_BIT
 	jnz		Dispatch_INTERRUPT_9_END
 	pop		a
 	reti
@@ -66,9 +136,9 @@ Dispatch_INTERRUPT_9_END:
 	jacc	Dispatch_INTERRUPT_9_TBL
 Dispatch_INTERRUPT_9_TBL:
 	pop		a
-	ljmp	_RX_TIMEOUT_ISR
-	pop		a
 	ljmp	_TX_TIMEOUT_ISR
+	pop		a
+	ljmp	_RX_TIMEOUT_ISR
 ; Resume Code Compressor.
 ; The next instruction does not get executed.
 	Resume_CodeCompressor

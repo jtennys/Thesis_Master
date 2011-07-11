@@ -1065,7 +1065,7 @@
  0013 E001              jacc    Dispatch_INTERRUPT_10_TBL
  0015           Dispatch_INTERRUPT_10_TBL:
  0015 18                pop             a
- 0016 7D0000            ljmp    _TX_REPEATER_014_ISR
+ 0016 7D0000            ljmp    _TX_REPEATER_14_ISR
  0019 18                pop             a
  001A 7D0000            ljmp    _RECEIVE_1_ISR
  001D           ; Resume Code Compressor.

@@ -1045,11 +1045,11 @@
  0006 3B00              db              3bh, 00h                ;COMP_SERIAL_TX_CONTROL_REG(DCC12CR0)
  0008 3900              db              39h, 00h                ;COMP_SERIAL_TX_BUFFER_REG (DCC12DR1)
  000A 3A00              db              3ah, 00h                ;COMP_SERIAL_(DCC12DR2)
- 000C           ;  Instance name TX_REPEATER_014, User Module TX8
- 000C           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
- 000C 2B00              db              2bh, 00h                ;TX_REPEATER_014_CONTROL_REG  (DCC02CR0)
- 000E 2900              db              29h, 00h                ;TX_REPEATER_014_TX_BUFFER_REG(DCC02DR1)
- 0010 2A00              db              2ah, 00h                ;TX_REPEATER_014_(DCC02DR2)
+ 000C           ;  Instance name TX_REPEATER_14, User Module TX8
+ 000C           ;       Instance name TX_REPEATER_14, Block Name TX8(DCC02)
+ 000C 2B00              db              2bh, 00h                ;TX_REPEATER_14_CONTROL_REG  (DCC02CR0)
+ 000E 2900              db              29h, 00h                ;TX_REPEATER_14_TX_BUFFER_REG(DCC02DR1)
+ 0010 2A00              db              2ah, 00h                ;TX_REPEATER_14_(DCC02DR2)
  0012           ;  Instance name TX_REPEATER_23, User Module TX8
  0012           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
  0012 2F00              db              2fh, 00h                ;TX_REPEATER_23_CONTROL_REG  (DCC03CR0)
@@ -1077,12 +1077,12 @@
  002F 381D              db              38h, 1dh                ;COMP_SERIAL_TX_FUNC_REG   (DCC12FN)
  0031 3906              db              39h, 06h                ;COMP_SERIAL_TX_INPUT_REG  (DCC12IN)
  0033 3A85              db              3ah, 85h                ;COMP_SERIAL_TX_OUTPUT_REG (DCC12OU)
- 0035           ;  Instance name TX_REPEATER_014, User Module TX8
- 0035           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
- 0035 2B00              db              2bh, 00h                ;TX_REPEATER_014_(DCC02CR1)
- 0037 281D              db              28h, 1dh                ;TX_REPEATER_014_FUNC_REG     (DCC02FN)
- 0039 2901              db              29h, 01h                ;TX_REPEATER_014_INPUT_REG    (DCC02IN)
- 003B 2A85              db              2ah, 85h                ;TX_REPEATER_014_OUTPUT_REG   (DCC02OU)
+ 0035           ;  Instance name TX_REPEATER_14, User Module TX8
+ 0035           ;       Instance name TX_REPEATER_14, Block Name TX8(DCC02)
+ 0035 2B00              db              2bh, 00h                ;TX_REPEATER_14_(DCC02CR1)
+ 0037 281D              db              28h, 1dh                ;TX_REPEATER_14_FUNC_REG     (DCC02FN)
+ 0039 2901              db              29h, 01h                ;TX_REPEATER_14_INPUT_REG    (DCC02IN)
+ 003B 2A85              db              2ah, 85h                ;TX_REPEATER_14_OUTPUT_REG   (DCC02OU)
  003D           ;  Instance name TX_REPEATER_23, User Module TX8
  003D           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
  003D 2F00              db              2fh, 00h                ;TX_REPEATER_23_(DCC03CR1)
@@ -1093,12 +1093,12 @@
  0045           ;       Instance name TX_TIMEOUT, Block Name TIMER16_LSB(DBC00)
  0045 2300              db              23h, 00h                ;TX_TIMEOUT_(DBC00CR1)
  0047 2000              db              20h, 00h                ;TX_TIMEOUT_FUNC_LSB_REG(DBC00FN)
- 0049 2106              db              21h, 06h                ;TX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+ 0049 2101              db              21h, 01h                ;TX_TIMEOUT_INPUT_LSB_REG(DBC00IN)
  004B 2280              db              22h, 80h                ;TX_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
  004D           ;       Instance name TX_TIMEOUT, Block Name TIMER16_MSB(DBC01)
  004D 2700              db              27h, 00h                ;TX_TIMEOUT_(DBC01CR1)
  004F 2420              db              24h, 20h                ;TX_TIMEOUT_FUNC_MSB_REG(DBC01FN)
- 0051 2536              db              25h, 36h                ;TX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+ 0051 2531              db              25h, 31h                ;TX_TIMEOUT_INPUT_MSB_REG(DBC01IN)
  0053 2680              db              26h, 80h                ;TX_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
  0055 FF                db              ffh
  0056           UnloadConfigTBL_pc_listener_Bank0:
@@ -1107,9 +1107,9 @@
  0056 3F00              db              3fh, 00h                ;COMP_SERIAL_CONTROL_0 (DCC13CR0)
  0058           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
  0058 3B00              db              3bh, 00h                ;COMP_SERIAL_CONTROL_0 (DCC12CR0)
- 005A           ;  Instance name TX_REPEATER_014, User Module TX8
- 005A           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
- 005A 2B00              db              2bh, 00h                ;TX_REPEATER_014_CONTROL_0 (DCC02CR0)
+ 005A           ;  Instance name TX_REPEATER_14, User Module TX8
+ 005A           ;       Instance name TX_REPEATER_14, Block Name TX8(DCC02)
+ 005A 2B00              db              2bh, 00h                ;TX_REPEATER_14_CONTROL_0 (DCC02CR0)
  005C           ;  Instance name TX_REPEATER_23, User Module TX8
  005C           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
  005C 2F00              db              2fh, 00h                ;TX_REPEATER_23_CONTROL_0 (DCC03CR0)
@@ -1131,12 +1131,12 @@
  006D 3800              db              38h, 00h                ;COMP_SERIAL_DIG_BasicFunction (DCC12FN)
  006F 3900              db              39h, 00h                ;COMP_SERIAL_DIG_Input (DCC12IN)
  0071 3A00              db              3ah, 00h                ;COMP_SERIAL_DIG_Output (DCC12OU)
- 0073           ;  Instance name TX_REPEATER_014, User Module TX8
- 0073           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
- 0073 2B00              db              2bh, 00h                ;TX_REPEATER_014_CONTROL_1 (DCC02CR1)
- 0075 2800              db              28h, 00h                ;TX_REPEATER_014_DIG_BasicFunction (DCC02FN)
- 0077 2900              db              29h, 00h                ;TX_REPEATER_014_DIG_Input (DCC02IN)
- 0079 2A00              db              2ah, 00h                ;TX_REPEATER_014_DIG_Output (DCC02OU)
+ 0073           ;  Instance name TX_REPEATER_14, User Module TX8
+ 0073           ;       Instance name TX_REPEATER_14, Block Name TX8(DCC02)
+ 0073 2B00              db              2bh, 00h                ;TX_REPEATER_14_CONTROL_1 (DCC02CR1)
+ 0075 2800              db              28h, 00h                ;TX_REPEATER_14_DIG_BasicFunction (DCC02FN)
+ 0077 2900              db              29h, 00h                ;TX_REPEATER_14_DIG_Input (DCC02IN)
+ 0079 2A00              db              2ah, 00h                ;TX_REPEATER_14_DIG_Output (DCC02OU)
  007B           ;  Instance name TX_REPEATER_23, User Module TX8
  007B           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
  007B 2F00              db              2fh, 00h                ;TX_REPEATER_23_CONTROL_1 (DCC03CR1)
@@ -1159,8 +1159,8 @@
  0094           ;  Instance name COMP_SERIAL, User Module UART
  0094           ;       Instance name COMP_SERIAL, Block Name RX(DCC13)
  0094           ;       Instance name COMP_SERIAL, Block Name TX(DCC12)
- 0094           ;  Instance name TX_REPEATER_014, User Module TX8
- 0094           ;       Instance name TX_REPEATER_014, Block Name TX8(DCC02)
+ 0094           ;  Instance name TX_REPEATER_14, User Module TX8
+ 0094           ;       Instance name TX_REPEATER_14, Block Name TX8(DCC02)
  0094           ;  Instance name TX_REPEATER_23, User Module TX8
  0094           ;       Instance name TX_REPEATER_23, Block Name TX8(DCC03)
  0094           ;  Instance name TX_TIMEOUT, User Module Timer16

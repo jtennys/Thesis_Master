@@ -40,6 +40,9 @@
 #define		PORT_3						('3')
 #define		PORT_4						('4')
 
+// This is the module type identifier.
+#define		TYPE						('2')
+
 // These defines are used as transmission indicators.
 #define		START_TRANSMIT				(252)	// Indicates the beginning of a transmission.
 #define		END_TRANSMIT				(253)	// Indicates the end of a transmission.
@@ -143,23 +146,23 @@ int pingModule(int module_id)
 	configToggle(PC_MODE);
 	
 	// Transmit a ping to everyone.
-	TX_REPEATER_014_PutChar(START_TRANSMIT);	// Start byte one
+	TX_REPEATER_14_PutChar(START_TRANSMIT);	// Start byte one
 	TX_REPEATER_23_PutChar(START_TRANSMIT);		// Start byte one
-	TX_REPEATER_014_PutChar(START_TRANSMIT);	// Start byte two
+	TX_REPEATER_14_PutChar(START_TRANSMIT);	// Start byte two
 	TX_REPEATER_23_PutChar(START_TRANSMIT);		// Start byte two
-	TX_REPEATER_014_PutChar(PARENT_ID);			// My ID
+	TX_REPEATER_14_PutChar(PARENT_ID);			// My ID
 	TX_REPEATER_23_PutChar(PARENT_ID);			// My ID
-	TX_REPEATER_014_PutChar(module_id);			// Destination ID
+	TX_REPEATER_14_PutChar(module_id);			// Destination ID
 	TX_REPEATER_23_PutChar(module_id);			// Destination ID
-	TX_REPEATER_014_PutChar(PING);				// This is a ping response
+	TX_REPEATER_14_PutChar(PING);				// This is a ping response
 	TX_REPEATER_23_PutChar(PING);				// This is a ping response
-	TX_REPEATER_014_PutChar(END_TRANSMIT);		// This is the end of this transmission
+	TX_REPEATER_14_PutChar(END_TRANSMIT);		// This is the end of this transmission
 	TX_REPEATER_23_PutChar(END_TRANSMIT);		// This is the end of this transmission
-	TX_REPEATER_014_PutChar(END_TRANSMIT);		// This is the end of this transmission
+	TX_REPEATER_14_PutChar(END_TRANSMIT);		// This is the end of this transmission
 	TX_REPEATER_23_PutChar(END_TRANSMIT);		// This is the end of this transmission
 	
 	// Wait for the transmission to finish.
-	while(!(TX_REPEATER_014_bReadTxStatus() & TX_REPEATER_014_TX_COMPLETE));
+	while(!(TX_REPEATER_14_bReadTxStatus() & TX_REPEATER_14_TX_COMPLETE));
 	while(!(TX_REPEATER_23_bReadTxStatus() & TX_REPEATER_23_TX_COMPLETE));
 	
 	// Make completely sure we're done.
@@ -201,25 +204,25 @@ int assignID(int assigned_ID)
 	configToggle(PC_MODE);
 
 	// Transmit an ID assignment.
-	TX_REPEATER_014_PutChar(START_TRANSMIT);	// Start byte one
+	TX_REPEATER_14_PutChar(START_TRANSMIT);	// Start byte one
 	TX_REPEATER_23_PutChar(START_TRANSMIT);		// Start byte one
-	TX_REPEATER_014_PutChar(START_TRANSMIT);	// Start byte two
+	TX_REPEATER_14_PutChar(START_TRANSMIT);	// Start byte two
 	TX_REPEATER_23_PutChar(START_TRANSMIT);		// Start byte two
-	TX_REPEATER_014_PutChar(PARENT_ID);			// My ID
+	TX_REPEATER_14_PutChar(PARENT_ID);			// My ID
 	TX_REPEATER_23_PutChar(PARENT_ID);			// My ID
-	TX_REPEATER_014_PutChar(BLANK_MODULE_ID);	// Destination ID
+	TX_REPEATER_14_PutChar(BLANK_MODULE_ID);	// Destination ID
 	TX_REPEATER_23_PutChar(BLANK_MODULE_ID);	// Destination ID
-	TX_REPEATER_014_PutChar(ID_ASSIGNMENT);		// This is an ID assignment
+	TX_REPEATER_14_PutChar(ID_ASSIGNMENT);		// This is an ID assignment
 	TX_REPEATER_23_PutChar(ID_ASSIGNMENT);		// This is an ID assignment
-	TX_REPEATER_014_PutChar(assigned_ID);		// This is the new ID
+	TX_REPEATER_14_PutChar(assigned_ID);		// This is the new ID
 	TX_REPEATER_23_PutChar(assigned_ID);		// This is the new ID
-	TX_REPEATER_014_PutChar(END_TRANSMIT);		// This is the end of this transmission
+	TX_REPEATER_14_PutChar(END_TRANSMIT);		// This is the end of this transmission
 	TX_REPEATER_23_PutChar(END_TRANSMIT);		// This is the end of this transmission
-	TX_REPEATER_014_PutChar(END_TRANSMIT);		// This is the end of this transmission
+	TX_REPEATER_14_PutChar(END_TRANSMIT);		// This is the end of this transmission
 	TX_REPEATER_23_PutChar(END_TRANSMIT);		// This is the end of this transmission
 	
 	// Wait for the transmission to finish.
-	while(!(TX_REPEATER_014_bReadTxStatus() & TX_REPEATER_014_TX_COMPLETE));
+	while(!(TX_REPEATER_14_bReadTxStatus() & TX_REPEATER_14_TX_COMPLETE));
 	while(!(TX_REPEATER_23_bReadTxStatus() & TX_REPEATER_23_TX_COMPLETE));
 	
 	// Make completely sure we're done.
@@ -262,23 +265,23 @@ void sayHello(void)
 	configToggle(PC_MODE);
 	
 	// Transmit an ID assignment.
-	TX_REPEATER_014_PutChar(START_TRANSMIT);	// Start byte one
+	TX_REPEATER_14_PutChar(START_TRANSMIT);	// Start byte one
 	TX_REPEATER_23_PutChar(START_TRANSMIT);		// Start byte one
-	TX_REPEATER_014_PutChar(START_TRANSMIT);	// Start byte two
+	TX_REPEATER_14_PutChar(START_TRANSMIT);	// Start byte two
 	TX_REPEATER_23_PutChar(START_TRANSMIT);		// Start byte two
-	TX_REPEATER_014_PutChar(PARENT_ID);			// My ID
+	TX_REPEATER_14_PutChar(PARENT_ID);			// My ID
 	TX_REPEATER_23_PutChar(PARENT_ID);			// My ID
-	TX_REPEATER_014_PutChar(BLANK_MODULE_ID);	// Destination ID
+	TX_REPEATER_14_PutChar(BLANK_MODULE_ID);	// Destination ID
 	TX_REPEATER_23_PutChar(BLANK_MODULE_ID);	// Destination ID
-	TX_REPEATER_014_PutChar(HELLO_BYTE);		// This is a hello message
+	TX_REPEATER_14_PutChar(HELLO_BYTE);		// This is a hello message
 	TX_REPEATER_23_PutChar(HELLO_BYTE);			// This is a hello message
-	TX_REPEATER_014_PutChar(END_TRANSMIT);		// This is the end of this transmission
+	TX_REPEATER_14_PutChar(END_TRANSMIT);		// This is the end of this transmission
 	TX_REPEATER_23_PutChar(END_TRANSMIT);		// This is the end of this transmission
-	TX_REPEATER_014_PutChar(END_TRANSMIT);		// This is the end of this transmission
+	TX_REPEATER_14_PutChar(END_TRANSMIT);		// This is the end of this transmission
 	TX_REPEATER_23_PutChar(END_TRANSMIT);		// This is the end of this transmission
 	
 	// Wait for the transmission to finish.
-	while(!(TX_REPEATER_014_bReadTxStatus() & TX_REPEATER_014_TX_COMPLETE));
+	while(!(TX_REPEATER_14_bReadTxStatus() & TX_REPEATER_14_TX_COMPLETE));
 	while(!(TX_REPEATER_23_bReadTxStatus() & TX_REPEATER_23_TX_COMPLETE));
 	
 	// Make completely sure we're done.
@@ -554,8 +557,14 @@ void decodeTransmission(void)
 					}
 					else if ((param[0] == 't') || (param[0] == 'T'))
 					{
-						// Ping the module to get a status packet and return the data.
-						if(pingModule(ID))
+						// If this isn't for the parent, ping the module to get a
+						// status packet and return the data.
+						if(ID == 0)
+						{
+							COMP_SERIAL_PutChar(TYPE);
+							COMP_SERIAL_PutChar('\n');
+						}
+						else if(pingModule(ID))
 						{
 							configToggle(PC_MODE);
 												
@@ -565,7 +574,7 @@ void decodeTransmission(void)
 					}
 					else if ((param[0] == 'c') || (param[0] == 'C'))
 					{
-						// If this isn't for the parent, ing the module to get a
+						// If this isn't for the parent, ping the module to get a
 						// status packet and return the data.
 						if(ID == 0)
 						{
@@ -611,25 +620,25 @@ void servoInstruction(char id, char length, char instruction, char address, char
 	checksum = 255-(total%256);
 	
 	// Talk to the servo.
-	TX_REPEATER_014_PutChar(SERVO_START);	// Start byte one
+	TX_REPEATER_14_PutChar(SERVO_START);	// Start byte one
 	TX_REPEATER_23_PutChar(SERVO_START);	// Start byte one
-	TX_REPEATER_014_PutChar(SERVO_START);	// Start byte two
+	TX_REPEATER_14_PutChar(SERVO_START);	// Start byte two
 	TX_REPEATER_23_PutChar(SERVO_START);	// Start byte two
-	TX_REPEATER_014_PutChar(id);			// The servo ID
+	TX_REPEATER_14_PutChar(id);			// The servo ID
 	TX_REPEATER_23_PutChar(id);				// The servo ID
-	TX_REPEATER_014_PutChar(length);		// Remaining packet length
+	TX_REPEATER_14_PutChar(length);		// Remaining packet length
 	TX_REPEATER_23_PutChar(length);			// Remaining packet length
-	TX_REPEATER_014_PutChar(instruction);	// Servo instruction
+	TX_REPEATER_14_PutChar(instruction);	// Servo instruction
 	TX_REPEATER_23_PutChar(instruction);	// Servo instruction
-	TX_REPEATER_014_PutChar(address);		// Target memory address on the servo EEPROM
+	TX_REPEATER_14_PutChar(address);		// Target memory address on the servo EEPROM
 	TX_REPEATER_23_PutChar(address);		// Target memory address on the servo EEPROM
-	TX_REPEATER_014_PutChar(value);			// The write value or number of bytes to read
+	TX_REPEATER_14_PutChar(value);			// The write value or number of bytes to read
 	TX_REPEATER_23_PutChar(value);			// The write value or number of bytes to read
-	TX_REPEATER_014_PutChar(checksum);		// This is the end of this transmission
+	TX_REPEATER_14_PutChar(checksum);		// This is the end of this transmission
 	TX_REPEATER_23_PutChar(checksum);		// This is the end of this transmission
 	
 	// Wait for the transmission to finish.
-	while(!(TX_REPEATER_014_bReadTxStatus() & TX_REPEATER_014_TX_COMPLETE));
+	while(!(TX_REPEATER_14_bReadTxStatus() & TX_REPEATER_14_TX_COMPLETE));
 	while(!(TX_REPEATER_23_bReadTxStatus() & TX_REPEATER_23_TX_COMPLETE));
 	
 	// Make completely sure we're done.
@@ -649,27 +658,27 @@ void longServoInstruction(char id, char length, char instruction, char address, 
 	checksum = 255-(total%256);
 	
 	// Talk to the servo.
-	TX_REPEATER_014_PutChar(SERVO_START);	// Start byte one
+	TX_REPEATER_14_PutChar(SERVO_START);	// Start byte one
 	TX_REPEATER_23_PutChar(SERVO_START);	// Start byte one
-	TX_REPEATER_014_PutChar(SERVO_START);	// Start byte two
+	TX_REPEATER_14_PutChar(SERVO_START);	// Start byte two
 	TX_REPEATER_23_PutChar(SERVO_START);	// Start byte two
-	TX_REPEATER_014_PutChar(id);			// The servo ID
+	TX_REPEATER_14_PutChar(id);			// The servo ID
 	TX_REPEATER_23_PutChar(id);				// The servo ID
-	TX_REPEATER_014_PutChar(length);		// Remaining packet length
+	TX_REPEATER_14_PutChar(length);		// Remaining packet length
 	TX_REPEATER_23_PutChar(length);			// Remaining packet length
-	TX_REPEATER_014_PutChar(instruction);	// Servo instruction
+	TX_REPEATER_14_PutChar(instruction);	// Servo instruction
 	TX_REPEATER_23_PutChar(instruction);	// Servo instruction
-	TX_REPEATER_014_PutChar(address);		// Target memory address on the servo EEPROM
+	TX_REPEATER_14_PutChar(address);		// Target memory address on the servo EEPROM
 	TX_REPEATER_23_PutChar(address);		// Target memory address on the servo EEPROM
-	TX_REPEATER_014_PutChar(value1);		// The first write value
+	TX_REPEATER_14_PutChar(value1);		// The first write value
 	TX_REPEATER_23_PutChar(value1);			// The first write value
-	TX_REPEATER_014_PutChar(value2);		// The second write value
+	TX_REPEATER_14_PutChar(value2);		// The second write value
 	TX_REPEATER_23_PutChar(value2);			// The second write value
-	TX_REPEATER_014_PutChar(checksum);		// This is the end of this transmission
+	TX_REPEATER_14_PutChar(checksum);		// This is the end of this transmission
 	TX_REPEATER_23_PutChar(checksum);		// This is the end of this transmission
 	
 	// Wait for the transmission to finish.
-	while(!(TX_REPEATER_014_bReadTxStatus() & TX_REPEATER_014_TX_COMPLETE));
+	while(!(TX_REPEATER_14_bReadTxStatus() & TX_REPEATER_14_TX_COMPLETE));
 	while(!(TX_REPEATER_23_bReadTxStatus() & TX_REPEATER_23_TX_COMPLETE));
 	
 	// Make completely sure we're done.
@@ -703,7 +712,7 @@ void configToggle(int mode)
 		COMP_SERIAL_IntCntl(COMP_SERIAL_ENABLE_RX_INT); 	// Enable RX interrupts  
 		COMP_SERIAL_Start(UART_PARITY_NONE);				// Starts the UART.
 		
-		TX_REPEATER_014_Start(TX_REPEATER_014_PARITY_NONE);	// Start the 014 TX repeater.
+		TX_REPEATER_14_Start(TX_REPEATER_14_PARITY_NONE);	// Start the 014 TX repeater.
 		TX_REPEATER_23_Start(TX_REPEATER_23_PARITY_NONE);	// Start the 23 TX repeater.
 		
 		TIMEOUT = 0;			// Clear the timeout flag.

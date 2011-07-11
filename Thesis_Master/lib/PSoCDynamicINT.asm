@@ -40,7 +40,7 @@ Dispatch_INTERRUPT_10_END:
 	jacc	Dispatch_INTERRUPT_10_TBL
 Dispatch_INTERRUPT_10_TBL:
 	pop		a
-	ljmp	_TX_REPEATER_014_ISR
+	ljmp	_TX_REPEATER_14_ISR
 	pop		a
 	ljmp	_RECEIVE_1_ISR
 ; Resume Code Compressor.

@@ -1,4 +1,4 @@
-  ROM 59% full. 9557 bytes used (does not include absolute areas).
+  ROM 59% full. 9580 bytes used (does not include absolute areas).
   RAM 22% full. 173 bytes used (does not include stack usage).
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
@@ -68,42 +68,42 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        07D2  TX_TIMEOUT_Start
        07D6  _TX_TIMEOUT_Stop
        07D6  TX_TIMEOUT_Stop
-       07DA  TX_TIMEOUT_WritePeriod
        07DA  _TX_TIMEOUT_WritePeriod
-       07E0  _TX_TIMEOUT_WriteCompareValue
+       07DA  TX_TIMEOUT_WritePeriod
        07E0  TX_TIMEOUT_WriteCompareValue
-       07E6  TX_TIMEOUT_wReadCompareValue
+       07E0  _TX_TIMEOUT_WriteCompareValue
        07E6  _TX_TIMEOUT_wReadCompareValue
        07E6  wTX_TIMEOUT_ReadCompareValue
+       07E6  TX_TIMEOUT_wReadCompareValue
        07E6  _wTX_TIMEOUT_ReadCompareValue
+       07EC  wTX_TIMEOUT_ReadCounter
+       07EC  wTX_TIMEOUT_ReadTimerSaveCV
        07EC  _wTX_TIMEOUT_ReadTimerSaveCV
        07EC  _TX_TIMEOUT_wReadTimerSaveCV
-       07EC  wTX_TIMEOUT_ReadTimerSaveCV
        07EC  TX_TIMEOUT_wReadTimerSaveCV
        07EC  _wTX_TIMEOUT_ReadCounter
-       07EC  wTX_TIMEOUT_ReadCounter
+       0822  _TX_TIMEOUT_wReadTimer
+       0822  wTX_TIMEOUT_ReadTimer
+       0822  _wTX_TIMEOUT_ReadTimer
+       0822  wTX_TIMEOUT_CaptureCounter
        0822  _wTX_TIMEOUT_CaptureCounter
        0822  TX_TIMEOUT_wReadTimer
-       0822  _wTX_TIMEOUT_ReadTimer
-       0822  _TX_TIMEOUT_wReadTimer
-       0822  wTX_TIMEOUT_CaptureCounter
-       0822  wTX_TIMEOUT_ReadTimer
        082A  _TX_REPEATER_23_ISR
-       082B  TX_REPEATER_23_EnableInt
        082B  _TX_REPEATER_23_EnableInt
-       082F  _TX_REPEATER_23_DisableInt
+       082B  TX_REPEATER_23_EnableInt
        082F  TX_REPEATER_23_DisableInt
+       082F  _TX_REPEATER_23_DisableInt
        0833  TX_REPEATER_23_SetTxIntMode
        0833  _TX_REPEATER_23_SetTxIntMode
        0845  TX_REPEATER_23_Start
        0845  _TX_REPEATER_23_Start
-       084A  _TX_REPEATER_23_Stop
        084A  TX_REPEATER_23_Stop
+       084A  _TX_REPEATER_23_Stop
        084E  _TX_REPEATER_23_SendData
        084E  TX_REPEATER_23_SendData
+       0851  _TX_REPEATER_23_bReadTxStatus
        0851  TX_REPEATER_23_bReadTxStatus
        0851  bTX_REPEATER_23_ReadTxStatus
-       0851  _TX_REPEATER_23_bReadTxStatus
        0851  _bTX_REPEATER_23_ReadTxStatus
        0864  TX_REPEATER_23_PutSHexByte
        0864  _TX_REPEATER_23_PutSHexByte
@@ -111,106 +111,106 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        0877  TX_REPEATER_23_PutSHexInt
        087E  TX_REPEATER_23_PutChar
        087E  _TX_REPEATER_23_PutChar
-       0886  TX_REPEATER_23_PutString
        0886  _TX_REPEATER_23_PutString
-       0898  TX_REPEATER_23_Write
+       0886  TX_REPEATER_23_PutString
        0898  _TX_REPEATER_23_Write
+       0898  TX_REPEATER_23_Write
        08C0  TX_REPEATER_23_CWrite
        08C0  _TX_REPEATER_23_CWrite
        08E8  TX_REPEATER_23_CPutString
        08E8  _TX_REPEATER_23_CPutString
        08FA  TX_REPEATER_23_PutCRLF
        08FA  _TX_REPEATER_23_PutCRLF
-       0903  _TX_REPEATER_014_ISR
-       0904  _TX_REPEATER_014_EnableInt
-       0904  TX_REPEATER_014_EnableInt
-       0908  _TX_REPEATER_014_DisableInt
-       0908  TX_REPEATER_014_DisableInt
-       090C  TX_REPEATER_014_SetTxIntMode
-       090C  _TX_REPEATER_014_SetTxIntMode
-       091E  TX_REPEATER_014_Start
-       091E  _TX_REPEATER_014_Start
-       0923  _TX_REPEATER_014_Stop
-       0923  TX_REPEATER_014_Stop
-       0927  TX_REPEATER_014_SendData
-       0927  _TX_REPEATER_014_SendData
-       092A  _TX_REPEATER_014_bReadTxStatus
-       092A  TX_REPEATER_014_bReadTxStatus
-       092A  bTX_REPEATER_014_ReadTxStatus
-       092A  _bTX_REPEATER_014_ReadTxStatus
-       093D  TX_REPEATER_014_PutSHexByte
-       093D  _TX_REPEATER_014_PutSHexByte
-       0950  _TX_REPEATER_014_PutSHexInt
-       0950  TX_REPEATER_014_PutSHexInt
-       0957  _TX_REPEATER_014_PutChar
-       0957  TX_REPEATER_014_PutChar
-       095F  TX_REPEATER_014_PutString
-       095F  _TX_REPEATER_014_PutString
-       0971  TX_REPEATER_014_Write
-       0971  _TX_REPEATER_014_Write
-       0999  TX_REPEATER_014_CWrite
-       0999  _TX_REPEATER_014_CWrite
-       09C1  TX_REPEATER_014_CPutString
-       09C1  _TX_REPEATER_014_CPutString
-       09D3  _TX_REPEATER_014_PutCRLF
-       09D3  TX_REPEATER_014_PutCRLF
+       0903  _TX_REPEATER_14_ISR
+       0904  _TX_REPEATER_14_EnableInt
+       0904  TX_REPEATER_14_EnableInt
+       0908  _TX_REPEATER_14_DisableInt
+       0908  TX_REPEATER_14_DisableInt
+       090C  TX_REPEATER_14_SetTxIntMode
+       090C  _TX_REPEATER_14_SetTxIntMode
+       091E  TX_REPEATER_14_Start
+       091E  _TX_REPEATER_14_Start
+       0923  TX_REPEATER_14_Stop
+       0923  _TX_REPEATER_14_Stop
+       0927  _TX_REPEATER_14_SendData
+       0927  TX_REPEATER_14_SendData
+       092A  bTX_REPEATER_14_ReadTxStatus
+       092A  TX_REPEATER_14_bReadTxStatus
+       092A  _TX_REPEATER_14_bReadTxStatus
+       092A  _bTX_REPEATER_14_ReadTxStatus
+       093D  TX_REPEATER_14_PutSHexByte
+       093D  _TX_REPEATER_14_PutSHexByte
+       0950  TX_REPEATER_14_PutSHexInt
+       0950  _TX_REPEATER_14_PutSHexInt
+       0957  TX_REPEATER_14_PutChar
+       0957  _TX_REPEATER_14_PutChar
+       095F  _TX_REPEATER_14_PutString
+       095F  TX_REPEATER_14_PutString
+       0971  _TX_REPEATER_14_Write
+       0971  TX_REPEATER_14_Write
+       0999  _TX_REPEATER_14_CWrite
+       0999  TX_REPEATER_14_CWrite
+       09C1  _TX_REPEATER_14_CPutString
+       09C1  TX_REPEATER_14_CPutString
+       09D3  _TX_REPEATER_14_PutCRLF
+       09D3  TX_REPEATER_14_PutCRLF
        09DC  _RX_TIMEOUT_EnableInt
        09DC  RX_TIMEOUT_EnableInt
-       09E0  RX_TIMEOUT_DisableInt
        09E0  _RX_TIMEOUT_DisableInt
-       09E4  RX_TIMEOUT_Start
+       09E0  RX_TIMEOUT_DisableInt
        09E4  _RX_TIMEOUT_Start
+       09E4  RX_TIMEOUT_Start
        09E8  _RX_TIMEOUT_Stop
        09E8  RX_TIMEOUT_Stop
        09EC  RX_TIMEOUT_WritePeriod
        09EC  _RX_TIMEOUT_WritePeriod
        09F2  _RX_TIMEOUT_WriteCompareValue
        09F2  RX_TIMEOUT_WriteCompareValue
-       09F8  RX_TIMEOUT_wReadCompareValue
-       09F8  wRX_TIMEOUT_ReadCompareValue
-       09F8  _RX_TIMEOUT_wReadCompareValue
        09F8  _wRX_TIMEOUT_ReadCompareValue
-       09FE  wRX_TIMEOUT_ReadTimerSaveCV
-       09FE  _wRX_TIMEOUT_ReadTimerSaveCV
-       09FE  wRX_TIMEOUT_ReadCounter
-       09FE  _wRX_TIMEOUT_ReadCounter
-       09FE  _RX_TIMEOUT_wReadTimerSaveCV
+       09F8  _RX_TIMEOUT_wReadCompareValue
+       09F8  wRX_TIMEOUT_ReadCompareValue
+       09F8  RX_TIMEOUT_wReadCompareValue
        09FE  RX_TIMEOUT_wReadTimerSaveCV
+       09FE  _RX_TIMEOUT_wReadTimerSaveCV
+       09FE  wRX_TIMEOUT_ReadCounter
+       09FE  _wRX_TIMEOUT_ReadTimerSaveCV
+       09FE  wRX_TIMEOUT_ReadTimerSaveCV
+       09FE  _wRX_TIMEOUT_ReadCounter
+       0A34  _wRX_TIMEOUT_ReadTimer
+       0A34  _wRX_TIMEOUT_CaptureCounter
+       0A34  wRX_TIMEOUT_CaptureCounter
        0A34  RX_TIMEOUT_wReadTimer
        0A34  wRX_TIMEOUT_ReadTimer
-       0A34  _wRX_TIMEOUT_CaptureCounter
-       0A34  _wRX_TIMEOUT_ReadTimer
        0A34  _RX_TIMEOUT_wReadTimer
-       0A34  wRX_TIMEOUT_CaptureCounter
        0A3C  _RECEIVE_4_ISR
-       0AB0  _RECEIVE_4_EnableInt
        0AB0  RECEIVE_4_EnableInt
-       0AB4  RECEIVE_4_DisableInt
+       0AB0  _RECEIVE_4_EnableInt
        0AB4  _RECEIVE_4_DisableInt
-       0AB8  _RECEIVE_4_Start
+       0AB4  RECEIVE_4_DisableInt
        0AB8  RECEIVE_4_Start
-       0ABD  RECEIVE_4_Stop
+       0AB8  _RECEIVE_4_Start
        0ABD  _RECEIVE_4_Stop
+       0ABD  RECEIVE_4_Stop
        0AC1  _bRECEIVE_4_ReadRxData
        0AC1  bRECEIVE_4_ReadRxData
        0AC1  RECEIVE_4_bReadRxData
        0AC1  _RECEIVE_4_bReadRxData
-       0AC4  RECEIVE_4_bReadRxStatus
-       0AC4  _bRECEIVE_4_ReadRxStatus
        0AC4  bRECEIVE_4_ReadRxStatus
+       0AC4  RECEIVE_4_bReadRxStatus
        0AC4  _RECEIVE_4_bReadRxStatus
+       0AC4  _bRECEIVE_4_ReadRxStatus
        0AC7  _RECEIVE_4_cGetChar
        0AC7  RECEIVE_4_cGetChar
-       0ACF  RECEIVE_4_cReadChar
        0ACF  _RECEIVE_4_cReadChar
-       0AE6  _RECEIVE_4_iReadChar
+       0ACF  RECEIVE_4_cReadChar
        0AE6  RECEIVE_4_iReadChar
-       0AFC  RECEIVE_4_CmdReset
+       0AE6  _RECEIVE_4_iReadChar
        0AFC  _RECEIVE_4_CmdReset
+       0AFC  RECEIVE_4_CmdReset
        0B12  RECEIVE_4_bCmdCheck
        0B12  _RECEIVE_4_bCmdCheck
-       0B1A  RECEIVE_4_bErrCheck
        0B1A  _RECEIVE_4_bErrCheck
+       0B1A  RECEIVE_4_bErrCheck
        0B25  RECEIVE_4_bCmdLength
        0B25  _RECEIVE_4_bCmdLength
        0B2B  _RECEIVE_4_szGetParam
@@ -218,179 +218,179 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        0B8A  _RECEIVE_4_szGetRestOfParams
        0B8A  RECEIVE_4_szGetRestOfParams
        0B95  _RECEIVE_3_ISR
-       0C09  _RECEIVE_3_EnableInt
        0C09  RECEIVE_3_EnableInt
+       0C09  _RECEIVE_3_EnableInt
        0C0D  _RECEIVE_3_DisableInt
        0C0D  RECEIVE_3_DisableInt
-       0C11  _RECEIVE_3_Start
        0C11  RECEIVE_3_Start
-       0C16  RECEIVE_3_Stop
+       0C11  _RECEIVE_3_Start
        0C16  _RECEIVE_3_Stop
+       0C16  RECEIVE_3_Stop
        0C1A  RECEIVE_3_bReadRxData
-       0C1A  _bRECEIVE_3_ReadRxData
        0C1A  bRECEIVE_3_ReadRxData
        0C1A  _RECEIVE_3_bReadRxData
-       0C1D  _bRECEIVE_3_ReadRxStatus
-       0C1D  bRECEIVE_3_ReadRxStatus
-       0C1D  RECEIVE_3_bReadRxStatus
+       0C1A  _bRECEIVE_3_ReadRxData
        0C1D  _RECEIVE_3_bReadRxStatus
-       0C20  _RECEIVE_3_cGetChar
+       0C1D  bRECEIVE_3_ReadRxStatus
+       0C1D  _bRECEIVE_3_ReadRxStatus
+       0C1D  RECEIVE_3_bReadRxStatus
        0C20  RECEIVE_3_cGetChar
+       0C20  _RECEIVE_3_cGetChar
        0C28  _RECEIVE_3_cReadChar
        0C28  RECEIVE_3_cReadChar
        0C3F  RECEIVE_3_iReadChar
        0C3F  _RECEIVE_3_iReadChar
-       0C55  RECEIVE_3_CmdReset
        0C55  _RECEIVE_3_CmdReset
-       0C6B  _RECEIVE_3_bCmdCheck
+       0C55  RECEIVE_3_CmdReset
        0C6B  RECEIVE_3_bCmdCheck
-       0C73  RECEIVE_3_bErrCheck
+       0C6B  _RECEIVE_3_bCmdCheck
        0C73  _RECEIVE_3_bErrCheck
-       0C7E  RECEIVE_3_bCmdLength
+       0C73  RECEIVE_3_bErrCheck
        0C7E  _RECEIVE_3_bCmdLength
-       0C84  _RECEIVE_3_szGetParam
+       0C7E  RECEIVE_3_bCmdLength
        0C84  RECEIVE_3_szGetParam
+       0C84  _RECEIVE_3_szGetParam
        0CE3  RECEIVE_3_szGetRestOfParams
        0CE3  _RECEIVE_3_szGetRestOfParams
        0CEE  _RECEIVE_2_ISR
        0D62  RECEIVE_2_EnableInt
        0D62  _RECEIVE_2_EnableInt
-       0D66  _RECEIVE_2_DisableInt
        0D66  RECEIVE_2_DisableInt
+       0D66  _RECEIVE_2_DisableInt
        0D6A  _RECEIVE_2_Start
        0D6A  RECEIVE_2_Start
-       0D6F  RECEIVE_2_Stop
        0D6F  _RECEIVE_2_Stop
+       0D6F  RECEIVE_2_Stop
        0D73  bRECEIVE_2_ReadRxData
+       0D73  _bRECEIVE_2_ReadRxData
        0D73  _RECEIVE_2_bReadRxData
        0D73  RECEIVE_2_bReadRxData
-       0D73  _bRECEIVE_2_ReadRxData
-       0D76  bRECEIVE_2_ReadRxStatus
        0D76  _bRECEIVE_2_ReadRxStatus
-       0D76  _RECEIVE_2_bReadRxStatus
        0D76  RECEIVE_2_bReadRxStatus
-       0D79  RECEIVE_2_cGetChar
+       0D76  _RECEIVE_2_bReadRxStatus
+       0D76  bRECEIVE_2_ReadRxStatus
        0D79  _RECEIVE_2_cGetChar
-       0D81  RECEIVE_2_cReadChar
+       0D79  RECEIVE_2_cGetChar
        0D81  _RECEIVE_2_cReadChar
+       0D81  RECEIVE_2_cReadChar
        0D98  _RECEIVE_2_iReadChar
        0D98  RECEIVE_2_iReadChar
-       0DAE  _RECEIVE_2_CmdReset
        0DAE  RECEIVE_2_CmdReset
-       0DC4  _RECEIVE_2_bCmdCheck
+       0DAE  _RECEIVE_2_CmdReset
        0DC4  RECEIVE_2_bCmdCheck
+       0DC4  _RECEIVE_2_bCmdCheck
        0DCC  _RECEIVE_2_bErrCheck
        0DCC  RECEIVE_2_bErrCheck
        0DD7  RECEIVE_2_bCmdLength
        0DD7  _RECEIVE_2_bCmdLength
-       0DDD  _RECEIVE_2_szGetParam
        0DDD  RECEIVE_2_szGetParam
-       0E3C  RECEIVE_2_szGetRestOfParams
+       0DDD  _RECEIVE_2_szGetParam
        0E3C  _RECEIVE_2_szGetRestOfParams
+       0E3C  RECEIVE_2_szGetRestOfParams
        0E47  _RECEIVE_1_ISR
-       0EBB  _RECEIVE_1_EnableInt
        0EBB  RECEIVE_1_EnableInt
+       0EBB  _RECEIVE_1_EnableInt
        0EBF  _RECEIVE_1_DisableInt
        0EBF  RECEIVE_1_DisableInt
-       0EC3  RECEIVE_1_Start
        0EC3  _RECEIVE_1_Start
-       0EC8  RECEIVE_1_Stop
+       0EC3  RECEIVE_1_Start
        0EC8  _RECEIVE_1_Stop
-       0ECC  _RECEIVE_1_bReadRxData
-       0ECC  _bRECEIVE_1_ReadRxData
+       0EC8  RECEIVE_1_Stop
        0ECC  bRECEIVE_1_ReadRxData
        0ECC  RECEIVE_1_bReadRxData
+       0ECC  _RECEIVE_1_bReadRxData
+       0ECC  _bRECEIVE_1_ReadRxData
+       0ECF  RECEIVE_1_bReadRxStatus
        0ECF  bRECEIVE_1_ReadRxStatus
        0ECF  _bRECEIVE_1_ReadRxStatus
-       0ECF  RECEIVE_1_bReadRxStatus
        0ECF  _RECEIVE_1_bReadRxStatus
-       0ED2  RECEIVE_1_cGetChar
        0ED2  _RECEIVE_1_cGetChar
+       0ED2  RECEIVE_1_cGetChar
        0EDA  _RECEIVE_1_cReadChar
        0EDA  RECEIVE_1_cReadChar
-       0EF1  _RECEIVE_1_iReadChar
        0EF1  RECEIVE_1_iReadChar
+       0EF1  _RECEIVE_1_iReadChar
        0F07  RECEIVE_1_CmdReset
        0F07  _RECEIVE_1_CmdReset
        0F1D  _RECEIVE_1_bCmdCheck
        0F1D  RECEIVE_1_bCmdCheck
        0F25  _RECEIVE_1_bErrCheck
        0F25  RECEIVE_1_bErrCheck
-       0F30  _RECEIVE_1_bCmdLength
        0F30  RECEIVE_1_bCmdLength
+       0F30  _RECEIVE_1_bCmdLength
        0F36  _RECEIVE_1_szGetParam
        0F36  RECEIVE_1_szGetParam
-       0F95  _RECEIVE_1_szGetRestOfParams
        0F95  RECEIVE_1_szGetRestOfParams
+       0F95  _RECEIVE_1_szGetRestOfParams
        0FA0  _COMP_SERIAL_TX_ISR
        0FA1  _COMP_SERIAL_RX_ISR
        1015  _COMP_SERIAL_EnableInt
        1015  COMP_SERIAL_EnableInt
-       101C  COMP_SERIAL_DisableInt
        101C  _COMP_SERIAL_DisableInt
-       1023  _COMP_SERIAL_SetTxIntMode
+       101C  COMP_SERIAL_DisableInt
        1023  COMP_SERIAL_SetTxIntMode
+       1023  _COMP_SERIAL_SetTxIntMode
        1035  COMP_SERIAL_Start
        1035  _COMP_SERIAL_Start
-       103E  _COMP_SERIAL_Stop
        103E  COMP_SERIAL_Stop
-       1045  COMP_SERIAL_SendData
+       103E  _COMP_SERIAL_Stop
        1045  _COMP_SERIAL_SendData
+       1045  COMP_SERIAL_SendData
+       1048  COMP_SERIAL_bReadTxStatus
+       1048  bCOMP_SERIAL_ReadTxStatus
        1048  _COMP_SERIAL_bReadTxStatus
        1048  _bCOMP_SERIAL_ReadTxStatus
-       1048  bCOMP_SERIAL_ReadTxStatus
-       1048  COMP_SERIAL_bReadTxStatus
-       104B  bCOMP_SERIAL_ReadRxData
        104B  COMP_SERIAL_bReadRxData
-       104B  _COMP_SERIAL_bReadRxData
+       104B  bCOMP_SERIAL_ReadRxData
        104B  _bCOMP_SERIAL_ReadRxData
-       104E  _COMP_SERIAL_bReadRxStatus
-       104E  _bCOMP_SERIAL_ReadRxStatus
-       104E  bCOMP_SERIAL_ReadRxStatus
+       104B  _COMP_SERIAL_bReadRxData
        104E  COMP_SERIAL_bReadRxStatus
+       104E  bCOMP_SERIAL_ReadRxStatus
+       104E  _bCOMP_SERIAL_ReadRxStatus
+       104E  _COMP_SERIAL_bReadRxStatus
        1051  COMP_SERIAL_TxIntMode
        1051  _COMP_SERIAL_TxIntMode
        1064  COMP_SERIAL_IntCntl
        1064  _COMP_SERIAL_IntCntl
        108F  COMP_SERIAL_PutSHexByte
        108F  _COMP_SERIAL_PutSHexByte
-       10A2  COMP_SERIAL_PutSHexInt
        10A2  _COMP_SERIAL_PutSHexInt
-       10A9  _COMP_SERIAL_PutChar
+       10A2  COMP_SERIAL_PutSHexInt
        10A9  COMP_SERIAL_PutChar
+       10A9  _COMP_SERIAL_PutChar
        10B1  COMP_SERIAL_cGetChar
        10B1  _COMP_SERIAL_cGetChar
-       10B9  _COMP_SERIAL_cReadChar
        10B9  COMP_SERIAL_cReadChar
-       10D0  COMP_SERIAL_iReadChar
+       10B9  _COMP_SERIAL_cReadChar
        10D0  _COMP_SERIAL_iReadChar
+       10D0  COMP_SERIAL_iReadChar
        10E6  _COMP_SERIAL_PutString
        10E6  COMP_SERIAL_PutString
        10F8  COMP_SERIAL_Write
        10F8  _COMP_SERIAL_Write
        1120  _COMP_SERIAL_CWrite
        1120  COMP_SERIAL_CWrite
-       114C  COMP_SERIAL_CPutString
        114C  _COMP_SERIAL_CPutString
-       115E  COMP_SERIAL_PutCRLF
+       114C  COMP_SERIAL_CPutString
        115E  _COMP_SERIAL_PutCRLF
+       115E  COMP_SERIAL_PutCRLF
        1167  _COMP_SERIAL_CmdReset
        1167  COMP_SERIAL_CmdReset
-       117D  _COMP_SERIAL_bCmdCheck
        117D  COMP_SERIAL_bCmdCheck
-       1185  COMP_SERIAL_bErrCheck
+       117D  _COMP_SERIAL_bCmdCheck
        1185  _COMP_SERIAL_bErrCheck
+       1185  COMP_SERIAL_bErrCheck
        1190  _COMP_SERIAL_bCmdLength
        1190  COMP_SERIAL_bCmdLength
-       1196  COMP_SERIAL_szGetParam
        1196  _COMP_SERIAL_szGetParam
-       11F5  _COMP_SERIAL_szGetRestOfParams
+       1196  COMP_SERIAL_szGetParam
        11F5  COMP_SERIAL_szGetRestOfParams
+       11F5  _COMP_SERIAL_szGetRestOfParams
        1200  __UserModules_end
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   1200   14E5 =   5349. bytes (rel,con,rom)
+                            text   1200   14FC =   5372. bytes (rel,con,rom)
 
        Addr  Global Symbol
       -----  --------------------------------
@@ -401,32 +401,32 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        1461  _sayHello
        14FB  _validTransmission
        15C3  _decodeTransmission
-       1C25  _servoInstruction
-       1D0F  _longServoInstruction
-       1E0E  _configToggle
-       1EE1  _unloadAllConfigs
-       1EE8  _unloadConfig
-       1F08  _initializeChildren
-       20AD  _childListen
-       2175  _iReadChar
-       21C3  _readChar
-       2211  _xmitWait
-       2230  _TX_TIMEOUT_ISR
-       2246  _RX_TIMEOUT_ISR
-       225C  Dispatch_INTERRUPT_10
-       227B  Dispatch_INTERRUPT_11
-       229A  Dispatch_INTERRUPT_14
-       22B9  Dispatch_INTERRUPT_15
-       22D8  Dispatch_INTERRUPT_9
-       22F7  __divmod_16X16_16
-       2345  __divmodu_16X16_16
-       2350  __i_div16_block_util
-       2389  _atoi
-       24CA  _itoa
-       26A3  _isdigit
-       26C4  _isspace
-       26F3  __xidata_end
-       26E5  __text_end
+       1C3C  _servoInstruction
+       1D26  _longServoInstruction
+       1E25  _configToggle
+       1EF8  _unloadAllConfigs
+       1EFF  _unloadConfig
+       1F1F  _initializeChildren
+       20C4  _childListen
+       218C  _iReadChar
+       21DA  _readChar
+       2228  _xmitWait
+       2247  _TX_TIMEOUT_ISR
+       225D  _RX_TIMEOUT_ISR
+       2273  Dispatch_INTERRUPT_10
+       2292  Dispatch_INTERRUPT_11
+       22B1  Dispatch_INTERRUPT_14
+       22D0  Dispatch_INTERRUPT_15
+       22EF  Dispatch_INTERRUPT_9
+       230E  __divmod_16X16_16
+       235C  __divmodu_16X16_16
+       2367  __i_div16_block_util
+       23A0  _atoi
+       24E1  _itoa
+       26BA  _isdigit
+       26DB  _isspace
+       270A  __xidata_end
+       26FC  __text_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -549,7 +549,7 @@ Files Linked      [ module(s) ]
 
 ./obj/boot.o	[ boot.asm ]
 ./obj/main.o	[ main.c ]
-<library>	[ tx_timeout.asm, tx_repeater_23int.asm, tx_repeater_23.asm, tx_repeater_014int.asm, tx_repeater_014.asm ]
+<library>	[ tx_timeout.asm, tx_repeater_23int.asm, tx_repeater_23.asm, tx_repeater_14int.asm, tx_repeater_14.asm ]
 [ rx_timeout.asm, receive_4int.asm, receive_4.asm, receive_3int.asm, receive_3.asm, receive_2int.asm ]
 [ receive_2.asm, receive_1int.asm, receive_1.asm, psocdynamicint.asm, psocconfigtbl.asm, psocconfig.asm ]
 [ comp_serialint.asm, comp_serial.asm, rZ.asm, rY.asm, rX.asm, r5.asm, r4.asm, r3.asm, r2.asm, r1.asm ]
@@ -563,7 +563,6 @@ data = 0x0
 SSCParmBlk:0x00F7.0x00FF
 InterruptRAM = 0x0
 virtual_registers = 0x95
-transmitter_config_RAM
-pc_listener_RAM = 0xad
 receiver_config_RAM = 0xad
+pc_listener_RAM = 0xad
 

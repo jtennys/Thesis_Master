@@ -62,13 +62,13 @@
 ./lib/obj/rx_timeoutint.o :  ./lib/RX_TIM~2.INC\
    C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
    C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
-./lib/obj/tx_repeater_014.o :  ./lib/TX_REP~1.INC\
+./lib/obj/tx_repeater_14.o :  ./lib/TX_REP~1.INC\
    C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
    C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
-./lib/obj/tx_repeater_014int.o :  ./lib/TX_REP~1.INC\
+./lib/obj/tx_repeater_14int.o :  ./lib/TX_REP~1.INC\
    C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
    C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc
-./lib/obj/tx_repeater_014plus.o : 
+./lib/obj/tx_repeater_14plus.o : 
 ./lib/obj/tx_repeater_23.o :  ./lib/TX_REP~2.INC\
    C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
    C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~4\THESIS~1\memory.inc

@@ -432,62 +432,62 @@ R 00 00 00 01
 .start
 XH
 H 1 areas 0 global symbols
-M tx_repeater_014plus.asm
+M tx_repeater_14plus.asm
 A text size 0 flags 0
 .end
 .start
 XH
 H 3 areas 1 global symbols
-M tx_repeater_014int.asm
+M tx_repeater_14int.asm
 A text size 0 flags 0
-dbfile lib/tx_repeater_014int.asm
+dbfile lib/tx_repeater_14int.asm
 dbfunc 0 ? 0 I
-dbfile TX_REPEATER_014.inc
+dbfile TX_REPEATER_14.inc
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
 dbfunc 0 ? 0 I
-dbfile ./lib/TX_REPEATER_014.inc
+dbfile ./lib/TX_REPEATER_14.inc
 dbfunc 0 ? 0 I
-dbfile lib/tx_repeater_014int.asm
+dbfile lib/tx_repeater_14int.asm
 dbfunc 0 ? 0 I
 dbfile memory.inc
 dbfunc 0 ? 0 I
-dbfile lib/tx_repeater_014int.asm
+dbfile lib/tx_repeater_14int.asm
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
 dbfunc 0 ? 0 I
 A InterruptRAM size 0 flags 20
 A UserModules size 1 flags 0
-dbfile lib/tx_repeater_014int.asm
+dbfile lib/tx_repeater_14int.asm
 dbfunc 0 ? 0 I
 dbline 4C 0
-S _TX_REPEATER_014_ISR Def0000
+S _TX_REPEATER_14_ISR Def0000
 T 00 00 7E
 R 00 00 00 02
 .end
 .start
 XH
 H 2 areas 40 global symbols
-M tx_repeater_014.asm
+M tx_repeater_14.asm
 A text size 0 flags 0
-dbfile lib/tx_repeater_014.asm
+dbfile lib/tx_repeater_14.asm
 dbfunc 0 ? 0 I
-dbfile TX_REPEATER_014.inc
+dbfile TX_REPEATER_14.inc
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
 dbfunc 0 ? 0 I
-dbfile ./lib/TX_REPEATER_014.inc
+dbfile ./lib/TX_REPEATER_14.inc
 dbfunc 0 ? 0 I
-dbfile lib/tx_repeater_014.asm
+dbfile lib/tx_repeater_14.asm
 dbfunc 0 ? 0 I
 dbfile memory.inc
 dbfunc 0 ? 0 I
-dbfile lib/tx_repeater_014.asm
+dbfile lib/tx_repeater_14.asm
 dbfunc 0 ? 0 I
 dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
 dbfunc 0 ? 0 I
 A UserModules size D8 flags 0
-dbfile lib/tx_repeater_014.asm
+dbfile lib/tx_repeater_14.asm
 dbfunc 0 ? 0 I
 dbline 6C 0
 dbline 6E 3
@@ -592,70 +592,70 @@ dbline 298 D1
 dbline 299 D3
 dbline 29A D5
 dbline 29C D7
-S $sb$TX_REPEATER_014_bReadTxStatus Def0026
-S $se$TX_REPEATER_014_bReadTxStatus Def0029
-S TX_REPEATER_014_CWrite Def0095
-S _TX_REPEATER_014_CPutString Def00BD
-S $lb$TX_REPEATER_014_HEX_STR Def0029
-S $le$TX_REPEATER_014_HEX_STR Def0039
-S TX_REPEATER_014_PutCRLF Def00CF
-S $sb$TX_REPEATER_014_PutSHexByte Def0039
-S _TX_REPEATER_014_SendData Def0023
-S $se$TX_REPEATER_014_PutSHexByte Def004C
-S _TX_REPEATER_014_Write Def006D
-S $sb$TX_REPEATER_014_CWrite Def0095
-S _TX_REPEATER_014_Start Def001A
-S $se$TX_REPEATER_014_CWrite Def00BD
-S TX_REPEATER_014_EnableInt Def0000
-S $sb$TX_REPEATER_014_PutCRLF Def00CF
-S $se$TX_REPEATER_014_PutCRLF Def00D8
-S _bTX_REPEATER_014_ReadTxStatus Def0026
-S _TX_REPEATER_014_bReadTxStatus Def0026
-S $sb$TX_REPEATER_014_EnableInt Def0000
-S $se$TX_REPEATER_014_EnableInt Def0004
-S _TX_REPEATER_014_PutSHexByte Def0039
-S TX_REPEATER_014_Stop Def001F
-S TX_REPEATER_014_SetTxIntMode Def0008
-S _TX_REPEATER_014_CWrite Def0095
-S TX_REPEATER_014_PutString Def005B
-S TX_REPEATER_014_PutChar Def0053
-S _TX_REPEATER_014_PutCRLF Def00CF
-S $sb$TX_REPEATER_014_Stop Def001F
-S $sb$TX_REPEATER_014_SetTxIntMode Def0008
-S $se$TX_REPEATER_014_Stop Def0023
-S $se$TX_REPEATER_014_SetTxIntMode Def001A
-S $sb$TX_REPEATER_014_PutString Def005B
-S $se$TX_REPEATER_014_PutString Def006D
-S _TX_REPEATER_014_EnableInt Def0000
-S $sb$TX_REPEATER_014_PutChar Def0053
-S $se$TX_REPEATER_014_PutChar Def005B
-S TX_REPEATER_014_PutSHexInt Def004C
-S TX_REPEATER_014_DisableInt Def0004
-S TX_REPEATER_014_CPutString Def00BD
-S $sb$TX_REPEATER_014_PutSHexInt Def004C
-S $se$TX_REPEATER_014_PutSHexInt Def0053
-S $sb$TX_REPEATER_014_DisableInt Def0004
-S $se$TX_REPEATER_014_DisableInt Def0008
-S TX_REPEATER_014_SendData Def0023
-S _TX_REPEATER_014_Stop Def001F
-S _TX_REPEATER_014_SetTxIntMode Def0008
-S TX_REPEATER_014_Write Def006D
-S TX_REPEATER_014_Start Def001A
-S _TX_REPEATER_014_PutString Def005B
-S $sb$TX_REPEATER_014_CPutString Def00BD
-S $se$TX_REPEATER_014_CPutString Def00CF
-S _TX_REPEATER_014_PutChar Def0053
-S $sb$TX_REPEATER_014_SendData Def0023
-S $se$TX_REPEATER_014_SendData Def0026
-S $sb$TX_REPEATER_014_Write Def006D
-S $se$TX_REPEATER_014_Write Def0095
-S $sb$TX_REPEATER_014_Start Def001A
-S $se$TX_REPEATER_014_Start Def001F
-S bTX_REPEATER_014_ReadTxStatus Def0026
-S TX_REPEATER_014_bReadTxStatus Def0026
-S _TX_REPEATER_014_PutSHexInt Def004C
-S _TX_REPEATER_014_DisableInt Def0004
-S TX_REPEATER_014_PutSHexByte Def0039
+S $sb$TX_REPEATER_14_PutCRLF Def00CF
+S $se$TX_REPEATER_14_PutCRLF Def00D8
+S _bTX_REPEATER_14_ReadTxStatus Def0026
+S _TX_REPEATER_14_bReadTxStatus Def0026
+S $sb$TX_REPEATER_14_EnableInt Def0000
+S $se$TX_REPEATER_14_EnableInt Def0004
+S _TX_REPEATER_14_PutSHexByte Def0039
+S TX_REPEATER_14_Stop Def001F
+S TX_REPEATER_14_SetTxIntMode Def0008
+S _TX_REPEATER_14_CWrite Def0095
+S TX_REPEATER_14_PutString Def005B
+S TX_REPEATER_14_PutChar Def0053
+S _TX_REPEATER_14_PutCRLF Def00CF
+S $sb$TX_REPEATER_14_Stop Def001F
+S $sb$TX_REPEATER_14_SetTxIntMode Def0008
+S $se$TX_REPEATER_14_Stop Def0023
+S $se$TX_REPEATER_14_SetTxIntMode Def001A
+S $sb$TX_REPEATER_14_PutString Def005B
+S $se$TX_REPEATER_14_PutString Def006D
+S _TX_REPEATER_14_EnableInt Def0000
+S $sb$TX_REPEATER_14_PutChar Def0053
+S $se$TX_REPEATER_14_PutChar Def005B
+S TX_REPEATER_14_PutSHexInt Def004C
+S TX_REPEATER_14_DisableInt Def0004
+S TX_REPEATER_14_CPutString Def00BD
+S $sb$TX_REPEATER_14_PutSHexInt Def004C
+S $se$TX_REPEATER_14_PutSHexInt Def0053
+S $sb$TX_REPEATER_14_DisableInt Def0004
+S $se$TX_REPEATER_14_DisableInt Def0008
+S TX_REPEATER_14_SendData Def0023
+S _TX_REPEATER_14_Stop Def001F
+S _TX_REPEATER_14_SetTxIntMode Def0008
+S TX_REPEATER_14_Write Def006D
+S TX_REPEATER_14_Start Def001A
+S _TX_REPEATER_14_PutString Def005B
+S $sb$TX_REPEATER_14_CPutString Def00BD
+S $se$TX_REPEATER_14_CPutString Def00CF
+S _TX_REPEATER_14_PutChar Def0053
+S $sb$TX_REPEATER_14_SendData Def0023
+S $se$TX_REPEATER_14_SendData Def0026
+S $sb$TX_REPEATER_14_Write Def006D
+S $se$TX_REPEATER_14_Write Def0095
+S $sb$TX_REPEATER_14_Start Def001A
+S $se$TX_REPEATER_14_Start Def001F
+S bTX_REPEATER_14_ReadTxStatus Def0026
+S TX_REPEATER_14_bReadTxStatus Def0026
+S _TX_REPEATER_14_PutSHexInt Def004C
+S _TX_REPEATER_14_DisableInt Def0004
+S TX_REPEATER_14_PutSHexByte Def0039
+S $sb$TX_REPEATER_14_bReadTxStatus Def0026
+S $se$TX_REPEATER_14_bReadTxStatus Def0029
+S TX_REPEATER_14_CWrite Def0095
+S _TX_REPEATER_14_CPutString Def00BD
+S $lb$TX_REPEATER_14_HEX_STR Def0029
+S $le$TX_REPEATER_14_HEX_STR Def0039
+S TX_REPEATER_14_PutCRLF Def00CF
+S $sb$TX_REPEATER_14_PutSHexByte Def0039
+S _TX_REPEATER_14_SendData Def0023
+S $se$TX_REPEATER_14_PutSHexByte Def004C
+S _TX_REPEATER_14_Write Def006D
+S $sb$TX_REPEATER_14_CWrite Def0095
+S _TX_REPEATER_14_Start Def001A
+S $se$TX_REPEATER_14_CWrite Def00BD
+S TX_REPEATER_14_EnableInt Def0000
 T 00 00 43 E1 04 7F 41 E1 FB 7F 71 10 21 01 A0 07
 R 00 00 00 01
 T 00 0E 43 28 10 70 EF 7F 41 28 EF 70 EF 7F 29 01
@@ -2313,7 +2313,6 @@ XH
 H 1 areas 10 global symbols
 M psocdynamicint.asm
 S _COMP_SERIAL_RX_ISR Ref0000
-S _TX_REPEATER_014_ISR Ref0000
 S _COMP_SERIAL_TX_ISR Ref0000
 S ACTIVE_CONFIG_STATUS Ref0000
 S _RECEIVE_1_ISR Ref0000
@@ -2321,6 +2320,7 @@ S _RECEIVE_2_ISR Ref0000
 S _RECEIVE_3_ISR Ref0000
 S _RECEIVE_4_ISR Ref0000
 S _TX_REPEATER_23_ISR Ref0000
+S _TX_REPEATER_14_ISR Ref0000
 S _RX_TIMEOUT_ISR Ref0000
 S _TX_TIMEOUT_ISR Ref0000
 A text size 9B flags 0
@@ -2418,27 +2418,27 @@ S Dispatch_INTERRUPT_14 Def003E
 S Dispatch_INTERRUPT_15 Def005D
 S Dispatch_INTERRUPT_9 Def007C
 T 00 00 08 50 00 47 00 00 02 B0 0C 50 04 47 00 00
-R 00 00 00 00 0B 06 00 03 0B 0E 00 03
+R 00 00 00 00 0B 06 00 02 0B 0E 00 02
 T 00 0C 01 B0 05 18 7E 71 00 E0 01 18 7D 00 00 18
-R 00 00 00 00 02 0D 00 01
+R 00 00 00 00 02 0D 00 08
 T 00 1A 7D 00 00 38 00 08 50 00 47 00 00 02 B0 0C
-R 00 00 00 00 02 03 00 04 0B 0B 00 03
+R 00 00 00 00 02 03 00 03 0B 0B 00 02
 T 00 27 50 04 47 00 00 01 B0 05 18 7E 71 00 E0 01
-R 00 00 00 00 0B 05 00 03
+R 00 00 00 00 0B 05 00 02
 T 00 34 18 7D 00 00 18 7D 00 00 38 00 08 50 00 47
-R 00 00 00 00 02 04 00 08 02 08 00 05
+R 00 00 00 00 02 04 00 07 02 08 00 04
 T 00 42 00 00 02 B0 0C 50 04 47 00 00 01 B0 05 18
-R 00 00 00 00 0B 02 00 03 0B 0A 00 03
+R 00 00 00 00 0B 02 00 02 0B 0A 00 02
 T 00 4E 7E 71 00 E0 01 18 7D 00 00 18 7D 00 00 38
-R 00 00 00 00 02 09 00 02 02 0D 00 06
+R 00 00 00 00 02 09 00 01 02 0D 00 05
 T 00 5C 00 08 50 00 47 00 00 02 B0 0C 50 04 47
-R 00 00 00 00 0B 07 00 03
+R 00 00 00 00 0B 07 00 02
 T 00 68 00 00 01 B0 05 18 7E 71 00 E0 01 18 7D
-R 00 00 00 00 0B 02 00 03
+R 00 00 00 00 0B 02 00 02
 T 00 74 00 00 18 7D 00 00 38 00 08 50 00 47 00 00
-R 00 00 00 00 02 02 00 00 02 06 00 07 0B 0E 00 03
+R 00 00 00 00 02 02 00 00 02 06 00 06 0B 0E 00 02
 T 00 81 02 B0 0C 50 04 47 00 00 01 B0 05 18 7E 71
-R 00 00 00 00 0B 08 00 03
+R 00 00 00 00 0B 08 00 02
 T 00 8E 00 E0 01 18 7D 00 00 18 7D 00 00 38 00
 R 00 00 00 00 02 07 00 0A 02 0B 00 09
 .end
@@ -2582,7 +2582,7 @@ T 00 2A F6 3E 80 3B 00 38 1D 39 06 3A 85 2B 00 28
 R 00 00 00 01
 T 00 38 1D 29 01 2A 85 2F 00 2C 1D 2D 01 2E 87 23
 R 00 00 00 01
-T 00 46 00 20 00 21 06 22 80 27 00 24 20 25 36 26
+T 00 46 00 20 00 21 01 22 80 27 00 24 20 25 31 26
 R 00 00 00 01
 T 00 54 80 FF 3F 00 3B 00 2B 00 2F 00 23 00 27 00
 R 00 00 00 01

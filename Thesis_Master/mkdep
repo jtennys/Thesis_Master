@@ -20,9 +20,9 @@ lib/receive_4int.asm
 lib/receive_4plus.asm   
 lib/rx_timeout.asm   
 lib/rx_timeoutint.asm   
-lib/tx_repeater_014.asm   
-lib/tx_repeater_014int.asm   
-lib/tx_repeater_014plus.asm   
+lib/tx_repeater_14.asm   
+lib/tx_repeater_14int.asm   
+lib/tx_repeater_14plus.asm   
 lib/tx_repeater_23.asm   
 lib/tx_repeater_23int.asm   
 lib/tx_repeater_23plus.asm   
